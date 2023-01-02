@@ -4,6 +4,7 @@ import {initAllUsersData} from "../../tools/dataTools.js";
 import {useEffect, useState} from "react";
 
 export function Home(){
+    console.log("home.jsx")
 
     return(
         <div >

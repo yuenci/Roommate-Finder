@@ -1,6 +1,8 @@
 import "./post.css";
 import {Message, Upload} from "@arco-design/web-react";
-import {uploadImage} from "../../firebase/storageHandle.js";
+import {uploadImageWithRandomName} from "../../firebase/storageHandle.js";
+import {imageMaxSize} from "../../config.js";
+import {useState} from "react";
 
 export default function Images(props) {
     let defaultFileList= [
@@ -21,17 +23,17 @@ export default function Images(props) {
         }
     ];
 
-    function  getAllImageURLs(fileList){
-        console.log(fileList);
-        for (let i = 0; i < fileList.length; i++) {
-            const file = fileList[i];
-            if(file.response){
-                console.log(file.response);
-            }
-        }
-    }
+    let imagesList = [];
 
-    defaultFileList = props.images;
+
+
+    function addFileList(fileList){
+        imagesList = [];
+        for (let file of fileList){
+            imagesList.push(file.response);
+        }
+        props.setImages(imagesList);
+    }
 
     return(
         <div className={"images-con"}>
@@ -39,24 +41,29 @@ export default function Images(props) {
             <Upload
                 multiple
                 imagePreview
-                defaultFileList={defaultFileList}
                 listType='picture-card'
-                // onPreview={(file) => {
-                //     Message.info(`click preview icon for ${file.name}`);
-                // }}
                 className={"images-upload"}
+                limit={4}
+
                 customRequest={(options) => {
                     const { onProgress, onError, onSuccess, file } = options;
 
-                    uploadImage(options.file.name, options.file).then((url) => {
+                    if(file.size > imageMaxSize){
+                        onError("size");
+                        Message.error("Image size should be less than 1MB");
+                        return;
+                    }
+                    uploadImageWithRandomName(file.name, options.file).then((url) => {
+                        imagesList.push(url);
+                        //console.log(url);
                         onSuccess(url);
                     }).catch((error) => {
                         onError(error);
                     } );
                 } }
+                onChange={addFileList}
                 // onChange={getAllImageURLs}
             />
-            <button onClick={getAllImageURLs}>Post</button>
         </div>
     );
 }

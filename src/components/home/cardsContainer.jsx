@@ -17,7 +17,19 @@ export function CardsContainer() {
 
     let entries;
 
-    let  allEntries = Object.entries(StatusContainer.currentAllRoomsData);
+    // let allEntries = Object.entries(StatusContainer.currentAllRoomsData);
+
+    const [allEntries1, setAllEntries1] = useState(Object.entries(StatusContainer.currentAllRoomsData));
+
+    useEffect(() => {
+        initAllUsersData().then((data) => {
+            StatusContainer.currentAllRoomsData = data;
+            setAllEntries1(Object.entries(data));
+        });
+
+    }, []);
+
+    console.log("allEntries1", allEntries1);
 
     let searchEntries = Object.entries(StatusContainer.currentSearchRoomsData);
 
@@ -30,9 +42,11 @@ export function CardsContainer() {
 
     if(pathname ==="/home/search"){
         entries = searchEntries;
-    }else if(pathname ==="/home"){
-        entries = allEntries;
+    }else if(pathname ==="/home" || pathname ==="/"){
+        entries = allEntries1;
     }
+
+    console.log(entries);
 
     return (
         <div className={"cards-filter-con"}>

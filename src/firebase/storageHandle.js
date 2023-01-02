@@ -6,26 +6,29 @@ import {firebaseConfig} from "./config.js";
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-export function uploadImage(name, file) {
-    const storageRef = ref(storage, name);
-    // uploadBytes(storageRef, file).then((snapshot) => {
-    //     console.log('Uploaded a blob or file!');
-    // });
-    const uploadTask = uploadBytesResumable(storageRef, file);
+
+// export async function uploadImageWithRandomName(file) {
+//     // get time stamp
+//     const timeStamp = Date.now().toString();
+//     return await uploadImage(timeStamp, file);
+// }
+
+export function uploadImageWithRandomName(name,file) {
+    // get time stamp
+    const timeStamp = Date.now().toString();
+
+    const storageRef = ref(storage, timeStamp+name);
 
     return new Promise((resolve, reject) => {
-        uploadTask.on('state_changed',
-            () => {
-                // Upload completed successfully, now we can get the download URL
-                getDownloadURL(uploadTask.snapshot.ref).then(
-                    (downloadURL) => {
-                        console.log('File available at', downloadURL);
-                        resolve(downloadURL);
-                    }
-                )
-            }
-        );
+        uploadBytes(storageRef, file)
+            .then((snapshot) => {
+                getDownloadURL(snapshot.ref).then((url) => {
+                    resolve(url);
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                reject(error);
+            });
     });
-
-
 }

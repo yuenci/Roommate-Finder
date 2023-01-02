@@ -1,6 +1,6 @@
 import {IconEmail, IconGithub} from "@arco-design/web-react/icon";
 import "./avatar.css";
-import { ReactComponent  as TeamsIcon } from "/public/teams-icon.svg";
+import { ReactComponent  as TeamsIcon } from "./teams-icon.svg";
 import {Message} from "@arco-design/web-react";
 
 

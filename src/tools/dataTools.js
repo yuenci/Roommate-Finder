@@ -31,6 +31,9 @@ export function initFirebase() {
 }
 
 export async function initAllUsersData(){
+    console.log("initAllUsersData called");
+
+
     const fbStore = StatusContainer.fireBaseStore;
 
     StatusContainer.currentAllRoomsData = await fbStore.readCollection("rooms");

@@ -6,7 +6,7 @@ import {User} from "../../ORM/User.js";
 import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import RoomCard from "./roomCard";
-import GiveAPost from "../about/giveAPost.jsx";
+import GiveAPost from "./giveAPost.jsx";
 
 
 RoomCard.propTypes = {room: PropTypes.any};

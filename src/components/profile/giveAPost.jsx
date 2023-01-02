@@ -1,4 +1,4 @@
-import { ReactComponent as House } from "/public/house-icon.svg";
+import { ReactComponent as House } from "./house-icon.svg";
 import {Link} from "react-router-dom";
 export default function GiveAPost() {
 

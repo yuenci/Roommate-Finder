@@ -50,24 +50,24 @@ export function Post() {
             posterEmail: StatusContainer.currentUser.email,
             phone: StatusContainer.currentUser.phone,
         }
-        // console.log(data);
-        let res = validatePost(data);
-        if (res === true) {
-            writeNewPost(data).then(() => {
-                Notification.success({
-                    title: 'Success',
-                    content: 'Your post has been successfully posted!',
-                });
-                initAllUsersData();
-                setTimeout(() => {
-                    navigate("/home");
-                }, 2000);
-        });}
-        else{
-            Notification.warning({
-                content: res,
-            })
-        }
+        console.log(data);
+        // let res = validatePost(data);
+        // if (res === true) {
+        //     writeNewPost(data).then(() => {
+        //         Notification.success({
+        //             title: 'Success',
+        //             content: 'Your post has been successfully posted!',
+        //         });
+        //         initAllUsersData();
+        //         setTimeout(() => {
+        //             navigate("/home");
+        //         }, 2000);
+        // });}
+        // else{
+        //     Notification.warning({
+        //         content: res,
+        //     })
+        // }
 
     }
 
@@ -84,7 +84,7 @@ export function Post() {
                 <Size setSize={setSize}/>
                 <Price setPrice={setPrice} price={price}/>
                 <Description setDescription={setDescription}/>
-                {type ? <Images images={images} setImages={setImages}/> : null}
+                {type ? <Images  setImages={setImages}/> : null}
                 <Button type='primary' className={"post-btn"} onClick={post}>Post</Button>
             </div>
         </div>
