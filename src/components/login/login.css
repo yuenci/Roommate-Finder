@@ -1,0 +1,94 @@
+.login-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+    width: 800px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-container-left {
+    width: 50%;
+    height: 100%;
+    background-color: #d2ebf5;
+    border-radius: 10px 0 0 10px;
+    position: relative;
+}
+
+.login-container-right {
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+    position: relative;
+
+    text-align: center;
+}
+
+.img {
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    text-align: center;
+}
+.hello{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.input {
+    width: 300px !important;
+    height: 40px !important;
+    margin: 15px 0;
+}
+
+.recovery{
+    position: relative;
+    left: 85px;
+    color: #91A3F7;
+    margin: 10px 0;
+}
+
+.recovery:hover{
+    cursor: pointer;
+}
+
+.login-btn{
+    width: 300px !important;
+    height: 40px !important;
+    margin: 10px 0;
+    /*background-color: #383b46 !important;*/
+    color: white;
+    border-radius: 5px !important;
+    font-weight: bold;
+}
+
+.account-text{
+    margin-right: 40px;
+}
+
+.sign-up{
+    color: #91A3F7;
+    font-weight: bold;
+}
+
+.sign-up:hover{
+    cursor: pointer;
+}
+
+.login-container-bottom{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 15px;
+}

@@ -1,0 +1,18 @@
+.profile-con{
+    width :400px;
+    margin: 0 auto;
+}
+
+.btn-con{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    /*padding: 0 40px;*/
+}
+
+.profile-btn-cancel,
+.profile-btn-save{
+    width: 180px;
+}

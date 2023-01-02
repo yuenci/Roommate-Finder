@@ -1,0 +1,74 @@
+.join{
+    margin-top:30px;
+    margin-bottom: 30px;
+}
+
+
+.input-sign{
+    width: 300px !important;
+    height: 40px !important;
+    margin: 5px 0;
+}
+
+.signup-container-bottom{
+    margin-top: 20px;
+}
+
+.input-pin{
+    width: 300px !important;
+    height: 40px !important;
+    margin: 20px 0;
+}
+
+.sign-btn{
+    width: 300px !important;
+    height: 40px !important;
+    margin: 10px 0;
+    /*background-color: #383b46 !important;*/
+    color: white;
+    border-radius: 5px !important;
+    font-weight: bold;
+    position: relative;
+    top: 22px;
+}
+
+.input-signup{
+    width: 300px !important;
+    height: 40px !important;
+    margin: 10px 0 !important;
+}
+
+.phone-container{
+    position: relative;
+}
+
+.info-icon{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    color: #ff7d00;
+}
+
+.info-icon:hover{
+    cursor: pointer;
+}
+
+.phone-zone,.phone-num{
+    height: 40px !important;
+    margin: 10px 0 ;
+}
+
+.phone-zone{
+    margin-right: 8px;
+    width: 20% ;
+}
+
+.phone-num{
+    width: calc(80% - 8px) ;
+}
+
+.input-signup-group{
+    width: 300px;
+    margin: 0 auto;
+}
