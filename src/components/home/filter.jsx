@@ -2,7 +2,7 @@ import {Button, ConfigProvider, DatePicker, InputNumber, Radio, Select, Slider} 
 
 import enUS from "@arco-design/web-react/es/locale/en-US.js";
 import {useState} from "react";
-import {getWhereConditions} from "./getWhereConditions.js";
+import {getWhereConditions,filterPriceAndMoveInDate} from "./getWhereConditions.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import {useNavigate} from "react-router-dom";
 
@@ -62,15 +62,26 @@ export function Filter(){
             bedroomNum: bedroomNum,
             gender:gender,
             size: size,
-            priceRange: priceRange
+            priceRange: priceRange,
         }
         let queries = getWhereConditions(data);
 
+        let simpleQueries =queries[0];
+
+        //console.log(simpleQueries);
         //console.log(queries);
 
         let fbStore = StatusContainer.fireBaseStore;
 
-        StatusContainer.currentSearchRoomsData = await fbStore.query("rooms", queries);
+        let res;
+        if(simpleQueries.length !== 0){
+            res = await fbStore.query("rooms", simpleQueries);
+        }else{
+            res = StatusContainer.currentAllRoomsData;
+        }
+
+
+        StatusContainer.currentSearchRoomsData = filterPriceAndMoveInDate(res, queries[1]);
 
         navigate("/home/search");
 
@@ -80,9 +91,9 @@ export function Filter(){
 
     function typeChange(value){
         if(value===options1[0]){
-            setType(false);
-        }else{
             setType(true);
+        }else{
+            setType(false);
         }
     }
 

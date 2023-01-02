@@ -37,7 +37,7 @@ export function Room() {
                 }   , 1500);
             } else {
                 setData(res);
-                console.log(res);
+                //console.log(res);
             }
         })
     }, []);
