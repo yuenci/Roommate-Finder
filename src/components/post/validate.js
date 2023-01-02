@@ -10,11 +10,8 @@ export function validatePost(data) {
 
     if (data.apartment === '') return 'Apartment is required';
 
-    if (data.moveInRange === '') return 'Move in date is required';
+    if (data.moveInStart === '' || data.moveInEnd ==="" ) return 'Move in date is required';
 
-    if (data.moveInRange.length !==2){
-        return 'Move in date is invalid';
-    }
 
     if (data.bedroomNum === '') return 'Bedroom number is required';
 
@@ -22,15 +19,16 @@ export function validatePost(data) {
 
     if (data.size === "") return  'Size is required';
 
-    if (data.priceRange === "") return  'Price is required';
 
-    if (data.priceRange.length !== 2) return 'Price is invalid';
+    if (data.priceMax ==="" || data.priceMin ==="") return 'Price is invalid';
 
     if (data.description === "") return  'Description is required';
 
     if(data.type === true){
         if (data.images.length === 0) return 'Image is required';
     }
+
+    if (data.email === '') return 'Unknown Error caused by email';
 
     return true;
 }

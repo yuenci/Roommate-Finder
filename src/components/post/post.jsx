@@ -30,45 +30,47 @@ export function Post() {
     const [description, setDescription] = useState("");
     const [images, setImages] = useState([]);
 
-    StatusContainer.currentUser = new User("TP061418@mail.apu.edu.my");
+    // StatusContainer.currentUser = new User("TP061418@mail.apu.edu.my").initUser();
+
 
     let navigate = useNavigate();
 
     function post() {
+        let moveInRange= changeTimeStrListTOStamp(moveInDate);
         let data = {
             topic: topic,
             type: type,
             apartment: apartment,
-            moveInRange: changeTimeStrListTOStamp(moveInDate),
             bedroomNum: bedroomNum,
             gender: gender,
             size: size,
-            priceRange: price,
             description: description,
             images: images,
             postTimeStamp: new Date(),
             posterEmail: StatusContainer.currentUser.email,
             phone: StatusContainer.currentUser.phone,
+            moveInStart: moveInRange[0],
+            moveInEnd: moveInRange[1],
+            priceMin: price[0],
+            priceMax: price[1]
         }
-        console.log(data);
-        // let res = validatePost(data);
-        // if (res === true) {
-        //     writeNewPost(data).then(() => {
-        //         Notification.success({
-        //             title: 'Success',
-        //             content: 'Your post has been successfully posted!',
-        //         });
-        //         initAllUsersData();
-        //         setTimeout(() => {
-        //             navigate("/home");
-        //         }, 2000);
-        // });}
-        // else{
-        //     Notification.warning({
-        //         content: res,
-        //     })
-        // }
-
+        let res = validatePost(data);
+        if (res === true) {
+            writeNewPost(data).then(() => {
+                Notification.success({
+                    title: 'Success',
+                    content: 'Your post has been successfully posted!',
+                });
+                initAllUsersData();
+                setTimeout(() => {
+                    navigate("/home");
+                }, 2000);
+        });}
+        else{
+            Notification.warning({
+                content: res,
+            })
+        }
     }
 
     return (

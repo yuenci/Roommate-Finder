@@ -53,7 +53,10 @@ export async function loginValidation(email, password) {
     }
     else if (data.password === password) {
         StatusContainer.loginStatus = true;
-        StatusContainer.currentUser = new User(email);
+        new User(email).initUser().then((user) => {
+            StatusContainer.currentUser = user;
+            //console.log(user);
+        });
         return true;
     }
     else {

@@ -23,6 +23,10 @@ export class FBStorage {
     }
 
     async write(collectionName, document, documentID) {
+        console.log(collectionName)
+        console.log(document)
+        console.log(documentID)
+
         if (documentID === undefined) documentID = ""; else documentID = documentID.toString();
         this.validateThreeParams(collectionName, document, documentID);
 

@@ -14,6 +14,7 @@
     font-weight: bold;
     position: relative;
     left: 20px;
+    height: 50px;
 }
 
 .logo:hover {
@@ -26,8 +27,8 @@
 
 .logo-text{
     position: relative;
-    bottom: 15px;
-
+    bottom: 40px;
+    left: 50px;
 }
 
 .nav-links {
