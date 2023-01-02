@@ -51,3 +51,24 @@ $ npm install pubsub-js
 ```javascript
 import PubSub from 'pubsub-js';
 ```
+
+## SVGR
+```bash
+$ npm i vite-plugin-svgr
+# or
+$ yarn add vite-plugin-svgr
+```
+```javascript
+//vite.config.js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [svgr(), react()],
+});
+```
+```javascript
+import { ReactComponent as Logo } from "./logo.svg";
+```

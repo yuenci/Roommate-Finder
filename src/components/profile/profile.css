@@ -16,3 +16,55 @@
 .profile-btn-save{
     width: 180px;
 }
+.profile-main-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;;
+    box-sizing: border-box;
+    padding: 40px 0;
+}
+
+.profile-main-con{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.profile-main-avatar{
+    width: 150px;
+    margin-left: 20px;
+}
+
+.rooms-con{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.room-card-con{
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: #b2ebf9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    position: relative;
+}
+
+.room-card-avatar{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}

@@ -1,0 +1,67 @@
+export const  teamInfo = {
+    "Innis": {
+        "name": "Innis",
+        "post": "Funder & CTO",
+        "desc": "Co-founder, full-stack engineer and architect, lead the development team",
+        "github": "https://github.com/yuenci",
+        "twitter": "",
+        "email": "yuenci1575270674@gmail.com",
+        "tpNumber": "tp061418",
+    },
+    "KK": {
+        "name": "KK",
+        "post": "Frontend Team Leader",
+        "desc": "Lead the frontend team, responsible for the development of the frontend framework",
+        "github": "https://github.com/Kaikiat1126",
+        "twitter": "",
+        "email": "",
+        "tpNumber": "tp064818",
+    },
+    "Lennon": {
+        "name": "Lennon",
+        "post": "Frontend Developer",
+        "desc": "Frontend dev for Product with React tech stack",
+        "github": "https://github.com/1enn0n",
+        "twitter": "",
+        "email": "",
+        "tpNumber": "tp060392",
+    },
+    "Marco": {
+        "name": "Marco",
+        "post": "Funder & CEO",
+        "desc": "Co-founder, CEO, responsible for the overall management of the product",
+        "github": "https://github.com/marcofernandioo",
+        "twitter": "",
+        "email": "",
+        "tpNumber": "tp064881",
+    },
+    "Pheymin": {
+        "name": "Pheymin",
+        "post": "COO & Backend Developer",
+        "desc": "Co-founder, responsible for the operation of product and backend development",
+        "github": "https://github.com/pheymin",
+        "twitter": "",
+        "email": "",
+        "tpNumber": "tp065454",
+    },
+    "SengFeng": {
+        "name": "SengFeng",
+        "post": "Frontend Developer",
+        "desc": "Frontend dev for Product with React tech stack",
+        "github": "https://github.com/tfengs2002",
+        "twitter": "",
+        "email": "",
+        "tpNumber": "tp064443",
+    },
+    "Yannis": {
+        "name": "Yannis",
+        "post": "Frontend Developer & Designer",
+        "desc": "Lead the design team, responsible for the UI design of the product",
+        "github": "https://github.com/yannisleng",
+        "twitter": "",
+        "email": "",
+        "tpNumber": "tp066612",
+    }
+}
+
+export const productInfo = "Our product is a platform that connects students who have empty rooms with those who are in need of a place to rent. It helps them easily solve their housing problems without having to rely on messaging on social media platforms and waiting for a suitable place to come up. With our product, finding a place to stay is made easier and more convenient. We hope to help students in APU to find a place to stay and to make their lives easier."

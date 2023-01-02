@@ -98,14 +98,14 @@ export class FBStorage {
 
         if (arguments.length === 2) {
             let queriesList = []
-            for (let qurey of queries) {
-                queriesList.push(where(qurey[0], qurey[1], qurey[2]));
+            for (let queryS of queries) {
+                queriesList.push(where(queryS[0], queryS[1], queryS[2]));
                 q = query(collection(this.db, collectionName), ...queriesList);
             }
         } else if (arguments.length === 3) {
             let queriesList = []
-            for (let qurey of queries) {
-                queriesList.push(where(qurey[0], qurey[1], qurey[2]));
+            for (let queryS of queries) {
+                queriesList.push(where(queryS[0], queryS[1], queryS[2]));
                 q = query(collection(this.db, collectionName), ...queriesList, orderBy(order[0], order[1]));
             }
         }
@@ -114,7 +114,6 @@ export class FBStorage {
         const data = this.snapshotToArray(querySnapshot);
         if (this.debug) console.log(`collect ${collectionName} data: `, data);
         return data;
-
     }
 
     async delete(collectionName, documentID) {

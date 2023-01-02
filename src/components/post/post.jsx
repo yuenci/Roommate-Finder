@@ -1,8 +1,6 @@
 import {Header} from "../common/Header/header.jsx";
 import { Button,Notification} from '@arco-design/web-react';
 import "./post.css";
-import { ConfigProvider } from '@arco-design/web-react';
-import enUS from '@arco-design/web-react/es/locale/en-US';
 import {Topic} from "./topic.jsx";
 import {Type} from "./type.jsx";
 import Images from "./images.jsx";
@@ -76,7 +74,7 @@ export function Post() {
     return (
         <div>
             <Header/>
-            <div className="post-container">
+            <div className="post-container font-sans">
                 <Topic setTopic={setTopic}/>
                 <Type setType={setType}/>
                 <Apartment setApartment={setApartment}/>

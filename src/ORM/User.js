@@ -9,7 +9,7 @@ export class User {
         this._phone = "";
         this._password = "";
         this._regTimeStamp = "";
-        this.initData();
+        //this.initData();
     }
 
     async registerUser(name,phone,email,password) {
@@ -29,6 +29,16 @@ export class User {
             this._phone = data.phone;
             this._regTimeStamp = stampToDateStr(data.regTimeStamp);
         });
+    }
+
+     async initUser() {
+        let data = await StatusContainer.fireBaseStore.readDocument("users",this._email);
+        this._name = data.name;
+        this._phone = data.phone;
+        this._password = data.password;
+        this._phone = data.phone;
+        this._regTimeStamp = stampToDateStr(data.regTimeStamp);
+        return this;
     }
 
     updateData() {

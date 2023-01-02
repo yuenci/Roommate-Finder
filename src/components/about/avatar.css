@@ -1,0 +1,36 @@
+.avatar{
+    width: 250px;
+    height: 300px;
+    /*background-color: #535bf2;*/
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar-img{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.avatar-name{
+    margin-bottom: 10px;
+    font-weight: 600 !important;
+}
+
+.avatar-post{
+    margin-bottom: 10px;
+}
+
+.avatar-desc{
+    margin-bottom: 10px;
+    height: 72px;
+}
+
+.media-icon{
+    width:100px ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

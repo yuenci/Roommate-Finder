@@ -3,3 +3,19 @@
     margin: 0 auto;
     height: 300px;
 }
+.avatar-con{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.about-title{
+    margin: 20px 0;
+    text-align: center;
+}
+
+.contact-us-con{
+    height:150px ;
+}
