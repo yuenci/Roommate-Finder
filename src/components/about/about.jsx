@@ -1,4 +1,4 @@
-import {Header} from "../common/Header/header.jsx";
+import { Header } from "../common/Header/header.jsx";
 import "./about.css";
 
 // import "../../index.css";
@@ -6,8 +6,8 @@ import "./about.css";
 export function About() {
     return (
         <div>
-            <Header/>
-            <div className={"drop-shadow-2xl about-con"}>
+            <Header />
+            <div className={"drop-shadow-2xl about-con text-blue-600"}>
                 <h1 className={"text-2xl"}>🤠 About </h1>
                 <div>
                     <div className={"text-xl"}>Team</div>

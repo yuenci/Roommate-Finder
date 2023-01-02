@@ -37,3 +37,10 @@ $ yarn add react-router-dom
 ```javascript
 import { BrowserRouter as Router } from "react-router-dom";
 ```
+
+## tailwindcss
+```bash
+$ npm install -D tailwindcss postcss autoprefixer
+$ npx tailwindcss init -p
+```
+
