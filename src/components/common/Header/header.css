@@ -68,5 +68,16 @@
     transition: 0.5s;
 }
 
+@media screen  and (max-width: 600px)  {
+    .logo-text{
+        display: none;
+    }
+
+    .nav-links{
+        width: 200px;
+        margin: 0 10px 0 0;
+    }
+}
+
 
 

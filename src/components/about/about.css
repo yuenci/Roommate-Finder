@@ -19,3 +19,15 @@
 .contact-us-con{
     height:150px ;
 }
+
+
+@media screen  and (max-width: 600px)  {
+    .avatar-desc{
+        height: 90% !important;
+    }
+
+    .contact-us-con{
+        height:100% ;
+    }
+}
+

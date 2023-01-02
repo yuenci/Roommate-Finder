@@ -81,3 +81,13 @@
     position: absolute;
 
 }
+
+@media screen  and (max-width: 600px)  {
+    .cards-filter-con{
+        width: 95%;
+    }
+
+    .filter-icon{
+        display: none;
+    }
+}

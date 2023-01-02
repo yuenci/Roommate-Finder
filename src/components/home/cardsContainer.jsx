@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 
 
 export function CardsContainer() {
-    const [filterVisible, setFilterVisible] = useState(true);
+    const [filterVisible, setFilterVisible] = useState(false);
 
     let entries;
 

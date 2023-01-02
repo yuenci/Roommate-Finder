@@ -19,6 +19,7 @@
 .profile-main-header{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ccc;;

@@ -102,3 +102,15 @@
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
+@media screen  and (max-width: 600px)  {
+    .post-container{
+        width: 90%;
+    }
+
+    .price-slider,.select-apartment,
+    .bedroom-num,.date-picker{
+        width: 100% !important;
+    }
+
+}

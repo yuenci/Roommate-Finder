@@ -92,3 +92,21 @@
     position: absolute;
     bottom: 15px;
 }
+
+@media screen  and (max-width: 600px)  {
+    .login-container{
+        box-sizing: border-box;
+        width:100%;
+        margin: 20px auto;
+        position: static ;
+        transform: none;
+    }
+    .login-container-left{
+        display: none;
+    }
+
+    .login-container-right{
+        width: 100%;
+
+    }
+}
