@@ -65,6 +65,7 @@ export default function ProfileSetting() {
     function logout(){
         StatusContainer.currentUser = null;
         localStorage.removeItem("loginExpireTime");
+        localStorage.removeItem("loginEmail");
         navigate("/home");
     }
 

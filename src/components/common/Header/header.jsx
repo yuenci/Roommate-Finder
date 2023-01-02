@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./header.css";
 import {Link,useNavigate } from "react-router-dom";
 import {StatusContainer} from "../../../StatusContainer.js";
 import {User} from "../../../ORM/User.js";
+import {detectLoginExpire, getStoredLoginEmail} from "../../../tools/dataTools.js";
 
 export function Header() {
     const linkClassName = "link";
     const navigate = useNavigate();
+
+    const [user, setUser] = useState(StatusContainer.currentUser);
 
 
     function backToLogin() {
@@ -28,6 +31,15 @@ export function Header() {
     function goToLogin() {
         navigate("/login");
     }
+
+    useEffect(() => {
+        if(!detectLoginExpire()){
+            new User(getStoredLoginEmail()).initUser().then((res) => {
+                StatusContainer.currentUser = res;
+                setUser(res);
+            })
+        }
+    }, []);
 
 
 

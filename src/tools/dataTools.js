@@ -86,15 +86,29 @@ export async function writeNewUser(user) {
         regTimeStamp: new Date()
     }, user.email);
 }
-export function setLoginExpireTime() {
+export function setLoginExpireTime(email) {
     localStorage.setItem("loginExpireTime",  Date.now().toString());
+    localStorage.setItem("loginEmail", email);
     //console.log("setLoginExpireTime");
+}
+
+export function getStoredLoginEmail(){
+    return localStorage.getItem("loginEmail");
 }
 
 export function detectLoginExpire() {
     let expireTime = localStorage.getItem("loginExpireTime");
     let now = Date.now();
-    return now - expireTime > 1000 * 60 * 60 * 24 * 7;
+    let res =  now - expireTime > 1000 * 60 * 60 * 24 * 7;
+    if(res === true){
+        localStorage.removeItem("loginExpireTime");
+        localStorage.removeItem("loginEmail");
+        StatusContainer.currentUser = null;
+        StatusContainer.loginStatus = false;
+    }
+
+    return res;
+    // true if expired
 }
 
 export async function getNewRoomID(){

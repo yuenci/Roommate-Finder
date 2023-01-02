@@ -30,7 +30,7 @@ export function LoginRight() {
 
             initAllUsersData().then(() => {
                     Message.success("Login successfully");
-                    setLoginExpireTime();
+                    setLoginExpireTime(email);
                     setTimeout(() => {
                         navigate("/home");
                     }, 1500);
