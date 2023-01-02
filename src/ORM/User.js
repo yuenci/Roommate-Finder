@@ -50,8 +50,6 @@ export class User {
 
 
     // region Getters and Setters
-
-
     get email() {
         return this._email;
     }
@@ -91,7 +89,6 @@ export class User {
     set regTimeStamp(value) {
         this._regTimeStamp = value;
     }
-
 // endregion
 
 }

@@ -1,13 +1,10 @@
 import {Input, Modal} from "@arco-design/web-react";
 import {InputEmail} from "../common/InputEmail.jsx";
-import {SelectUniversity} from "./selectUniversity.jsx";
-import {useState} from "react";
 import {IconExclamationCircle} from "@arco-design/web-react/icon";
-import { ConfigProvider } from '@arco-design/web-react';
-import enUS from '@arco-design/web-react/es/locale/en-US';
+
 
 export function SignUpForm(props) {
-    const [visible, setVisible] = useState(false);
+    // const [visible, setVisible] = useState(false);
 
     function warning(){
         Modal.warning({
