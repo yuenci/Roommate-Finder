@@ -44,3 +44,10 @@ $ npm install -D tailwindcss postcss autoprefixer
 $ npx tailwindcss init -p
 ```
 
+## PubSub
+```bash
+$ npm install pubsub-js
+```
+```javascript
+import PubSub from 'pubsub-js';
+```
