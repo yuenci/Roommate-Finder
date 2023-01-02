@@ -10,44 +10,35 @@ import { useLocation } from 'react-router-dom';
 
 
 export function CardsContainer() {
-    // const [data, setData] = useState(null);
     const [filterVisible, setFilterVisible] = useState(false);
 
-    // console.log("CardsContainer render");
-
     let entries;
-
-    // let allEntries = Object.entries(StatusContainer.currentAllRoomsData);
 
     const [allEntries1, setAllEntries1] = useState(Object.entries(StatusContainer.currentAllRoomsData));
 
     useEffect(() => {
-        initAllUsersData().then((data) => {
-            StatusContainer.currentAllRoomsData = data;
-            setAllEntries1(Object.entries(data));
-        });
+       if(Object.keys(StatusContainer.currentAllRoomsData).length === 0){
+           initAllUsersData().then((data) => {
+               StatusContainer.currentAllRoomsData = data;
+               setAllEntries1(Object.entries(data));
+           });
+       }
 
     }, []);
-
-    console.log("allEntries1", allEntries1);
 
     let searchEntries = Object.entries(StatusContainer.currentSearchRoomsData);
 
     function filter() {
         setFilterVisible(!filterVisible);
     }
-
     const {pathname} = useLocation();
-    // console.log(pathname);
+
 
     if(pathname ==="/home/search"){
         entries = searchEntries;
     }else if(pathname ==="/home" || pathname ==="/"){
         entries = allEntries1;
     }
-
-    console.log(entries);
-
     return (
         <div className={"cards-filter-con"}>
             <div className={"cards-con"}>
