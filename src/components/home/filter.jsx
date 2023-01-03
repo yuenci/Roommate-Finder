@@ -5,6 +5,7 @@ import {useState} from "react";
 import {getWhereConditions,filterPriceAndMoveInDate} from "./getWhereConditions.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import {useNavigate} from "react-router-dom";
+import {apartments} from "../../config.js";
 
 export function Filter(){
     const filterCSS = {
@@ -27,7 +28,7 @@ export function Filter(){
 
 
     const Option = Select.Option;
-    const options2 = ["Endah Regal", "Endah Promenade", "Endah Ria", "Parkhill", "One South", "Fortune Park", "Vista"];
+    const options2 =apartments;
 
     const { RangePicker } = DatePicker;
 
