@@ -1,5 +1,4 @@
 import {Header} from "../common/Header/header.jsx";
-import {IconCamera, IconSettings} from "@arco-design/web-react/icon";
 import "./profile.css"
 import {StatusContainer} from "../../StatusContainer.js";
 import {User} from "../../ORM/User.js";
@@ -7,9 +6,7 @@ import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import RoomCard from "./roomCard";
 import GiveAPost from "./giveAPost.jsx";
-import {Avatar, Message} from "@arco-design/web-react";
 import ProfileMainHeader from "./profileMainHeader";
-
 
 RoomCard.propTypes = {room: PropTypes.any};
 export default function ProfileMain(props) {
@@ -17,6 +14,7 @@ export default function ProfileMain(props) {
     function showModal(){
         props.showModal(true);
     }
+
 
     const [currentUser, setCurrentUser] = useState(StatusContainer.currentUser);
     const [rooms, setRooms] = useState([]);
@@ -48,7 +46,7 @@ export default function ProfileMain(props) {
            }
            <div className={"rooms-con"}>
                {rooms
-                   ?  rooms.map((room,index) => {
+                   ?  rooms.reverse().map((room,index) => {
                        return <RoomCard room={room} key={index}/>
                    })
                    : <GiveAPost/>

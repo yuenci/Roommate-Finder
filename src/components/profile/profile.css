@@ -57,15 +57,53 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding: 20px;
     font-weight: bold;
     border-radius: 5px;
     position: relative;
 }
 
+.room-card-con-text{
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: #b2ebf9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-weight: bold;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.room-card-con-img{
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: #b2ebf9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-weight: bold;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    background-size: cover;
+}
+
+
+
 .room-card-avatar{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+}
+.room-card-text{
     position: absolute;
 }

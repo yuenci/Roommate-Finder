@@ -127,6 +127,8 @@ export async function writeNewPost(data){
 
     let roomID = await getNewRoomID();
 
+    data["roomID"] = roomID;
+
     fbStore.write("rooms", data, roomID);
 
     await addOneToRoomsNum();
