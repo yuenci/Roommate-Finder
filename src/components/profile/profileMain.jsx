@@ -1,5 +1,5 @@
 import {Header} from "../common/Header/header.jsx";
-import {IconSettings} from "@arco-design/web-react/icon";
+import {IconCamera, IconSettings} from "@arco-design/web-react/icon";
 import "./profile.css"
 import {StatusContainer} from "../../StatusContainer.js";
 import {User} from "../../ORM/User.js";
@@ -7,6 +7,8 @@ import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import RoomCard from "./roomCard";
 import GiveAPost from "./giveAPost.jsx";
+import {Avatar, Message} from "@arco-design/web-react";
+import ProfileMainHeader from "./profileMainHeader";
 
 
 RoomCard.propTypes = {room: PropTypes.any};
@@ -41,11 +43,7 @@ export default function ProfileMain(props) {
            <Header/>
            {currentUser &&
                <div className={"profile-main-con"}>
-                   <div className={"profile-main-header"}>
-                       <img src={`https://api.multiavatar.com/${currentUser.phone}.png`} alt="user" className={"profile-main-avatar"}/>
-                       <span className={"text-4xl"}>{currentUser.name}</span>
-                       <IconSettings className={"text-4xl hover:cursor-pointer"} onClick={showModal}/>
-                   </div>
+                   <ProfileMainHeader user={currentUser} showModal={showModal}/>
                </div>
            }
            <div className={"rooms-con"}>
