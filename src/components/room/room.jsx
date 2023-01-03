@@ -79,8 +79,11 @@ export function Room() {
                     </div>
                 </div>
             }
+            {  data  &&  data.posterEmail !== StatusContainer.currentUser.email
+                ? <button className="contact-button" onClick={btnOnClick}>Contact on Whatsapp</button>
+                : <div>Modify</div>
+            }
 
-            <button className="contact-button" onClick={btnOnClick}>Contact on Whatsapp</button>
             <ConfigProvider locale={enUS}>
                 <Modal
                     title='Login'
