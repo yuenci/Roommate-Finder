@@ -1,6 +1,6 @@
 
 import { Carousel, Image } from '@arco-design/web-react';
-import { useEffect, useState } from "react";
+import {createRef, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import { StatusContainer } from "../../StatusContainer.js";
 
@@ -34,6 +34,21 @@ export function CarouselPost(props) {
         //console.log(e);
     }
 
+    // const [currentImageSrc, setCurrentImageSrc] = useState("");
+    // const [currentImageShow, setCurrentImageShow] = useState("");
+    //
+    // function onChangeHandler(index) {
+    //     //console.log(index);
+    //     //console.log(imageSrcList[index]);
+    //     setCurrentImageSrc(imageSrcList[index]);
+    // }
+    //
+    // const [visible, setVisible] = useState(false);
+    // function onClickHandler() {
+    //     setCurrentImageShow(currentImageSrc);
+    //     setVisible(true);
+    //
+    // }
 
 
     return (
@@ -42,9 +57,11 @@ export function CarouselPost(props) {
                 <Carousel
                     autoPlay
                     animation='card'
-                    showArrow='never'
+                    // showArrow='never'
                     indicatorPosition='outer'
                     style={{ width: '100%', height: 400, marginTop: 0 }}
+                    // onChange={onChangeHandler}
+                    // onClick={onClickHandler}
                 >
                     {imageSrcList.map((src, index) => (
                         <div
@@ -59,6 +76,12 @@ export function CarouselPost(props) {
                     ))}
                 </Carousel>
             }
+
+            {/*<Image.Preview*/}
+            {/*    src={currentImageShow}*/}
+            {/*    visible={visible}*/}
+            {/*    onVisibleChange={setVisible}*/}
+            {/*/>*/}
         </div>
     );
 }

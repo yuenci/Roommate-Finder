@@ -27,7 +27,7 @@ export function SignUpRight() {
     let newUser = new User();
 
     async function signUpOnClick() {
-        //console.log("name: " + name, "phone: " +phoneAreaCode+ phone , "email: " + email, "password: " + password);
+        // console.log("name: " + name, "phone: " +phoneAreaCode+ phone , "email: " + email, "password: " + password);
 
         let validRes = await ifAllValid(name,phoneAreaCode, phone, email, password);
         if (!validRes)  return;

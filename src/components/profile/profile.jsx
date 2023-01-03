@@ -110,7 +110,7 @@ export function Profile(){
                     setVisible2(false);
                 }}
             >
-                <ProfileSetting/>
+                <ProfileSetting setVisible={setVisible2}/>
             </Modal>
         </div>
     )

@@ -6,7 +6,7 @@ import {InputAndText} from "../common/inputAndText.jsx";
 import {PasswordInputAndText} from "../common/passwordInputAndText.jsx";
 import {useEffect, useState} from "react";
 
-export default function ProfileSetting() {
+export default function ProfileSetting(props) {
 
     //StatusContainer.currentUser = new User("TP061418@mail.apu.edu.my");
     let navigate = useNavigate();
@@ -59,7 +59,7 @@ export default function ProfileSetting() {
     }
 
     function  cancel() {
-        navigate("/profile");
+        props.setVisible(false);
     }
 
     function logout(){
