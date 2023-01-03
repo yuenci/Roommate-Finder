@@ -25,8 +25,7 @@ export function stampToDateStr(stamp) {
 
 
 export function initFirebase() {
-    const fbStore = new FBStorage(firebaseConfig);
-    StatusContainer.fireBaseStore = fbStore;
+    StatusContainer.fireBaseStore = new FBStorage(firebaseConfig);
     return true;
 }
 
@@ -46,7 +45,7 @@ export async function initAllUsersData(){
 
 export async function loginValidation(email, password) {
     let fbStore = StatusContainer.fireBaseStore;
-     let data = await fbStore.readDocument("users", email);
+    let data = await fbStore.readDocument("users", email);
     if (data === null) {
         StatusContainer.loginError = "User does not exist";
         return false;

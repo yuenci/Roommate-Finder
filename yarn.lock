@@ -1286,6 +1286,11 @@
   dependencies:
     "is-arrayish" "^0.3.1"
 
+"slide-verify@^1.0.7":
+  "integrity" "sha512-AaEN4i569AiPxu9co3ggJ/QC2XmSWYIq3+6MDbIWf0DsOqAptdrZgedhtfrTrecBjWeM9QcUrvXG6QdgWOVwXA=="
+  "resolved" "https://registry.npmjs.org/slide-verify/-/slide-verify-1.0.7.tgz"
+  "version" "1.0.7"
+
 "source-map-js@^1.0.2":
   "integrity" "sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw=="
   "resolved" "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"

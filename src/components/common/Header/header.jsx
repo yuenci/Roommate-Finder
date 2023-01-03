@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./header.css";
-import {Link,useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import {StatusContainer} from "../../../StatusContainer.js";
 import {User} from "../../../ORM/User.js";
 import {detectLoginExpire, getStoredLoginEmail} from "../../../tools/dataTools.js";
@@ -33,6 +33,8 @@ export function Header() {
     }
 
     useEffect(() => {
+        if(StatusContainer.currentUser !== null) return;
+
         if(!detectLoginExpire()){
             new User(getStoredLoginEmail()).initUser().then((res) => {
                 StatusContainer.currentUser = res;
