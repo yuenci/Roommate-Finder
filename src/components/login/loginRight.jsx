@@ -3,7 +3,7 @@ import {Button, Checkbox, Input, Message} from "@arco-design/web-react";
 import {useState} from "react";
 import {StatusContainer} from "../../StatusContainer.js";
 import {Link, useNavigate} from "react-router-dom";
-import {initAllUsersData, loginValidation, setLoginExpireTime, validateEmail} from "../../tools/dataTools.js";
+import {initAllRoomsData, loginValidation, setLoginExpireTime, validateEmail} from "../../tools/dataTools.js";
 
 
 export function LoginRight() {
@@ -28,7 +28,7 @@ export function LoginRight() {
         let res = await loginValidation(email, password);
         console.log(res);
         if (res) {
-            initAllUsersData().then(() => {
+            initAllRoomsData().then(() => {
                     Message.success("Login successfully");
                     if(rememberMe) setLoginExpireTime(email);
                     setTimeout(() => {

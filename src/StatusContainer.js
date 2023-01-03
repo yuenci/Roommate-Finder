@@ -6,6 +6,8 @@ export class StatusContainer {
 
     static currentSearchRoomsData = {};
 
+    static currentRoomData = {};
+
     static fireBaseStore = null;
 
     static currentUser = null;

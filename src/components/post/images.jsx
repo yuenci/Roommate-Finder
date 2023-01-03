@@ -3,6 +3,7 @@ import {Message, Upload} from "@arco-design/web-react";
 import {uploadImageWithRandomName} from "../../firebase/storageHandle.js";
 import {imageMaxSize} from "../../config.js";
 import {useState} from "react";
+import {StatusContainer} from "../../StatusContainer.js";
 
 export default function Images(props) {
     let defaultFileList= [
@@ -44,7 +45,7 @@ export default function Images(props) {
                 listType='picture-card'
                 className={"images-upload"}
                 limit={4}
-
+                defaultFileList={defaultFileList2}
                 customRequest={(options) => {
                     const { onProgress, onError, onSuccess, file } = options;
 

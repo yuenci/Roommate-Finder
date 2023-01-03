@@ -8,6 +8,7 @@ import {Message, Modal,ConfigProvider} from "@arco-design/web-react";
 import {stampToDateStr} from "../../tools/dataTools.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import enUS from '@arco-design/web-react/es/locale/en-US';
+import ModifyToolBar from "./modifyToolBar";
 
 
 export function Room() {
@@ -37,6 +38,7 @@ export function Room() {
                 }   , 1500);
             } else {
                 setData(res);
+                StatusContainer.currentRoomData = res;
                 //console.log(res);
             }
         })
@@ -63,6 +65,17 @@ export function Room() {
     }
 
 
+    // data, must have data
+    // login in && is poster  -- modify
+    // login in && is not post  -- contact
+    // not login --contact
+    let showModify =false;
+    if(StatusContainer.currentUser !==null && data !== null){
+        if (data.posterEmail === StatusContainer.currentUser.email){
+            showModify = true;
+        }
+    }
+
     return (
         <div>
             <Header/>
@@ -79,9 +92,11 @@ export function Room() {
                     </div>
                 </div>
             }
-            {  data  &&  data.posterEmail !== StatusContainer.currentUser.email
-                ? <button className="contact-button" onClick={btnOnClick}>Contact on Whatsapp</button>
-                : <div>Modify</div>
+            {  data  && !showModify &&
+                 <button className="contact-button" onClick={btnOnClick}>Contact on Whatsapp</button>
+            }
+            {data && showModify &&
+                <ModifyToolBar roomID={roomID}/>
             }
 
             <ConfigProvider locale={enUS}>

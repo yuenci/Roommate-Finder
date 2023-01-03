@@ -23,13 +23,22 @@ export function stampToDateStr(stamp) {
     return new Date(stamp.seconds * 1000).toLocaleString();
 }
 
+export function stampToDateObj(stamp) {
+    //console.log(stamp);
+    if(!stamp){
+        return "null";
+    }
+
+    return new Date(stamp.seconds * 1000);
+}
+
 
 export function initFirebase() {
     StatusContainer.fireBaseStore = new FBStorage(firebaseConfig);
     return true;
 }
 
-export async function initAllUsersData(){
+export async function initAllRoomsData(){
     console.log("initAllUsersData called");
 
 

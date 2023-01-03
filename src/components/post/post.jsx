@@ -15,8 +15,8 @@ import {useState} from "react";
 import {validatePost} from "./validate.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import {User} from "../../ORM/User.js";
-import {changeTimeStrListTOStamp, initAllUsersData, writeNewPost} from "../../tools/dataTools.js";
-import {useNavigate} from "react-router-dom";
+import {changeTimeStrListTOStamp, initAllRoomsData, writeNewPost} from "../../tools/dataTools.js";
+import {useNavigate,useLocation } from "react-router-dom";
 
 export function Post() {
     const [topic, setTopic] = useState("");
@@ -31,6 +31,13 @@ export function Post() {
     const [images, setImages] = useState([]);
 
     // StatusContainer.currentUser = new User("TP061418@mail.apu.edu.my").initUser();
+    let currentRoom = StatusContainer.currentRoomData;
+    console.log(currentRoom);
+
+
+    const {pathname} = useLocation();
+    const regex = /^\/modify\/\d+/;
+    const isModify = regex.test(pathname);
 
 
     let navigate = useNavigate();
@@ -61,7 +68,7 @@ export function Post() {
                     title: 'Success',
                     content: 'Your post has been successfully posted!',
                 });
-                initAllUsersData();
+                initAllRoomsData();
                 setTimeout(() => {
                     navigate("/home");
                 }, 2000);
@@ -77,17 +84,17 @@ export function Post() {
         <div>
             <Header/>
             <div className="post-container font-sans">
-                <Topic setTopic={setTopic}/>
-                <Type setType={setType}/>
-                <Apartment setApartment={setApartment}/>
-                <MoveInDate setMoveInDate={setMoveInDate}/>
-                <BedroomNum setBedroomNum={setBedroomNum} bedroomNum={bedroomNum}/>
-                <Gender setGender={setGender}/>
-                <Size setSize={setSize}/>
-                <Price setPrice={setPrice} price={price}/>
-                <Description setDescription={setDescription}/>
-                {type ? <Images  setImages={setImages}/> : null}
-                <Button type='primary' className={"post-btn"} onClick={post}>Post</Button>
+                <Topic setTopic={setTopic} isModify={isModify}/>
+                <Type setType={setType} isModify={isModify} />
+                <Apartment setApartment={setApartment} isModify={isModify} />
+                <MoveInDate setMoveInDate={setMoveInDate} isModify={isModify} />
+                <BedroomNum setBedroomNum={setBedroomNum} bedroomNum={bedroomNum} isModify={isModify} />
+                <Gender setGender={setGender} isModify={isModify} />
+                <Size setSize={setSize} isModify={isModify} />
+                <Price setPrice={setPrice} price={price} isModify={isModify} />
+                <Description setDescription={setDescription} isModify={isModify} />
+                {type ? <Images  setImages={setImages} isModify={isModify} /> : null}
+                <Button type='primary' className={"post-btn"} onClick={post} isModify={isModify} >Post</Button>
             </div>
         </div>
     );

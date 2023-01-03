@@ -1,5 +1,5 @@
 .topic-topic{
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: bold;
     color: #000000;
     margin: 0;
@@ -31,4 +31,16 @@
     .description{
         width: 90% !important;
     }
+}
+
+.apartment,
+.priceRange,
+.size,
+.bedroom-num-r,
+.gender,
+.moveInRange{
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 0 5px;
 }
