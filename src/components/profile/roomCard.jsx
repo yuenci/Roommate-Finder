@@ -21,6 +21,7 @@ export default function RoomCard(props) {
                     backgroundImage: `url(${room.images[0]})`,
                 }} className={"room-card-con-img"}>
                     {/*<img src={room.images[0]} alt="user" className={"room-card-avatar"} />*/}
+                    <div className={"room-imgCard-text"}>{room.topic}</div>
                 </div>
             }
         </div>

@@ -96,6 +96,15 @@
     background-size: cover;
 }
 
+.room-imgCard-text{
+    position: absolute;
+    bottom:0;
+    height: 40px;
+    width: 100%;
+    color: white;
+    background-color: rgba(0,0,0,0.4);
+}
+
 
 
 .room-card-avatar{
