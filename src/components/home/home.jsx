@@ -4,7 +4,7 @@ import {FBAuth} from "../../firebase/authHandler.js";
 
 export function Home(){
     console.log("home.jsx");
-    console.log(new FBAuth().auth.currentUser);
+    //console.log(new FBAuth().auth.currentUser);
 
     return(
         <div >

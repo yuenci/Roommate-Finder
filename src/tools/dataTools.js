@@ -1,5 +1,5 @@
 import {firebaseConfig} from "../firebase/config.js";
-import {FBStorage} from "../firebase/storeHandle.js";
+import {FBStore} from "../firebase/storeHandle.js";
 import {StatusContainer} from "../StatusContainer.js";
 import {User} from "../ORM/User.js";
 
@@ -34,7 +34,7 @@ export function stampToDateObj(stamp) {
 
 
 export function initFirebase() {
-    StatusContainer.fireBaseStore = new FBStorage(firebaseConfig);
+    StatusContainer.fireBaseStore = new FBStore(firebaseConfig);
     return true;
 }
 
@@ -175,4 +175,12 @@ export function getRegDateFromUser(user){
 export function isOnlyContainLetterAndSpace(content){
     const re = /^[a-zA-Z ]*$/;
     return re.test(content);
+}
+
+export function getName(user) {
+    return user.displayName.split("-")[0];
+}
+
+export function getPhone(user) {
+    return user.displayName.split("-")[1];
 }

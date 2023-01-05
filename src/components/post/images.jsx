@@ -45,7 +45,7 @@ export default function Images(props) {
                 listType='picture-card'
                 className={"images-upload"}
                 limit={4}
-                defaultFileList={defaultFileList2}
+                //defaultFileList={defaultFileList2}
                 customRequest={(options) => {
                     const { onProgress, onError, onSuccess, file } = options;
 

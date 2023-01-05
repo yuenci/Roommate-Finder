@@ -8,7 +8,9 @@ export default function Gender(props){
     const options = ['Male', "Female","Any"]
 
     function onChange(value) {
-        props.setGender(value);
+        if (value === "a")  props.setGender("Male");
+        else if (value === "b") props.setGender("Female");
+        else props.setGender("Any");
     }
 
     let currentRoom = StatusContainer.currentRoomData;

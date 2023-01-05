@@ -7,8 +7,9 @@ export function Size(props) {
     const options = ["Small", "Medium", "Master"]
 
     function onChange(value) {
-        //console.log(value);
-        props.setSize(value);
+        if (value === "a")  props.setSize("Small");
+        else if (value === "b") props.setSize("Medium");
+        else props.setSize("Master");
     }
 
     let currentRoom = StatusContainer.currentRoomData;

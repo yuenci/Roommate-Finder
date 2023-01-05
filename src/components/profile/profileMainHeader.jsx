@@ -10,7 +10,7 @@ import {captionFirstCharToUpper} from "../../tools/dataTools.js";
 export default function ProfileMainHeader(props) {
     const {user,showModal} = props;
 
-    let avatarUrlOrigin = user.photoURL === null ? `https://api.multiavatar.com/${user.phone}.png` : user.photoURL;
+    let avatarUrlOrigin = user.photoURL === null ? `https://api.multiavatar.com/${user.posterEmail}.png` : user.photoURL;
 
     const [avatarUrl, setAvatarUrl] = useState(avatarUrlOrigin);
 

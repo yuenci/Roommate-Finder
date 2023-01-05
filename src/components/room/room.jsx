@@ -9,6 +9,7 @@ import {stampToDateStr} from "../../tools/dataTools.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import enUS from '@arco-design/web-react/es/locale/en-US';
 import ModifyToolBar from "./modifyToolBar";
+import {FBAuth} from "../../firebase/authHandler.js";
 
 
 export function Room() {
@@ -20,7 +21,7 @@ export function Room() {
 
     // redirect to home page 1 if roomID is missing
     useEffect(() => {
-        if (roomID == null) {
+        if (roomID === null || roomID === undefined) {
             navigate("/room/1");
         }
 
@@ -70,8 +71,9 @@ export function Room() {
     // login in && is not post  -- contact
     // not login --contact
     let showModify =false;
-    if(StatusContainer.currentUser !==null && data !== null){
-        if (data.posterEmail === StatusContainer.currentUser.email){
+    let user = new  FBAuth().auth.currentUser;
+    if(user !==null && data !== null){
+        if (data.posterEmail === user.email){
             showModify = true;
         }
     }

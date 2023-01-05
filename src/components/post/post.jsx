@@ -1,5 +1,5 @@
 import {Header} from "../common/Header/header.jsx";
-import { Button,Notification} from '@arco-design/web-react';
+import {Button, Message, Notification} from '@arco-design/web-react';
 import "./post.css";
 import {Topic} from "./topic.jsx";
 import {Type} from "./type.jsx";
@@ -11,12 +11,13 @@ import Gender from "./gender.jsx";
 import BedroomNum from "./bedroomNum.jsx";
 import Apartment from "./apartment.jsx";
 import MoveInDate from "./moveInDate";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {validatePost} from "./validate.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import {User} from "../../ORM/User.js";
-import {changeTimeStrListTOStamp, initAllRoomsData, writeNewPost} from "../../tools/dataTools.js";
+import {changeTimeStrListTOStamp, getName, getPhone, initAllRoomsData, writeNewPost} from "../../tools/dataTools.js";
 import {useNavigate,useLocation } from "react-router-dom";
+import {FBAuth} from "../../firebase/authHandler.js";
 
 export function Post() {
     const [topic, setTopic] = useState("");
@@ -31,19 +32,39 @@ export function Post() {
     const [images, setImages] = useState([]);
 
     // StatusContainer.currentUser = new User("TP061418@mail.apu.edu.my").initUser();
-    let currentRoom = StatusContainer.currentRoomData;
-    console.log(currentRoom);
+    // let currentRoom = StatusContainer.currentRoomData;
+    // //console.log(currentRoom);
 
 
     const {pathname} = useLocation();
     const regex = /^\/modify\/\d+/;
     const isModify = regex.test(pathname);
 
+    useEffect(() => {
+        if (!isModify) return;
+        const roomID = pathname.split("/")[2];
+        StatusContainer.fireBaseStore.readDocument("rooms", roomID).then((res) => {
+            console.log(res);
+            setTopic(res.topic);
+            setType(res.type);
+            setApartment(res.apartment);
+            // setMoveInDate([res.moveInDate]);
+            setBedroomNum(res.bedroomNum);
+            setGender(res.gender);
+            setSize(res.size);
+            setPrice([res.priceMin, res.priceMax]);
+            setDescription(res.description);
+            setImages(res.images);
+        })
+
+    }, []);
+
 
     let navigate = useNavigate();
 
     function post() {
         let moveInRange= changeTimeStrListTOStamp(moveInDate);
+        const  user = new FBAuth().auth.currentUser;
         let data = {
             topic: topic,
             type: type,
@@ -54,8 +75,8 @@ export function Post() {
             description: description,
             images: images,
             postTimeStamp: new Date(),
-            posterEmail: StatusContainer.currentUser.email,
-            phone: StatusContainer.currentUser.phone,
+            posterEmail: user.email,
+            phone: getPhone(user),
             moveInStart: moveInRange[0],
             moveInEnd: moveInRange[1],
             priceMin: price[0],
