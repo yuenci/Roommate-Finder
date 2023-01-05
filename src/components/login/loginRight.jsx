@@ -28,7 +28,7 @@ export function LoginRight() {
         fbAuth.login(email.toLowerCase(), password).then((result) => {
             if (result){
                 Message.success("Login successfully");
-                if(rememberMe) setLoginExpireTime(email);
+                setLoginExpireTime(email,rememberMe);
                 setTimeout(() => {
                     navigate("/home");
                 }, 1000);

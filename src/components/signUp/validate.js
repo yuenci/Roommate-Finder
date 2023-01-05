@@ -1,5 +1,5 @@
 import {Notification} from "@arco-design/web-react";
-import {isNumber, isOnlyContainLetterAndSpace} from "../../tools/dataTools.js";
+import {isNumber, isOnlyContainLetterAndSpace, validateTPEmail} from "../../tools/dataTools.js";
 
 export async function ifAllValid(name,phoneAreaCode,phone,email,password){
     if (name === ''  || phone === '' ||phoneAreaCode==="" || email === '' || password === '') {
@@ -11,13 +11,13 @@ export async function ifAllValid(name,phoneAreaCode,phone,email,password){
     }
 
     // email format check
-    // if (!validateTPEmail(email)) {
-    //     Notification.error({
-    //         title: 'Error',
-    //         content: 'Please enter a valid TP email address',
-    //     });
-    //     return false;
-    // }
+    if (!validateTPEmail(email)) {
+        Notification.error({
+            title: 'Error',
+            content: 'Please enter a valid TP email address',
+        });
+        return false;
+    }
 
 
 

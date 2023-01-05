@@ -47,7 +47,7 @@ export function CardsContainer() {
                 })}
             </div>
             <div>
-                <Button shape='circle' type='primary' icon={<IconFilter />}  className={"filter-icon"} onClick={filter} />
+                <Button shape='circle' type='primary' icon={<IconFilter />}  className={"filter-icon"} onClick={filter}  />
             </div>
             <div>
                 {filterVisible && <Filter/>}

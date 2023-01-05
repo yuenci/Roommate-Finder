@@ -32,12 +32,8 @@ export function Header() {
 
 
     function ifLogin() {
-        if(!detectLoginExpire()){
-            const fbAuth = new FBAuth();
-            const user = fbAuth.auth.currentUser;
-            if (user !== null)  return true;
-        }
-        return false;
+        new  FBAuth().auth.currentUser;
+        return !detectLoginExpire()
     }
 
     return (
@@ -53,7 +49,6 @@ export function Header() {
                     ? <div className={linkClassName} onClick={goToProfile}>Profile</div>
                     : <div className={linkClassName} onClick={goToLogin}>Login</div>
                 }
-
             </nav>
         </header>
     );

@@ -66,11 +66,12 @@ export function Filter(){
             priceRange: priceRange,
         }
         let queries = getWhereConditions(data);
+        console.log("queries",queries);
 
         let simpleQueries =queries[0];
 
         //console.log(simpleQueries);
-        //console.log(queries);
+
 
         let fbStore = StatusContainer.fireBaseStore;
 
@@ -82,11 +83,11 @@ export function Filter(){
         }
 
 
+
         StatusContainer.currentSearchRoomsData = filterPriceAndMoveInDate(res, queries[1]);
+        console.log("search result",StatusContainer.currentSearchRoomsData);
 
         navigate("/home/search");
-
-        //console.log(res);
 
     }
 
@@ -130,6 +131,7 @@ export function Filter(){
                         style={componentCSS}
                         format='YYYY-MM-DD'
                         onChange={(value)=>setMoveInDateRange(value)}
+                        disabled
                     />
                 </ConfigProvider>
             </div>
@@ -165,6 +167,7 @@ export function Filter(){
                         defaultValue={[0, 2000]}
                         max={5000}
                     formatTooltip={formatTooltip}
+                    disabled
                 />
             </div>
 

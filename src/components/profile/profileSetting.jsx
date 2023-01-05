@@ -1,6 +1,11 @@
 import {useNavigate} from "react-router-dom";
 import {StatusContainer} from "../../StatusContainer.js";
-import {getRegDateFromUser, isNumber, isOnlyContainLetterAndSpace} from "../../tools/dataTools.js";
+import {
+    deleteLoginExpireTime,
+    getRegDateFromUser,
+    isNumber,
+    isOnlyContainLetterAndSpace
+} from "../../tools/dataTools.js";
 import {Button, Message, Modal, Input} from "@arco-design/web-react";
 import {InputAndText} from "../common/inputAndText.jsx";
 import {PasswordInputAndText} from "../common/passwordInputAndText.jsx";
@@ -124,6 +129,7 @@ export default function ProfileSetting(props) {
     function logoutHandler() {
         new FBAuth().logout().then((res) => {
             if (res) {
+                deleteLoginExpireTime();
                 StatusContainer.currentUser = null;
                 Message.success('Logout successfully');
                 setTimeout(() => {

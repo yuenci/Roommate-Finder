@@ -44,6 +44,7 @@ function compoundCondition(key,value){
 
 
 export function filterPriceAndMoveInDate(res, compoundQueries){
+    if (compoundQueries.length === 0) return res;
     let queries = {};
     for (let query of compoundQueries){
         queries[query[0]] = query[2];

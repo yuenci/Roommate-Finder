@@ -2,6 +2,7 @@ import {firebaseConfig} from "../firebase/config.js";
 import {FBStore} from "../firebase/storeHandle.js";
 import {StatusContainer} from "../StatusContainer.js";
 import {User} from "../ORM/User.js";
+import {FBAuth} from "../firebase/authHandler.js";
 
 export function validateEmail(email) {
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -94,9 +95,10 @@ export async function writeNewUser(user) {
         regTimeStamp: new Date()
     }, user.email);
 }
-export function setLoginExpireTime(email) {
+export function setLoginExpireTime(email,keepLogin) {
     localStorage.setItem("loginExpireTime",  Date.now().toString());
     localStorage.setItem("loginEmail", email);
+    localStorage.setItem("keepLogin", keepLogin);
     //console.log("setLoginExpireTime");
 }
 
@@ -104,19 +106,37 @@ export function getStoredLoginEmail(){
     return localStorage.getItem("loginEmail");
 }
 
+export function deleteLoginExpireTime() {
+    localStorage.removeItem("loginExpireTime");
+    localStorage.removeItem("loginEmail");
+    //console.log("deleteLoginExpireTime");
+}
+
 export function detectLoginExpire() {
     let expireTime = localStorage.getItem("loginExpireTime");
     let now = Date.now();
-    let res =  now - expireTime > 1000 * 60 * 60 * 24 * 7;
+    let res
+    if (localStorage.getItem("keepLogin") === "true") {
+        res =  now - expireTime > 1000 * 60 * 60 * 24 * 7;
+    }else{
+        res =  now - expireTime > 1000 * 60 * 60 * 24 * 1;
+    }
+    // console.log( now - expireTime )
     if(res === true){
-        localStorage.removeItem("loginExpireTime");
-        localStorage.removeItem("loginEmail");
-        StatusContainer.currentUser = null;
-        StatusContainer.loginStatus = false;
+        new FBAuth().logout().then(
+            () => {
+                localStorage.removeItem("loginExpireTime");
+                localStorage.removeItem("loginEmail");
+                localStorage.removeItem("keepLogin");
+                StatusContainer.currentUser = null;
+                StatusContainer.loginStatus = false;
+            }
+        )
     }
 
     return res;
     // true if expired
+    // false if not expired
 }
 
 export async function getNewRoomID(){
