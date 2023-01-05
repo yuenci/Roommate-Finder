@@ -131,18 +131,23 @@ export async function addOneToRoomsNum(){
     return fbStore.addOne("status", "rooms", "number");
 }
 
-export async function writeNewPost(data){
+export async function writeNewPost(data, roomID) {
     let fbStore = StatusContainer.fireBaseStore;
+    console.log("roomID", roomID);
 
-    let roomID = await getNewRoomID();
+
+    if(roomID === ""){
+        roomID = await getNewRoomID();
+        await addOneToRoomsNum();
+    }
 
     data["roomID"] = roomID;
 
     fbStore.write("rooms", data, roomID);
 
-    await addOneToRoomsNum();
-
     await fbStore.readCollection("rooms")
+
+    StatusContainer.currentRoomData  = {};
 
     return true;
 

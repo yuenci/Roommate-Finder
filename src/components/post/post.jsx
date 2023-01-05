@@ -15,7 +15,14 @@ import {useEffect, useState} from "react";
 import {validatePost} from "./validate.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import {User} from "../../ORM/User.js";
-import {changeTimeStrListTOStamp, getName, getPhone, initAllRoomsData, writeNewPost} from "../../tools/dataTools.js";
+import {
+    changeTimeStrListTOStamp,
+    getName,
+    getPhone,
+    initAllRoomsData,
+    stampToDateObj,
+    writeNewPost
+} from "../../tools/dataTools.js";
 import {useNavigate,useLocation } from "react-router-dom";
 import {FBAuth} from "../../firebase/authHandler.js";
 
@@ -39,16 +46,18 @@ export function Post() {
     const {pathname} = useLocation();
     const regex = /^\/modify\/\d+/;
     const isModify = regex.test(pathname);
+    let roomID = "";
+    if (isModify)  roomID = pathname.split("/")[2];
 
     useEffect(() => {
         if (!isModify) return;
-        const roomID = pathname.split("/")[2];
+        roomID = pathname.split("/")[2];
         StatusContainer.fireBaseStore.readDocument("rooms", roomID).then((res) => {
             console.log(res);
             setTopic(res.topic);
             setType(res.type);
             setApartment(res.apartment);
-            // setMoveInDate([res.moveInDate]);
+            setMoveInDate( [stampToDateObj(res.moveInStart), stampToDateObj(res.moveInEnd)]);
             setBedroomNum(res.bedroomNum);
             setGender(res.gender);
             setSize(res.size);
@@ -82,9 +91,10 @@ export function Post() {
             priceMin: price[0],
             priceMax: price[1]
         }
+
         let res = validatePost(data);
         if (res === true) {
-            writeNewPost(data).then(() => {
+            writeNewPost(data,roomID).then(() => {
                 Notification.success({
                     title: 'Success',
                     content: 'Your post has been successfully posted!',

@@ -24,14 +24,33 @@ export default function Images(props) {
         }
     ];
 
-    let imagesList = [];
+    let defaultFileList2 = [];
 
+    if(Object.keys(StatusContainer.currentRoomData).length !== 0){
+        for (let i = 0; i < StatusContainer.currentRoomData.images.length; i++) {
+            defaultFileList2.push({
+                uid: i,
+                name: 'image.png',
+                url: StatusContainer.currentRoomData.images[i],
+            })
+        }
+    }
+    //console.log(defaultFileList2);
+
+    let imagesList = [];
 
 
     function addFileList(fileList){
         imagesList = [];
+
+        if (defaultFileList2.length !== 0) {
+            for (let i = 0; i < defaultFileList2.length; i++) {
+                imagesList.push(defaultFileList2[i].url);
+            }
+        }
+
         for (let file of fileList){
-            imagesList.push(file.response);
+            if (file.response !== undefined) imagesList.push(file.response);
         }
         props.setImages(imagesList);
     }
@@ -45,7 +64,7 @@ export default function Images(props) {
                 listType='picture-card'
                 className={"images-upload"}
                 limit={4}
-                //defaultFileList={defaultFileList2}
+                defaultFileList={defaultFileList2}
                 customRequest={(options) => {
                     const { onProgress, onError, onSuccess, file } = options;
 
