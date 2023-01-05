@@ -1,9 +1,9 @@
 import {InputEmail} from "../common/InputEmail.jsx";
 import {Button, Checkbox, Input, Message} from "@arco-design/web-react";
 import {useState} from "react";
-import {StatusContainer} from "../../StatusContainer.js";
 import {Link, useNavigate} from "react-router-dom";
-import {initAllRoomsData, loginValidation, setLoginExpireTime, validateEmail} from "../../tools/dataTools.js";
+import {setLoginExpireTime, validateEmail} from "../../tools/dataTools.js";
+import {FBAuth} from "../../firebase/authHandler.js";
 
 
 export function LoginRight() {
@@ -24,21 +24,23 @@ export function LoginRight() {
         // if password is valid
         if (password === "") return;
 
-        // if email and password are valid
-        let res = await loginValidation(email, password);
-        console.log(res);
-        if (res) {
-            initAllRoomsData().then(() => {
-                    Message.success("Login successfully");
-                    if(rememberMe) setLoginExpireTime(email);
-                    setTimeout(() => {
-                        navigate("/home");
-                    }, 1500);
-                }
-            );
-        } else {
-            Message.error(`${StatusContainer.loginError}`)
-        }
+        let fbAuth = new FBAuth();
+        fbAuth.login(email.toLowerCase(), password).then((result) => {
+            if (result){
+                Message.success("Login successfully");
+                if(rememberMe) setLoginExpireTime(email);
+                setTimeout(() => {
+                    navigate("/home");
+                }, 1000);
+            }
+        }).catch((error) => {
+            Message.error(shortError(error.message));
+        });
+    }
+
+    function shortError(error){
+        // Firebase: Error (auth/wrong-password). to wrong-password
+        return error.split("/")[1].replace(")","");
     }
 
 

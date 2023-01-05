@@ -18,7 +18,6 @@ export default function Apartment(props) {
             <Select placeholder='Please select' style={{ width: 154 }} allowClear allowCreate
                     className={"select-apartment"} onChange={handleChange}
                     defaultValue={props.isModify ? currentRoom.apartment : null}>
-            >
                 {apartments.map((option, index) => (
                     <Option key={index} value={option}>
                         {option}

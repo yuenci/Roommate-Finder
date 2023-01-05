@@ -1,4 +1,3 @@
-import {User} from "./ORM/User.js";
 
 export class StatusContainer {
     static loginStatus = false;
@@ -11,6 +10,8 @@ export class StatusContainer {
     static fireBaseStore = null;
 
     static currentUser = null;
+
+    static currentFBAuth = null;
 
     static loginError = "";
 }

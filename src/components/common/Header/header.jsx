@@ -1,16 +1,13 @@
-import React, {useEffect, useState} from "react";
+
 import "./header.css";
 import {useNavigate } from "react-router-dom";
-import {StatusContainer} from "../../../StatusContainer.js";
-import {User} from "../../../ORM/User.js";
-import {detectLoginExpire, getStoredLoginEmail} from "../../../tools/dataTools.js";
+
+import {detectLoginExpire} from "../../../tools/dataTools.js";
+import {FBAuth} from "../../../firebase/authHandler.js";
 
 export function Header() {
     const linkClassName = "link";
     const navigate = useNavigate();
-
-    const [user, setUser] = useState(StatusContainer.currentUser);
-
 
     function backToLogin() {
         navigate("/home");
@@ -32,18 +29,16 @@ export function Header() {
         navigate("/login");
     }
 
-    useEffect(() => {
-        if(StatusContainer.currentUser !== null) return;
 
+
+    function ifLogin() {
         if(!detectLoginExpire()){
-            new User(getStoredLoginEmail()).initUser().then((res) => {
-                StatusContainer.currentUser = res;
-                setUser(res);
-            })
+            const fbAuth = new FBAuth();
+            const user = fbAuth.auth.currentUser;
+            if (user !== null)  return true;
         }
-    }, []);
-
-
+        return false;
+    }
 
     return (
         <header className="header">
@@ -54,7 +49,7 @@ export function Header() {
             <nav className="nav-links">
                 <div className={linkClassName} onClick={goToPost}>Post</div>
                 <div className={linkClassName} onClick={goToAbout}>About</div>
-                {StatusContainer.currentUser
+                {ifLogin()
                     ? <div className={linkClassName} onClick={goToProfile}>Profile</div>
                     : <div className={linkClassName} onClick={goToLogin}>Login</div>
                 }

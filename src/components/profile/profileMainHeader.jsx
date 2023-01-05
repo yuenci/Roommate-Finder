@@ -4,15 +4,19 @@ import {createRef, useState} from "react";
 import {uploadImageWithRandomName} from "../../firebase/storageHandle.js";
 import {avatarMaxSize} from "../../config.js";
 import {StatusContainer} from "../../StatusContainer.js";
+import {FBAuth} from "../../firebase/authHandler.js";
+import {captionFirstCharToUpper} from "../../tools/dataTools.js";
 
 export default function ProfileMainHeader(props) {
     const {user,showModal} = props;
 
-    let avatarUrlOrigin = user.avatarUrl === undefined ? `https://api.multiavatar.com/${user.phone}.png` : user.avatarUrl;
+    let avatarUrlOrigin = user.photoURL === null ? `https://api.multiavatar.com/${user.phone}.png` : user.photoURL;
 
     const [avatarUrl, setAvatarUrl] = useState(avatarUrlOrigin);
 
     //console.log(user.avatarUrl);
+
+
 
     const triggerIconCSS ={
         color: '#3491FA',
@@ -45,13 +49,19 @@ export default function ProfileMainHeader(props) {
 
         // upload image and set new avatar
         uploadImageWithRandomName(name,avatarfile).then((url) => {
-            setAvatarUrl(url);
-            StatusContainer.fireBaseStore.write("users",{avatarUrl: url},user.email);
-            StatusContainer.currentUser.avatarUrl = url;
+            new  FBAuth().updateUserInfo({photoURL: url}).then(() => {
+                setAvatarUrl(url);
+            });
         });
 
         // write avatar log to database
     }
+
+    const fbAuth = new FBAuth();
+    const currentUser = fbAuth.auth.currentUser;
+    StatusContainer.currentUser = currentUser;
+    const currentUserName = captionFirstCharToUpper(currentUser.displayName.split("-")[0]);
+
 
 
     return(
@@ -68,7 +78,7 @@ export default function ProfileMainHeader(props) {
                     src={avatarUrl}
                 />
             </Avatar>
-            <span className={"text-4xl"}>{user.name}</span>
+            <span className={"text-4xl"}>{currentUserName}</span>
             <IconSettings className={"text-4xl hover:cursor-pointer"} onClick={showModal}/>
             <input type="file" style={{display:"none"}} ref={fileInputRef} onChange={onFileChange}/>
         </div>

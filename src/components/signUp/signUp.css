@@ -1,6 +1,7 @@
 .join{
     margin-top:30px;
     margin-bottom: 30px;
+    font-size: 2em;
 }
 
 
@@ -29,7 +30,7 @@
     border-radius: 5px !important;
     font-weight: bold;
     position: relative;
-    top: 22px;
+    top: 11px;
 }
 
 .input-signup{

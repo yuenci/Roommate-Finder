@@ -159,3 +159,20 @@ export  function changeTimeStrListTOStamp(timeStrList){
 
     return [new Date(timeStrList[0]),new Date(timeStrList[1])];
 }
+
+
+export function captionFirstCharToUpper(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function getRegDateFromUser(user){
+    const  date = Number(user.metadata.createdAt);
+    // stamp to date
+    //console.log(new Date(date).toLocaleString());
+    return new Date(date).toLocaleString();
+}
+
+export function isOnlyContainLetterAndSpace(content){
+    const re = /^[a-zA-Z ]*$/;
+    return re.test(content);
+}
