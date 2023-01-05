@@ -1,5 +1,5 @@
 import {Header} from "../common/Header/header.jsx";
-import {Button, Message, Notification} from '@arco-design/web-react';
+import {Button, Notification} from '@arco-design/web-react';
 import "./post.css";
 import {Topic} from "./topic.jsx";
 import {Type} from "./type.jsx";
@@ -14,10 +14,8 @@ import MoveInDate from "./moveInDate";
 import {useEffect, useState} from "react";
 import {validatePost} from "./validate.js";
 import {StatusContainer} from "../../StatusContainer.js";
-import {User} from "../../ORM/User.js";
 import {
     changeTimeStrListTOStamp,
-    getName,
     getPhone,
     initAllRoomsData,
     stampToDateObj,
@@ -47,7 +45,11 @@ export function Post() {
     const regex = /^\/modify\/\d+/;
     const isModify = regex.test(pathname);
     let roomID = "";
-    if (isModify)  roomID = pathname.split("/")[2];
+    if (isModify) {
+        roomID = pathname.split("/")[2]
+    }else{
+        StatusContainer.currentRoomData = {};
+    }
 
     useEffect(() => {
         if (!isModify) return;
