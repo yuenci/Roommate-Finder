@@ -1,15 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc, collection, addDoc, updateDoc, serverTimestamp, deleteDoc, getDoc, getDocs, where, query, orderBy,increment  }
-    from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-
-// 1. write a new document to firestore
-
-// 2. read a document from firestore
-
-// 3. delete a document from firestore
-
-// 4. update a document from firestore
+    from  "firebase/firestore";
 
 
 export class FBStorage {

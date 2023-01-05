@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import {SignUpForm} from "./signUpForm";
 import {SignUpPinCode} from "./SignUpPinCode.jsx";
 import {useState} from "react";
-import {User} from "../../ORM/User.js";
 import { useNavigate } from "react-router-dom";
 import {ifAllValid} from "./validate.js";
 import {pinCodeStr} from "../../config.js";
@@ -23,7 +22,7 @@ export function SignUpRight() {
     const [pinCode, setPinCode] = useState('');
 
     const navigate = useNavigate();
-    
+
     async function signUpOnClick() {
         //console.log("name: " + name, "phone: " +phoneAreaCode+ phone , "email: " + email, "password: " + password);
 
@@ -66,7 +65,15 @@ export function SignUpRight() {
     }
     async function registerUser(){
         let fbAuth = new FBAuth();
-        await fbAuth.register(email.toLowerCase(), password);
+        try {
+            await fbAuth.register(email.toLowerCase(), password);
+        }catch (e) {
+            Notification.error({
+                title: 'Error',
+                content: e.message,
+            })
+        }
+
         let data ={
             displayName: name + "-" + phoneAreaCode + phone,
         }

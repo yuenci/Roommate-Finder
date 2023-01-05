@@ -1,9 +1,9 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import { initializeApp } from "firebase/app";
 import {
-    getAuth, sendSignInLinkToEmail, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword,
+    getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword,
     sendPasswordResetEmail, updateProfile, updatePassword, deleteUser, reauthenticateWithCredential, EmailAuthProvider
 }
-    from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+    from "firebase/auth";
 import {firebaseConfig} from "./config.js";
 
 
@@ -38,7 +38,7 @@ export class FBAuth {
         return new Promise((resolve, reject) => {
             signInWithEmailAndPassword(this.auth, email, password).then((userCredential) => {
                 const user = userCredential.user;
-                if (this.debug) console.log("Sign in with user: ", userCredential.user);
+                if (this.debug) console.log("Sign in with user: ", user);
                 resolve(true);
             }).catch((error) => {
                 if (this.debug) console.log(error.code, error.message);

@@ -1,10 +1,10 @@
 import {Header} from "../common/Header/header.jsx";
 import {CardsContainer} from "./cardsContainer.jsx";
-import {initAllRoomsData} from "../../tools/dataTools.js";
-import {useEffect, useState} from "react";
+import {FBAuth} from "../../firebase/authHandler.js";
 
 export function Home(){
-    console.log("home.jsx")
+    console.log("home.jsx");
+    console.log(new FBAuth().auth.currentUser);
 
     return(
         <div >
