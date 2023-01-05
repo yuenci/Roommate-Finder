@@ -46,7 +46,8 @@ export function Room() {
     }, []);
 
     function btnOnClick() {
-        if(StatusContainer.currentUser === null) {
+        let user = new FBAuth().auth.currentUser;
+        if(user === null) {
             setVisible(true);
         }else{
             goToWhatsapp();
