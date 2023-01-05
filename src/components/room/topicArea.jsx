@@ -1,5 +1,13 @@
 import "./topicArea.css";
-import {IconCalendar, IconFire, IconHome, IconLocation, IconMan, IconWoman} from "@arco-design/web-react/icon";
+import {
+    IconCalendar,
+    IconFire,
+    IconHome,
+    IconLocation,
+    IconMan,
+    IconUserGroup,
+    IconWoman
+} from "@arco-design/web-react/icon";
 export function TopicArea(props) {
     const data = props.data;
 
@@ -28,11 +36,14 @@ export function TopicArea(props) {
                 </div>
                 {/*<div className="type" >{data.type}</div>*/}
                 <div className="priceRange">
-                    <IconFire className={"room-topic-icon"}  />
+                    <IconFire className={"room-topic-icon"} />
                     {price}</div>
                 <div className="size" >
                     <IconHome className={"room-topic-icon"}  />
                     {data.size}</div>
+                <div className="bedroom-num-r">
+                    <IconUserGroup className={"room-topic-icon"}/>
+                    {data.bedroomNum} Bedrooms</div>
                 { data.gender === "Male" &&
                     <div className="gender" >
                         <IconMan className={"room-topic-icon"}  />

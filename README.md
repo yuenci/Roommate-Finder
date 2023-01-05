@@ -73,3 +73,7 @@ export default defineConfig({
 import { ReactComponent as Logo } from "./logo.svg";
 ```
 
+## Firebase
+```bash
+$ npm install firebase
+```

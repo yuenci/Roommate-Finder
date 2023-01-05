@@ -1,7 +1,7 @@
 import {StatusContainer} from "../../StatusContainer.js";
 import {UserCard} from "./userCard.jsx";
 import {useEffect, useState} from "react";
-import {initAllUsersData} from "../../tools/dataTools.js";
+import {initAllRoomsData} from "../../tools/dataTools.js";
 import { Button } from '@arco-design/web-react';
 import {IconFilter} from "@arco-design/web-react/icon";
 import "./userCard.css";
@@ -18,7 +18,7 @@ export function CardsContainer() {
 
     useEffect(() => {
        if(Object.keys(StatusContainer.currentAllRoomsData).length === 0){
-           initAllUsersData().then((data) => {
+           initAllRoomsData().then((data) => {
                StatusContainer.currentAllRoomsData = data;
                setAllEntries1(Object.entries(data));
            });
@@ -47,7 +47,7 @@ export function CardsContainer() {
                 })}
             </div>
             <div>
-                <Button shape='circle' type='primary' icon={<IconFilter />}  className={"filter-icon"} onClick={filter} />
+                <Button shape='circle' type='primary' icon={<IconFilter />}  className={"filter-icon"} onClick={filter}  />
             </div>
             <div>
                 {filterVisible && <Filter/>}

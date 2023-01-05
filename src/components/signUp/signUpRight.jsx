@@ -5,12 +5,11 @@ import {Link} from "react-router-dom";
 import {SignUpForm} from "./signUpForm";
 import {SignUpPinCode} from "./SignUpPinCode.jsx";
 import {useState} from "react";
-import {User} from "../../ORM/User.js";
-import {StatusContainer} from "../../StatusContainer.js";
 import { useNavigate } from "react-router-dom";
 import {ifAllValid} from "./validate.js";
 import {pinCodeStr} from "../../config.js";
 import {setLoginExpireTime} from "../../tools/dataTools.js";
+import  {FBAuth} from "../../firebase/authHandler.js";
 
 export function SignUpRight() {
     const [page, setPage] = useState('signUpForm');
@@ -24,10 +23,8 @@ export function SignUpRight() {
 
     const navigate = useNavigate();
 
-    let newUser = new User();
-
     async function signUpOnClick() {
-        // console.log("name: " + name, "phone: " +phoneAreaCode+ phone , "email: " + email, "password: " + password);
+        //console.log("name: " + name, "phone: " +phoneAreaCode+ phone , "email: " + email, "password: " + password);
 
         let validRes = await ifAllValid(name,phoneAreaCode, phone, email, password);
         if (!validRes)  return;
@@ -36,17 +33,16 @@ export function SignUpRight() {
             Notification.success({
                 content: 'Information validate successfully!',
             });
+
+
             setTimeout(() => {
 
                 setPage('signUpPinCode');
             }, 1000);
         }else if (page === 'signUpPinCode') {
-
             if( pinCode === pinCodeStr){
                 //731459
-                registerUser();
-                console.log(newUser);
-                StatusContainer.currentUser = newUser;
+                await registerUser();
 
                 Notification.success({
                     content: 'Sign up successfully',
@@ -67,15 +63,23 @@ export function SignUpRight() {
 
         }
     }
-    function registerUser(){
-        newUser.name = name.trim();
-        newUser.phone = phoneAreaCode.trim()+ phone.trim();
-        newUser.email = email.trim();
-        newUser.password = password.trim();
+    async function registerUser(){
+        let fbAuth = new FBAuth();
+        try {
+            await fbAuth.register(email.toLowerCase(), password);
+        }catch (e) {
+            Notification.error({
+                title: 'Error',
+                content: e.message,
+            })
+        }
 
-        newUser.registerUser(name, phone, email, password).then(
-            () => setLoginExpireTime()
-        );
+        let data ={
+            displayName: name + "-" + phoneAreaCode + phone,
+        }
+        await fbAuth.updateUserInfo(data)
+
+        setLoginExpireTime()
     }
 
     return (

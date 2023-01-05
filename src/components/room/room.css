@@ -35,3 +35,25 @@
     cursor: pointer;
     transition: 0.3s;
 }
+
+.modify-tool-bar{
+    width: 60%;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.modify-tool-modify{
+    margin-right: 40px;
+    cursor: pointer;
+    color: #4dabf7;
+}
+
+
+.modify-tool-delete{
+    cursor: pointer;
+    color: #ff6b6b;
+}

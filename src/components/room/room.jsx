@@ -8,6 +8,8 @@ import {Message, Modal,ConfigProvider} from "@arco-design/web-react";
 import {stampToDateStr} from "../../tools/dataTools.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import enUS from '@arco-design/web-react/es/locale/en-US';
+import ModifyToolBar from "./modifyToolBar";
+import {FBAuth} from "../../firebase/authHandler.js";
 
 
 export function Room() {
@@ -19,7 +21,7 @@ export function Room() {
 
     // redirect to home page 1 if roomID is missing
     useEffect(() => {
-        if (roomID == null) {
+        if (roomID === null || roomID === undefined) {
             navigate("/room/1");
         }
 
@@ -37,6 +39,7 @@ export function Room() {
                 }   , 1500);
             } else {
                 setData(res);
+                StatusContainer.currentRoomData = res;
                 //console.log(res);
             }
         })
@@ -63,6 +66,18 @@ export function Room() {
     }
 
 
+    // data, must have data
+    // login in && is poster  -- modify
+    // login in && is not post  -- contact
+    // not login --contact
+    let showModify =false;
+    let user = new  FBAuth().auth.currentUser;
+    if(user !==null && data !== null){
+        if (data.posterEmail === user.email){
+            showModify = true;
+        }
+    }
+
     return (
         <div>
             <Header/>
@@ -79,8 +94,13 @@ export function Room() {
                     </div>
                 </div>
             }
+            {  data  && !showModify &&
+                 <button className="contact-button" onClick={btnOnClick}>Contact on Whatsapp</button>
+            }
+            {data && showModify &&
+                <ModifyToolBar roomID={roomID}/>
+            }
 
-            <button className="contact-button" onClick={btnOnClick}>Contact on Whatsapp</button>
             <ConfigProvider locale={enUS}>
                 <Modal
                     title='Login'

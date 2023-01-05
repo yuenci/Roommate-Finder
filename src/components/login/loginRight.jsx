@@ -1,14 +1,15 @@
 import {InputEmail} from "../common/InputEmail.jsx";
-import {Button, Input, Message} from "@arco-design/web-react";
+import {Button, Checkbox, Input, Message} from "@arco-design/web-react";
 import {useState} from "react";
-import {StatusContainer} from "../../StatusContainer.js";
 import {Link, useNavigate} from "react-router-dom";
-import {initAllUsersData, loginValidation, setLoginExpireTime, validateEmail} from "../../tools/dataTools.js";
+import {setLoginExpireTime, validateEmail} from "../../tools/dataTools.js";
+import {FBAuth} from "../../firebase/authHandler.js";
 
 
 export function LoginRight() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
 
     function passwordOnChange(value) {
@@ -23,24 +24,23 @@ export function LoginRight() {
         // if password is valid
         if (password === "") return;
 
-        // if email and password are valid
-        let res = await loginValidation(email, password);
-        console.log(res);
-        if (res) {
+        let fbAuth = new FBAuth();
+        fbAuth.login(email.toLowerCase(), password).then((result) => {
+            if (result){
+                Message.success("Login successfully");
+                setLoginExpireTime(email,rememberMe);
+                setTimeout(() => {
+                    navigate("/home");
+                }, 1000);
+            }
+        }).catch((error) => {
+            Message.error(shortError(error.message));
+        });
+    }
 
-            initAllUsersData().then(() => {
-                    Message.success("Login successfully");
-                    setLoginExpireTime(email);
-                    setTimeout(() => {
-                        navigate("/home");
-                    }, 1500);
-                }
-            )
-
-
-        } else {
-            Message.error(`${StatusContainer.loginError}`)
-        }
+    function shortError(error){
+        // Firebase: Error (auth/wrong-password). to wrong-password
+        return error.split("/")[1].replace(")","");
     }
 
 
@@ -49,7 +49,11 @@ export function LoginRight() {
             <h1 className="hello">Hello Again!</h1>
             <InputEmail email={email} setEmail={setEmail}/>
             <Input.Password defaultValue='' className="input" onChange={passwordOnChange}/>
-            <div className="recovery">Recovery password</div>
+            <div className={"login-container-middle"}>
+                <Checkbox className={"remember"} onChange={setRememberMe}>Remember me</Checkbox>
+                <div className="recovery">Recovery password</div>
+            </div>
+
             <Button type='primary' className="login-btn" onClick={loginOnClick}>Login</Button>
             <div className="login-container-bottom">
                 <span className="account-text">Don't have an account?</span>

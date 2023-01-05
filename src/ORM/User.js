@@ -9,7 +9,7 @@ export class User {
         this._phone = "";
         this._password = "";
         this._regTimeStamp = "";
-        //this.initData();
+        this._avatarUrl = "";
     }
 
     async registerUser(name,phone,email,password) {
@@ -21,15 +21,7 @@ export class User {
         return await writeNewUser(this);
     }
 //[age,name.password,phone,regTimeStamp]
-    initData() {
-        StatusContainer.fireBaseStore.readDocument("users",this._email).then((data) => {
-            this._name = data.name;
-            this._phone = data.phone;
-            this._password = data.password;
-            this._phone = data.phone;
-            this._regTimeStamp = stampToDateStr(data.regTimeStamp);
-        });
-    }
+
 
      async initUser() {
         let data = await StatusContainer.fireBaseStore.readDocument("users",this._email);
@@ -38,6 +30,7 @@ export class User {
         this._password = data.password;
         this._phone = data.phone;
         this._regTimeStamp = stampToDateStr(data.regTimeStamp);
+        this._avatarUrl = data.avatarUrl;
         return this;
     }
 
@@ -89,6 +82,16 @@ export class User {
     set regTimeStamp(value) {
         this._regTimeStamp = value;
     }
+
+
+    get avatarUrl() {
+        return this._avatarUrl;
+    }
+
+    set avatarUrl(value) {
+        this._avatarUrl = value;
+    }
+
 // endregion
 
 }

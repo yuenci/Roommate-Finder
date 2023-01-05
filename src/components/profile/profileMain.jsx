@@ -1,13 +1,12 @@
 import {Header} from "../common/Header/header.jsx";
-import {IconSettings} from "@arco-design/web-react/icon";
 import "./profile.css"
 import {StatusContainer} from "../../StatusContainer.js";
-import {User} from "../../ORM/User.js";
 import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import RoomCard from "./roomCard";
 import GiveAPost from "./giveAPost.jsx";
-
+import ProfileMainHeader from "./profileMainHeader";
+import {FBAuth} from "../../firebase/authHandler.js";
 
 RoomCard.propTypes = {room: PropTypes.any};
 export default function ProfileMain(props) {
@@ -16,7 +15,10 @@ export default function ProfileMain(props) {
         props.showModal(true);
     }
 
-    const [currentUser, setCurrentUser] = useState(StatusContainer.currentUser);
+    //console.log(StatusContainer.currentUser);
+    let user = new FBAuth().auth.currentUser;
+
+    const [currentUser, setCurrentUser] = useState(user);
     const [rooms, setRooms] = useState([]);
 
     //const currentUser = StatusContainer.currentUser;
@@ -24,14 +26,14 @@ export default function ProfileMain(props) {
 
     let fbStore = StatusContainer.fireBaseStore;
 
+    // console.log(currentUser.email)
+
 
     useEffect(() => {
-        new User("TP061418@mail.apu.edu.my").initUser().then((user) => {
-            setCurrentUser(user);
-            let query = [["posterEmail", "==", user.email]];
-            fbStore.query("rooms", query).then((rooms) => {
-                setRooms(rooms);
-            });
+        let query = [["posterEmail", "==", currentUser.email]];
+        fbStore.query("rooms", query).then((rooms) => {
+            //console.log(rooms);
+            setRooms(rooms);
         });
     },[]);
 
@@ -41,16 +43,12 @@ export default function ProfileMain(props) {
            <Header/>
            {currentUser &&
                <div className={"profile-main-con"}>
-                   <div className={"profile-main-header"}>
-                       <img src={`https://api.multiavatar.com/${currentUser.phone}.png`} alt="user" className={"profile-main-avatar"}/>
-                       <span className={"text-4xl"}>{currentUser.name}</span>
-                       <IconSettings className={"text-4xl hover:cursor-pointer"} onClick={showModal}/>
-                   </div>
+                   <ProfileMainHeader user={currentUser} showModal={showModal}/>
                </div>
            }
            <div className={"rooms-con"}>
                {rooms
-                   ?  rooms.map((room,index) => {
+                   ?  rooms.reverse().map((room,index) => {
                        return <RoomCard room={room} key={index}/>
                    })
                    : <GiveAPost/>

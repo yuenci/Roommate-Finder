@@ -1,6 +1,7 @@
 .join{
     margin-top:30px;
     margin-bottom: 30px;
+    font-size: 2em;
 }
 
 
@@ -29,7 +30,7 @@
     border-radius: 5px !important;
     font-weight: bold;
     position: relative;
-    top: 22px;
+    top: 11px;
 }
 
 .input-signup{
@@ -71,4 +72,13 @@
 .input-signup-group{
     width: 300px;
     margin: 0 auto;
+}
+
+#ImgVerif{
+    width:310px !important;;
+    height: 210px !important;;
+    position: absolute !important;
+    top: 50% !important;;
+    left: 50% !important;;
+    transform: translate(-50%, -60%) !important;
 }

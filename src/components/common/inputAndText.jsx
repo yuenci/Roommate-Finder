@@ -4,11 +4,9 @@ export function InputAndText(props) {
     const {text,textCss,inputCss,placeholder,disabled,defaultValue,setValue} = props;
 
     function onChange(value) {
-        console.log(value);
+        //console.log(value);
         setValue(value);
     }
-
-
 
     return (
         <div>

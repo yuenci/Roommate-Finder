@@ -34,7 +34,7 @@ export function About() {
                         <a href="https://github.com/yuenci/APU-Roommate-finder/issues" target="_blank"> https://github.com/yuenci/APU-Roommate-finder/issues</a>
                     </div>
                 </div>
-                <div className={"text-center"}>© MIZ 2023</div>
+                <div className={"text-center"}>{`© MIZ ${new Date().getFullYear()}`}</div>
             </div>
         </div>
     )

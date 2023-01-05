@@ -1,5 +1,5 @@
 import {Notification} from "@arco-design/web-react";
-import {ifUserExist, isNumber, validateTPEmail} from "../../tools/dataTools.js";
+import {isNumber, isOnlyContainLetterAndSpace, validateTPEmail} from "../../tools/dataTools.js";
 
 export async function ifAllValid(name,phoneAreaCode,phone,email,password){
     if (name === ''  || phone === '' ||phoneAreaCode==="" || email === '' || password === '') {
@@ -40,15 +40,24 @@ export async function ifAllValid(name,phoneAreaCode,phone,email,password){
         return false;
     }
 
-    // if email exist
-    let ifExist = await ifUserExist(email);
-    if (ifExist) {
+    // name just contains letters and spaces
+    if (!isOnlyContainLetterAndSpace(name)) {
         Notification.error({
             title: 'Error',
-            content: 'Email already exist',
+            content: 'Please enter a valid name',
         });
         return false;
     }
+
+    // if email exist
+    // let ifExist = await ifUserExist(email);
+    // if (ifExist) {
+    //     Notification.error({
+    //         title: 'Error',
+    //         content: 'Email already exist',
+    //     });
+    //     return false;
+    // }
 
     return true;
 }

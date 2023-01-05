@@ -23,7 +23,7 @@ export function UserCard(props) {
     return (
         <div className="user-card" onClick={goToPost}>
             <div className="userCard-left">
-                <img src={`https://api.multiavatar.com/${room.phone}.png`} alt="user" className="avatar-img"/>
+                <img src={`https://api.multiavatar.com/${room.posterEmail}.png`} alt="user" className="avatar-img"/>
             </div>
             <div className="userCard-right">
                 <div className="userCard-right-top">
