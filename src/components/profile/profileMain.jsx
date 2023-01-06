@@ -48,7 +48,7 @@ export default function ProfileMain(props) {
            }
            <div className={"rooms-con"}>
                {rooms
-                   ?  rooms.reverse().map((room,index) => {
+                   ?  rooms.slice().reverse().map((room,index) => {
                        return <RoomCard room={room} key={index}/>
                    })
                    : <GiveAPost/>

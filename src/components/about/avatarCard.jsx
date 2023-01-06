@@ -24,13 +24,13 @@ export default function AvatarCard(props) {
     }
 
     async  function copyEmail(){
-        let  res = navigator.clipboard.writeText(email);
+        navigator.clipboard.writeText(email).then();
         Message.success("Email copied to clipboard");
     }
 
     return(
         <div className="avatar">
-            <img src={`/team/${name}.png`} alt="innis" className={"avatar-img drop-shadow-md"}/>
+            <img src={`/team/${name}.png`} alt="innis" className={"about-avatar-img drop-shadow-md"}/>
             <div className="text-xl avatar-name">{name}</div>
             <div className={"text-base avatar-post"}>{post}</div>
             <div className={"text-base avatar-desc"}>{desc}</div>

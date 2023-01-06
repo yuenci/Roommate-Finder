@@ -1,6 +1,8 @@
 .description{
     width: 60%;
     margin: 0 auto;
+    border-top: 1px solid #cccccc;
+    padding-top: 10px;
 }
 
 
