@@ -9,9 +9,11 @@
     align-items: center;
 }
 
-.avatar-img{
+.about-avatar-img{
     display: inline-block;
     margin-bottom: 10px;
+    width: 90px;
+    border-radius: 50%;
 }
 
 .avatar-name{
@@ -39,4 +41,9 @@
     .avatar-img{
         width: 100%;
     }
+
+    .avatar{
+       margin-bottom: 20px;
+    }
+
 }
