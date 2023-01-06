@@ -39,10 +39,11 @@ export function CardsContainer() {
     }else if(pathname ==="/home" || pathname ==="/"){
         entries = allEntries1;
     }
+    console.log(entries);
     return (
         <div className={"cards-filter-con"}>
             <div className={"cards-con"}>
-                { entries && entries.reverse().map((entry) => {
+                { entries && entries.slice().reverse().map((entry) => {
                     return <UserCard key={entry[0]} room={entry[1]} roomID={entry[0]}/>
                 })}
             </div>
