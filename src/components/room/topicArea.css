@@ -108,3 +108,8 @@
         text-indent: 0 !important;
     }
 }
+
+.gender-icons{
+    display: flex;
+    flex-direction: row;
+}
