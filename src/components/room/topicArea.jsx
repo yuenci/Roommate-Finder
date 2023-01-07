@@ -77,11 +77,13 @@ export function TopicArea(props) {
                 }
                 {data.gender === "Any" &&
                     <div className="gender">
-                        <div className="icon-con">
-                            <IconMan className={"room-topic-icon"}/>
-                        </div>
-                        <div className="icon-con">
-                            <IconWoman className={"room-topic-icon"}/>
+                        <div className="gender-icons">
+                            <div className="icon-con">
+                                <IconMan className={"room-topic-icon"}/>
+                            </div>
+                            <div className="icon-con">
+                                <IconWoman className={"room-topic-icon"}/>
+                            </div>
                         </div>
                         {data.gender}</div>
                 }
