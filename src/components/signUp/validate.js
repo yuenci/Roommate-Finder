@@ -23,7 +23,7 @@ export async function ifAllValid(name,phoneAreaCode,phone,email,password){
 
     // if phoneAreaCode is two digits
     if (phoneAreaCode.length !== 2) {
-        console.log(phoneAreaCode.length);
+        //console.log(phoneAreaCode.length);
         Notification.error({
             title: 'Error',
             content: 'Please enter a valid phone area code',

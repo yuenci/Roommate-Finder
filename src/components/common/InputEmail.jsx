@@ -14,7 +14,7 @@ export function InputEmail(props){
             setEmailError("");
         } else {
             setEmailError("error");
-            console.log("email is not valid");
+            //console.log("email is not valid");
         }
         return res;
     }

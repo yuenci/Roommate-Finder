@@ -119,7 +119,7 @@ export function detectLoginExpire() {
     if (localStorage.getItem("keepLogin") === "true") {
         res =  now - expireTime > 1000 * 60 * 60 * 24 * 7;
     }else{
-        res =  now - expireTime > 1000 * 60 * 60 * 24 * 1;
+        res =  now - expireTime > 1000 * 60 * 60 * 24;
     }
     // console.log( now - expireTime )
     if(res === true){
@@ -153,7 +153,7 @@ export async function addOneToRoomsNum(){
 
 export async function writeNewPost(data, roomID) {
     let fbStore = StatusContainer.fireBaseStore;
-    console.log("roomID", roomID);
+    //console.log("roomID", roomID);
 
 
     if(roomID === ""){

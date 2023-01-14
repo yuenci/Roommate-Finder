@@ -7,6 +7,7 @@ import {IconFilter} from "@arco-design/web-react/icon";
 import "./userCard.css";
 import {Filter} from "./filter.jsx";
 import { useLocation } from 'react-router-dom';
+import {Analysis} from "../../firebase/analysis.js";
 
 
 export function CardsContainer() {
@@ -29,6 +30,9 @@ export function CardsContainer() {
     let searchEntries = Object.entries(StatusContainer.currentSearchRoomsData);
 
     function filter() {
+        if(!filterVisible){
+            new Analysis().logEvent("filter_show");
+        }
         setFilterVisible(!filterVisible);
     }
     const {pathname} = useLocation();
@@ -39,7 +43,7 @@ export function CardsContainer() {
     }else if(pathname ==="/home" || pathname ==="/"){
         entries = allEntries1;
     }
-    console.log(entries);
+    //console.log(entries);
     return (
         <div className={"cards-filter-con"}>
             <div className={"cards-con"}>

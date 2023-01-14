@@ -66,7 +66,7 @@ export function Filter() {
             priceRange: priceRange,
         }
         let queries = getWhereConditions(data);
-        console.log("queries", queries);
+        //console.log("queries", queries);
 
         let simpleQueries = queries[0];
 
@@ -84,7 +84,7 @@ export function Filter() {
 
 
         StatusContainer.currentSearchRoomsData = filterPriceAndMoveInDate(res, queries[1]);
-        console.log("search result", StatusContainer.currentSearchRoomsData);
+        //console.log("search result", StatusContainer.currentSearchRoomsData);
 
         navigate("/home/search");
 

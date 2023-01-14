@@ -6,6 +6,7 @@ import {avatarMaxSize} from "../../config.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import {FBAuth} from "../../firebase/authHandler.js";
 import {captionFirstCharToUpper} from "../../tools/dataTools.js";
+import {Analysis} from "../../firebase/analysis.js";
 
 export default function ProfileMainHeader(props) {
     const {user,showModal} = props;
@@ -34,6 +35,8 @@ export default function ProfileMainHeader(props) {
     let avatarfile = null;
 
     function uploadAvatar(){
+        new Analysis().logEvent("profileSetting_uploadAvatar");
+
         fileInputRef.current.click();
     }
     

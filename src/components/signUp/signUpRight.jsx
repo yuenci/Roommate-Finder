@@ -10,6 +10,7 @@ import {ifAllValid} from "./validate.js";
 import {pinCodeStr} from "../../config.js";
 import {setLoginExpireTime} from "../../tools/dataTools.js";
 import  {FBAuth} from "../../firebase/authHandler.js";
+import {Analysis} from "../../firebase/analysis.js";
 
 export function SignUpRight() {
     const [page, setPage] = useState('signUpForm');
@@ -58,9 +59,9 @@ export function SignUpRight() {
                     title: 'Error',
                     content: 'Pin code is not correct',
                 });
-                console.log("pin code is not correct", `[${pinCode}]`);
+                //console.log("pin code is not correct", `[${pinCode}]`);
             }
-
+            new Analysis().logEvent("sign_up_submit");
         }
     }
     async function registerUser(){
