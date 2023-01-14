@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Button, Message} from '@arco-design/web-react';
+import {Modal, Message} from '@arco-design/web-react';
 export function ModalForContent(props) {
     const {visible, setVisible, user} = props;
 
@@ -13,7 +13,7 @@ export function ModalForContent(props) {
     }
 
     function handleOk() {
-        console.log('ok');
+        //console.log('ok');
         // copy user phone to clipboard
         navigator.clipboard.writeText(user.phone)
         Message.success('Phone number copied to clipboard')
@@ -26,7 +26,7 @@ export function ModalForContent(props) {
             visible={visible}
             footer={null}
             onCancel={() => {
-                console.log("cancel");
+                //console.log("cancel");
                 setVisible(false);
             }}
         >

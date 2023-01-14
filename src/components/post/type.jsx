@@ -10,7 +10,7 @@ export function Type(props) {
     // true means have room, offer room
     function onChange(value) {
         // find value in options
-        console.log(value);
+        //console.log(value);
         if (value === "a") {
             props.setType(false);
         } else {

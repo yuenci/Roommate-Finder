@@ -4,9 +4,9 @@ import { initializeApp } from "firebase/app";
 import {getAnalytics,logEvent } from "firebase/analytics";
 import {firebaseConfig} from "./config.js";
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-logEvent(analytics, 'page_view');
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+//logEvent(analytics, 'page_view');
 
 export class Analysis {
     constructor() {

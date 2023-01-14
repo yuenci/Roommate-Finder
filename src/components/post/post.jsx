@@ -23,6 +23,7 @@ import {
 } from "../../tools/dataTools.js";
 import {useNavigate,useLocation } from "react-router-dom";
 import {FBAuth} from "../../firebase/authHandler.js";
+import {Analysis} from "../../firebase/analysis.js";
 
 export function Post() {
     const [topic, setTopic] = useState("");
@@ -40,6 +41,8 @@ export function Post() {
     // let currentRoom = StatusContainer.currentRoomData;
     // //console.log(currentRoom);
 
+    new Analysis().logEvent("post_enter");
+
 
     const {pathname} = useLocation();
     const regex = /^\/modify\/\d+/;
@@ -55,7 +58,7 @@ export function Post() {
         if (!isModify) return;
         roomID = pathname.split("/")[2];
         StatusContainer.fireBaseStore.readDocument("rooms", roomID).then((res) => {
-            console.log(res);
+            //console.log(res);
             setTopic(res.topic);
             setType(res.type);
             setApartment(res.apartment);
@@ -111,6 +114,8 @@ export function Post() {
                 content: res,
             })
         }
+
+        new Analysis().logEvent("post_submit");
     }
 
     return (

@@ -2,10 +2,13 @@ import { Header } from "../common/Header/header.jsx";
 import "./about.css";
 import AvatarCard from "./avatarCard.jsx";
 import {teamInfo,productInfo} from "./teamInfo.js";
+import {Analysis} from "../../firebase/analysis.js";
 
 // import "../../index.css";
 
 export function About() {
+    new Analysis().logEvent("about_enter");
+
     return (
         <div>
             <Header />

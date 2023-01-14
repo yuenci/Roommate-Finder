@@ -5,6 +5,7 @@ import ProfileMain from "./profileMain";
 import ProfileSetting from "./profileSetting";
 import {useNavigate} from "react-router-dom";
 import {FBAuth} from "../../firebase/authHandler.js";
+import {Analysis} from "../../firebase/analysis.js";
 
 
 export function Profile(){
@@ -19,6 +20,14 @@ export function Profile(){
         }
     },[]);
 
+    function modalClose() {
+        new Analysis().logEvent("profileSetting_enter");
+        setVisible2(false);
+    }
+
+
+    new Analysis().logEvent("profile_enter");
+
     return (
         <div>
             <ProfileMain showModal={setVisible2}/>
@@ -26,9 +35,7 @@ export function Profile(){
                 title='Settings'
                 visible={visible2}
                 footer={null}
-                onCancel={() => {
-                    setVisible2(false);
-                }}
+                onCancel={modalClose}
             >
                 <ProfileSetting setVisible={setVisible2}/>
             </Modal>

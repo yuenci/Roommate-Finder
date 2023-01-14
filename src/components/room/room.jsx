@@ -10,6 +10,7 @@ import {StatusContainer} from "../../StatusContainer.js";
 import enUS from '@arco-design/web-react/es/locale/en-US';
 import ModifyToolBar from "./modifyToolBar";
 import {FBAuth} from "../../firebase/authHandler.js";
+import {Analysis} from "../../firebase/analysis.js";
 
 
 export function Room() {
@@ -26,6 +27,8 @@ export function Room() {
         }
 
     }, [roomID]);
+
+    new Analysis().logEvent("room_enter", {roomID: roomID});
 
 
     //  redirect to home page if roomID is not found

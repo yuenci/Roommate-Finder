@@ -27,7 +27,7 @@ export function uploadImageWithRandomName(name,file) {
                 });
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
                 reject(error);
             });
     });

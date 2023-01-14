@@ -4,6 +4,7 @@ import {Button, Message, Modal} from '@arco-design/web-react';
 import {StatusContainer} from "../../StatusContainer.js";
 import {initAllRoomsData} from "../../tools/dataTools.js";
 import {  useNavigate } from 'react-router-dom';
+import {Analysis} from "../../firebase/analysis.js";
 
 export default function ModifyToolBar(props) {
 
@@ -11,10 +12,11 @@ export default function ModifyToolBar(props) {
     const navigate = useNavigate();
 
     function deleteRoom(){
+        new Analysis().logEvent("room_delete", {roomID: roomID});
         StatusContainer.fireBaseStore.delete("rooms",roomID).then(
             ()=>{
                 Message.success('Delete successfully')
-                initAllRoomsData().then(r => {
+                initAllRoomsData().then(() => {
                     setTimeout(()=>navigate("/home"),1000)
                 })
             }
@@ -22,6 +24,7 @@ export default function ModifyToolBar(props) {
     }
 
     function goToModifyPage(){
+        new Analysis().logEvent("room_modify", {roomID: roomID});
         navigate(`/modify/${roomID}`);
     }
 
