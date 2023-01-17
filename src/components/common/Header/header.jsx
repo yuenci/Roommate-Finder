@@ -21,9 +21,9 @@ export function Header() {
         navigate("/post");
     }
 
-    function goToAbout() {
-        navigate("/about");
-    }
+    // function goToAbout() {
+    //     navigate("/about");
+    // }
 
     function goToLogin() {
         navigate("/login");
@@ -44,7 +44,7 @@ export function Header() {
             </div>
             <nav className="nav-links">
                 <div className={linkClassName} onClick={goToPost}>Post</div>
-                <div className={linkClassName} onClick={goToAbout}>About</div>
+                {/*<div className={linkClassName} onClick={goToAbout}>About</div>*/}
                 {ifLogin()
                     ? <div className={linkClassName} onClick={goToProfile}>Profile</div>
                     : <div className={linkClassName} onClick={goToLogin}>Login</div>
