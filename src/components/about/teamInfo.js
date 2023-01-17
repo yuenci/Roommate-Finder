@@ -1,7 +1,7 @@
 export const  teamInfo = {
     "Innis": {
         "name": "Innis",
-        "post": "Funder & CTO",
+        "post": "Founder & Chief technology officer",
         "desc": "Co-founder, full-stack engineer and architect, lead the development team",
         "github": "https://github.com/yuenci",
         "twitter": "",
@@ -28,8 +28,8 @@ export const  teamInfo = {
     },
     "Marco": {
         "name": "Marco",
-        "post": "Funder & CEO",
-        "desc": "Co-founder, CEO, responsible for the overall management of the product",
+        "post": "Founder & Chief Everything Officer",
+        "desc": "Co-founder, Business team leader, responsible for the management of the product",
         "github": "https://github.com/marcofernandioo",
         "twitter": "",
         "email": "",

@@ -48,7 +48,7 @@ export function LoginRight() {
         <div className="login-container-right">
             <h1 className="hello">Hello Again!</h1>
             <InputEmail email={email} setEmail={setEmail}/>
-            <Input.Password defaultValue='' className="input" onChange={passwordOnChange}/>
+            <Input.Password defaultValue='' className="input" onChange={passwordOnChange} placeholder={"Password"}/>
             <div className={"login-container-middle"}>
                 <Checkbox className={"remember"} onChange={setRememberMe}>Remember me</Checkbox>
                 <div className="recovery">Recovery password</div>

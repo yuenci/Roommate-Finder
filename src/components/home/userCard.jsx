@@ -1,16 +1,15 @@
 import "./userCard.css"
-import {useState} from "react";
-import {ModalForContent} from "./modal.jsx";
+// import {useState} from "react";
+
 import {useNavigate} from "react-router-dom";
-import {Home} from "./home.jsx";
-import {Room} from "../room/room.jsx";
-import {stampToDateStr} from "../../tools/dataTools.js";
+
+import { timeStampToDateStr} from "../../tools/dataTools.js";
 
 export function UserCard(props) {
     const {room,roomID} = props;
     // console.log(room)
 
-    const [visible, setVisible] = useState(false);
+    //const [visible, setVisible] = useState(false);
 
     const navigate = useNavigate();
 
@@ -34,7 +33,7 @@ export function UserCard(props) {
                     }
                 </div>
                 <div className="content">{room.description}</div>
-                <div className="time">{stampToDateStr(room.postTimeStamp)}</div>
+                <div className="time">{timeStampToDateStr(room.postTimeStamp)}</div>
             </div>
         </div>
     )

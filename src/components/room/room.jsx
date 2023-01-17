@@ -115,7 +115,7 @@ export function Room() {
                     focusLock={true}
                 >
                     <p>
-                        You haven't logged in yet. Do you want to go to the login page?
+                        You haven’t logged in yet, please login to continue.
                     </p>
                 </Modal>
             </ConfigProvider>

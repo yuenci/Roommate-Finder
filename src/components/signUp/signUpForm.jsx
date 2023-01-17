@@ -32,7 +32,7 @@ export function SignUpForm(props) {
             </div>
             <InputEmail className="input-signup" email={props.email} setEmail={props.setEmail}/>
             {/*<SelectUniversity setUniversity={props.setUniversity}/>*/}
-            <Input.Password defaultValue='' className="input" onChange={props.setPassword}/>
+            <Input.Password defaultValue='' className="input" onChange={props.setPassword} placeholder={"Password"}/>
         </div>
     )
 }
