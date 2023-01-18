@@ -5,7 +5,6 @@ import {Analysis} from "../../firebase/analysis.js";
 
 export function SignUp(){
     new Analysis().logEvent("signUp_enter");
-    sa_event("signUp_enter");
 
     return(
         <div className="login-container">

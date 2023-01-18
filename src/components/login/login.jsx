@@ -8,7 +8,6 @@ import {Analysis} from "../../firebase/analysis.js";
 export function Login() {
     // initAllUsersData();
     new Analysis().logEvent("login_enter");
-    sa_event("login_enter");
     return (
             <div>
                 <div className="login-container">

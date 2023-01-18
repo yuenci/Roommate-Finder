@@ -1,0 +1,196 @@
+.landing__container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.lading__hero,.lading__about{
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    margin-bottom: 100px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.lading__about{
+    flex-wrap:wrap-reverse;
+}
+.lading__hero__left,.lading__about__right{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 600px;
+}
+.lading__hero__left__title{
+    font-size: 3.5rem;
+    color: #000;
+    margin-bottom: 30px;
+}
+.lading__hero__left__subtitle{
+    font-size: 1.5rem;
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.lading__hero__left__button{
+    background-color: #8c54a1;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-top: 30px;
+}
+
+.lading__about__right{
+    align-items:center;
+}
+
+.lading__about__left__title{
+    font-size: 3.5rem;
+    color: #000;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+.lading__about__right__text{
+    font-size: 1.5rem;
+    color: #000;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+
+.lading__question__title, .lading__contact__title{
+    font-size: 3rem;
+    color: #000;
+    text-align: center;
+}
+
+.lading__contact{
+    text-align: center;
+}
+
+.lading__contact__subtitle{
+    font-size: 1.5rem;
+    color: #000;
+    margin-bottom: 30px;
+}
+.lading__contact__form{
+    width: 440px;
+    margin: 0 auto;
+    position: relative;
+    border: 2px solid  #e2eef0;
+    /*box-sizing: border-box;*/
+    padding: 20px ;
+    background-color: #f9fcfc;
+    border-radius: 5px;
+}
+.lading__contact__form input{
+    width: 400px;
+    margin-bottom: 20px;
+    border-color: #e2eef0 !important;
+    border-width: 2px !important;
+    height: 40px;
+    color: #555;
+    font-weight: normal;
+    padding: 5px;
+}
+.lading__contact__form textarea{
+    width: 400px;
+    margin-bottom: 20px;
+    border-color: #e2eef0 !important;
+    border-width: 2px !important;
+    resize: none;
+    height: 100px;
+    color: #555;
+    font-weight: normal;
+    padding: 5px;
+}
+
+.lading__contact__form__button{
+    background-color: #f83877;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.lading__contact__form div{
+    text-align: left;
+    font-weight: bold;
+}
+
+
+
+.lading__final{
+    text-align: center;
+}
+
+.lading__final__text{
+    font-size: 1.5rem;
+    color: #000;
+    margin-top: 60px;
+}
+
+.lading__final__button{
+    background-color: #165dff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-top: 30px;
+    color: white;
+}
+
+@media only screen and (max-width: 1380px) {
+    .lading__hero__left,.lading__about__right{
+        width: 100%;
+    }
+
+    .lading__about__left__title{
+        margin-left: 0;
+    }
+    .lading__about__right__text{
+        margin-left: 0;
+    }
+
+    .lading__about__right{
+        align-items:flex-start;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .lading__hero,.lading__about{
+        margin-top: 0;
+    }
+    .lading__hero,.lading__about{
+        margin-bottom: 0;
+    }
+    .nav-links-landing{
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .landing__container{
+        width: 97%;
+    }
+    .lading__contact__form{
+        width: 97%;
+    }
+
+    .lading__contact__form input{
+        width: 95%;
+    }
+
+    .lading__contact__form textarea{
+        width: 95%;
+    }
+}

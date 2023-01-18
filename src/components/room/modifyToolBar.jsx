@@ -13,7 +13,6 @@ export default function ModifyToolBar(props) {
 
     function deleteRoom(){
         new Analysis().logEvent("room_delete", {roomID: roomID});
-        sa_event("room_delete", {roomID: roomID});
         StatusContainer.fireBaseStore.delete("rooms",roomID).then(
             ()=>{
                 Message.success('Delete successfully')
@@ -26,7 +25,6 @@ export default function ModifyToolBar(props) {
 
     function goToModifyPage(){
         new Analysis().logEvent("room_modify", {roomID: roomID});
-        sa_event("room_modify", {roomID: roomID});
         navigate(`/modify/${roomID}`);
     }
 

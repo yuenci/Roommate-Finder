@@ -19,7 +19,6 @@ function App() {
     // get the data from firebase
 
     new Analysis().logEvent("app_start");
-    sa_event("app_start");
 
     return (
         <Router>
