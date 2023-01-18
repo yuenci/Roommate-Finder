@@ -36,6 +36,7 @@ export default function ProfileMainHeader(props) {
 
     function uploadAvatar(){
         new Analysis().logEvent("profileSetting_uploadAvatar");
+        sa_event("profileSetting_uploadAvatar");
 
         fileInputRef.current.click();
     }

@@ -42,6 +42,7 @@ export function Post() {
     // //console.log(currentRoom);
 
     new Analysis().logEvent("post_enter");
+    sa_event("post_enter");
 
 
     const {pathname} = useLocation();
@@ -116,6 +117,7 @@ export function Post() {
         }
 
         new Analysis().logEvent("post_submit");
+        sa_event("post_submit");
     }
 
     return (

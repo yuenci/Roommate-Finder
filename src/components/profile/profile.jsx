@@ -22,11 +22,13 @@ export function Profile(){
 
     function modalClose() {
         new Analysis().logEvent("profileSetting_enter");
+        sa_event("profileSetting_enter");
         setVisible2(false);
     }
 
 
     new Analysis().logEvent("profile_enter");
+    sa_event("profile_enter");
 
     return (
         <div>
