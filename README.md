@@ -77,3 +77,8 @@ import { ReactComponent as Logo } from "./logo.svg";
 ```bash
 $ npm install firebase
 ```
+
+## pageClip
+```bash
+npm install --save pageclip
+```
