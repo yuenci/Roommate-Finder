@@ -3,15 +3,20 @@ import "./about.css";
 import AvatarCard from "./avatarCard.jsx";
 import {teamInfo,productInfo} from "./teamInfo.js";
 import {Analysis} from "../../firebase/analysis.js";
+import {FBAuth} from "../../firebase/authHandler.js";
 
 // import "../../index.css";
 
 export function About() {
     new Analysis().logEvent("about_enter");
 
+    function  ifLogin() {
+        return new FBAuth().auth.currentUser;
+    }
+
     return (
         <div>
-            <Header />
+            { ifLogin() ? <Header type="about"/> : <Header type="landing"/>}
             <div className={"about-con"}>
                 <div>
                     <div className={"text-4xl about-title"}>🤠 Team</div>

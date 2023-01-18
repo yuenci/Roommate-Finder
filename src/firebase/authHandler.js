@@ -1,15 +1,12 @@
 import { initializeApp } from "firebase/app";
 import {
     getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword,
-    sendPasswordResetEmail, updateProfile, updatePassword, deleteUser, reauthenticateWithCredential, EmailAuthProvider
+    sendPasswordResetEmail, updateProfile, updatePassword, deleteUser, reauthenticateWithCredential, EmailAuthProvider,onAuthStateChanged
 }
     from "firebase/auth";
 import {firebaseConfig} from "./config.js";
 
 
-// for npm
-// import { initializeApp } from 'firebase/app'
-// import { getAuth, sendSignInLinkToEmail, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 
 export class FBAuth {
     constructor() {
@@ -196,6 +193,20 @@ export class FBAuth {
             if (this.debug) console.log(prompt);
             reject(prompt);
         }
+    }
+
+    getCurrentUser() {
+        return new Promise((resolve, reject) => {
+            onAuthStateChanged(this.auth, (user) => {
+                if (user) {
+                    if (this.debug) console.log("user logged in");
+                    resolve(user);
+                } else {
+                    if (this.debug) console.log("user not logged in");
+                    reject(null);
+                }
+            });
+        });
     }
 }
 
