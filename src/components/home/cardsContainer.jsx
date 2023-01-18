@@ -32,6 +32,7 @@ export function CardsContainer() {
     function filter() {
         if(!filterVisible){
             new Analysis().logEvent("filter_show");
+            sa_event("filter_show");
         }
         setFilterVisible(!filterVisible);
     }

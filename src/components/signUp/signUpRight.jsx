@@ -62,6 +62,7 @@ export function SignUpRight() {
                 //console.log("pin code is not correct", `[${pinCode}]`);
             }
             new Analysis().logEvent("sign_up_submit");
+            sa_event("sign_up_submit");
         }
     }
     async function registerUser(){

@@ -29,6 +29,7 @@ export function Room() {
     }, [roomID]);
 
     new Analysis().logEvent("room_enter", {roomID: roomID});
+    sa_event("room_enter", {roomID: roomID});
 
 
     //  redirect to home page if roomID is not found

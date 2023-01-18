@@ -9,6 +9,7 @@ import {FBAuth} from "../../firebase/authHandler.js";
 
 export function About() {
     new Analysis().logEvent("about_enter");
+    sa_event("about_enter");
 
     function  ifLogin() {
         return new FBAuth().auth.currentUser;
