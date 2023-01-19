@@ -82,3 +82,14 @@ $ npm install firebase
 ```bash
 npm install --save pageclip
 ```
+
+## emailjs
+```bash
+$ npm install @emailjs/browser --save
+## can use post method to send email, no need to use emailjs npm package
+```
+
+## axios
+```bash
+$ npm install axios
+```

@@ -324,3 +324,56 @@ export function getName(user) {
 export function getPhone(user) {
     return user.displayName.split("-")[1];
 }
+
+export function logEmailSendTimes(){
+    let record = localStorage.getItem("emailSendTimes");
+
+    //if record length is 14 and last number larger than 5, then return false
+    if(record !== null && record.length === 14 && Number(record[13]) > 5) return false;
+
+
+
+    // if exist
+    if(record !== null) {
+        let recordTimeStamps = Number(record.substring(0,13));
+        if(isToday(recordTimeStamps)){
+            console.log("is today");
+            // if today
+            writeTimes(getTodayTimes() + 1);
+            return true;
+        }else {
+            console.log("not today");
+            // if not today
+            writeTimes(1);
+            return true;
+        }
+    }else {
+    // if not exist
+        writeTimes(1);
+        return true;
+    }
+}
+function  getTodayTimes(){
+    let record = localStorage.getItem("emailSendTimes");
+    if(record === null) return false;
+
+    if(record.length !== 14) return false;
+
+    let num = Number(record[record.length - 1]);
+    console.log(num);
+
+    // get record last number
+    return num;
+}
+
+function writeTimes(times){
+    let dateTimeStamp = new Date().getTime();
+    let content = dateTimeStamp + "" + times ;
+    localStorage.setItem("emailSendTimes", content);
+}
+
+function isToday(timestamp) {
+    const today = new Date();
+    const date = new Date(timestamp);
+    return today.toDateString() === date.toDateString();
+}

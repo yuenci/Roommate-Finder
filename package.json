@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@arco-design/web-react": "^2.43.1",
+    "@emailjs/browser": "^3.10.0",
+    "axios": "^1.2.3",
     "firebase": "^9.15.0",
     "pageclip": "^1.0.0",
     "pubsub-js": "^1.9.4",

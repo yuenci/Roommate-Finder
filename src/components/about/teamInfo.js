@@ -32,7 +32,7 @@ export const  teamInfo = {
         "desc": "Co-founder, Business team leader, responsible for the management of the product",
         "github": "https://github.com/marcofernandioo",
         "twitter": "",
-        "email": "",
+        "email": "marcofernandioo@gmail.com",
         "tpNumber": "tp064881",
     },
     "Pheymin": {
