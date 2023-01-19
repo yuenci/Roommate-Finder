@@ -8,12 +8,19 @@
     margin: 0 auto;
 }
 
+.landing__container{
+    width: 100%;
+}
 
 .lading__hero,.lading__about{
     display: flex;
     flex-direction: row;
     margin-top: 60px;
     margin-bottom: 100px;
+    justify-content: flex-start;
+}
+.lading__hero{
+    flex-wrap: wrap;
 }
 
 .lading__final{
@@ -27,12 +34,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    height: 600px;
 }
+
+
 
 .lading__hero__left__title,.lading__about__left__title{
     font-size: 3.5rem;
     color: #000000;
     margin-bottom: 30px;
+    min-width: 470px;
 }
 
 .lading__about__left__title{
@@ -83,8 +94,14 @@
 }
 
 .lading__final__button{
-    background-color:#165dff
+    background-color:#165dff;
+
 }
 .lading__final__button:hover{
     background-color:#4080ff
+}
+
+.lading__hero__right,.lading__about__left{
+    width: 40%;
+    height: 100%;
 }
