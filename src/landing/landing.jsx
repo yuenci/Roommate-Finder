@@ -97,7 +97,7 @@ export default function Landing() {
                 </div>
                 <div className="lading__contact">
                     <h1 className={"lading__contact__title"}>Contact Us</h1>
-                    <div className={"lading__contact__subtitle"}>Have a Question or Concern? We’re Just One Message Away
+                    <div className={"lading__contact__subtitle"}>Have a Question or Concern? We're Just One Message Away
                     </div>
                     <div className={"lading__contact__form"}>
                         <div>
@@ -120,6 +120,7 @@ export default function Landing() {
                     </div>
                     <button className={"lading__final__button"} onClick={goToHome}>Let’s Start</button>
                 </div>
+                <div className={"text-center"}>{`© MIZ ${new Date().getFullYear()} Made with ❤️`}</div>
             </div>
         </div>
     )
