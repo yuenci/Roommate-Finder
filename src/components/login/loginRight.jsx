@@ -16,6 +16,13 @@ export function LoginRight() {
         setPassword(value);
     }
 
+    function  keyUpHandler(e){
+        if(e.key === "Enter"){
+            loginOnClick();
+            //console.log("enter");
+        }
+    }
+
 
     async function loginOnClick() {
         // if email format is  valid
@@ -53,7 +60,7 @@ export function LoginRight() {
             <img src="/logo.png" alt={"logo"} className={"login-logo"} onClick={goToLanding}/>
             <h1 className="hello">Hello Again!</h1>
             <InputEmail email={email} setEmail={setEmail}/>
-            <Input.Password defaultValue='' className="input" onChange={passwordOnChange} placeholder={"Password"}/>
+            <Input.Password defaultValue='' className="input" placeholder={"Password"} onChange={passwordOnChange} onKeyUp={keyUpHandler} />
             <div className={"login-container-middle"}>
                 <Checkbox className={"remember"} onChange={setRememberMe}>Remember me</Checkbox>
                 <div className="recovery">Recovery password</div>
@@ -61,7 +68,7 @@ export function LoginRight() {
 
             <Button type='primary' className="login-btn" onClick={loginOnClick}>Login</Button>
             <div className="login-container-bottom">
-                <span className="account-text">Don't have an account?</span>
+                <span className="account-text" >Don't have an account?</span>
                 <Link to="/signup">
                     <span className="sign-up">Sign Up</span>
                 </Link>
