@@ -43,7 +43,8 @@ export default function Landing() {
             Message.error("Message cannot be empty");
             return;
         }
-        console.log(email, message);
+        //console.log(email, message);
+        setLoading1(true);
 
         axios.post("https://emailproxy.azurewebsites.net/api/httptrigger1", data).then(
             (res) => {
