@@ -44,6 +44,13 @@ export function CardsContainer() {
         entries = allEntries1;
     }
     //console.log(entries);
+
+    // get screen height
+    const screenHeight = document.documentElement.clientHeight;
+    const filterConTop = {
+        top: screenHeight - 70+ "px"
+    }
+
     return (
         <div className={"cards-filter-con"}>
             <div className={"cards-con"}>
@@ -54,7 +61,7 @@ export function CardsContainer() {
             <div className={"filter-icon-con"}>
                 <Button shape='circle' type='primary' icon={<IconFilter />}  className={"filter-icon"} onClick={filter}  />
             </div>
-            <div className={"filter-con"}>
+            <div style={filterConTop} className={"filter-con"}>
                 {filterVisible && <Filter/>}
             </div>
         </div>
