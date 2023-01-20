@@ -43,9 +43,14 @@ export function LoginRight() {
         return error.split("/")[1].replace(")","");
     }
 
+    function goToLanding() {
+        navigate("/");
+    }
+
 
     return (
         <div className="login-container-right">
+            <img src="/logo.png" alt={"logo"} className={"login-logo"} onClick={goToLanding}/>
             <h1 className="hello">Hello Again!</h1>
             <InputEmail email={email} setEmail={setEmail}/>
             <Input.Password defaultValue='' className="input" onChange={passwordOnChange} placeholder={"Password"}/>

@@ -1,21 +1,15 @@
-import {Notification} from "@arco-design/web-react";
+import {Message} from "@arco-design/web-react";
 import {isNumber, isOnlyContainLetterAndSpace, validateTPEmail} from "../../tools/dataTools.js";
 
 export async function ifAllValid(name,phoneAreaCode,phone,email,password){
     if (name === ''  || phone === '' ||phoneAreaCode==="" || email === '' || password === '') {
-        Notification.error({
-            title: 'Error',
-            content: 'Please fill all the blanks',
-        });
+        Message.error('Please fill all the blanks');
         return false;
     }
 
     // email format check
     if (!validateTPEmail(email)) {
-        Notification.error({
-            title: 'Error',
-            content: 'Please enter a valid TP email address',
-        });
+        Message.error('Please enter a valid TP email address');
         return false;
     }
 
@@ -24,28 +18,19 @@ export async function ifAllValid(name,phoneAreaCode,phone,email,password){
     // if phoneAreaCode is two digits
     if (phoneAreaCode.length !== 2) {
         //console.log(phoneAreaCode.length);
-        Notification.error({
-            title: 'Error',
-            content: 'Please enter a valid phone area code',
-        });
+        Message.error('Please enter a valid phone area code');
         return false;
     }
 
     // if phone number is number
     if (!isNumber(phoneAreaCode + phone)) {
-        Notification.error({
-            title: 'Error',
-            content: 'Please enter a valid phone number',
-        });
+        Message.error('Please enter a valid phone number');
         return false;
     }
 
     // name just contains letters and spaces
     if (!isOnlyContainLetterAndSpace(name)) {
-        Notification.error({
-            title: 'Error',
-            content: 'Please enter a valid name',
-        });
+        Message.error('Please enter a valid name');
         return false;
     }
 
