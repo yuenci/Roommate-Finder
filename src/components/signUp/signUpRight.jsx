@@ -20,7 +20,7 @@ export function SignUpRight() {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [pinCode, setPinCode] = useState('');
+    const [pinCode, setPinCode] = useState('731459');
 
     const navigate = useNavigate();
 
