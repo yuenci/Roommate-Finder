@@ -6,7 +6,12 @@ export default function BedroomNum(props) {
 
     function onChange(value) {
         //console.log(value);
-        props.setBedroomNum(value);
+        if (value <1 ) {
+        props.setBedroomNum(1);}
+
+        if (value > 6){
+            props.setBedroomNum(6);
+        }
     }
 
     let currentRoom = StatusContainer.currentRoomData;

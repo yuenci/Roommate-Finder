@@ -105,15 +105,17 @@ export default function Landing() {
                     <div className={"lading__about__right"}>
                         <div>
                             <div className={"lading__about__left__title"}>Now You Can</div>
-                            <div className={"lading__about__right__text"}><Check />Easily find people who wants to rent an
-                                apartment
-                                with
-                                you.
+                            <div className={"lading__about__right__text"}>
+                                <div><Check /></div>
+                                <div>Easily find people who wants to rent an apartment with you.</div>
                             </div>
-                            <div className={"lading__about__right__text"}><Check />Conveniently find available units for you to
-                                rent.
+                            <div className={"lading__about__right__text"}>
+                                <div><Check /></div>
+                                <div>Conveniently find available units for you to rent. dwdasdasdsadasasdasd</div>
                             </div>
-                            <div className={"lading__about__right__text"}><Check />Discover people who wants to rent the extra room in your unit.
+                            <div className={"lading__about__right__text"}>
+                                <div><Check /></div>
+                                <div>Discover people who wants to rent the extra room in your unit.</div>
                             </div>
                         </div>
                     </div>
