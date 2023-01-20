@@ -23,7 +23,7 @@ export function InputEmail(props){
         <div>
             {emailError === "error"
                 ? <Input error
-                         className="input" allowClear placeholder='Email'
+                         className="input" allowClear placeholder='TP Email'
                          onChange={emailOnChange}
                          onBlur={changeEmailError}
                 />

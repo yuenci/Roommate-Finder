@@ -1,6 +1,6 @@
 export const pinCodeStr = "731459";
 
-export const imageMaxSize = 1024 *1024; // bytes
+export const imageMaxSize = 1024 *1024 *10; // bytes
 
 export const avatarMaxSize = 1024 * 1024 * 3; // bytes
 
