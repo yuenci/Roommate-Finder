@@ -6,7 +6,7 @@ import {useState} from "react";
 import axios from "axios";
 import { ReactComponent as Check } from "./check.svg";
 import QuestionCard from "./questionCard.jsx";
-import {Message} from "@arco-design/web-react";
+import {Button, Message} from "@arco-design/web-react";
 import {logEmailSendTimes, validateEmail} from "../tools/dataTools.js";
 
 
@@ -14,6 +14,7 @@ export default function Landing() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
+    const [loading1, setLoading1] = useState(false);
 
     function goToHome() {
         navigate("/home");
@@ -25,7 +26,6 @@ export default function Landing() {
             email: email,
             message: message
         }
-
 
 
         if(!logEmailSendTimes()){
@@ -48,7 +48,10 @@ export default function Landing() {
 
         axios.post("https://emailproxy.azurewebsites.net/api/httptrigger1", data).then(
             (res) => {
-                if(res.data.status === "200") Message.success("Message sent successfully, \nwe will get back to you soon!");
+                if(res.data.status === "200") {
+                    setLoading1(false);
+                    Message.success("Message sent successfully, \nwe will get back to you soon!");
+                }
             }
         )
         //Message.success("Message sent successfully, \nwe will get back to you soon!");
@@ -143,7 +146,12 @@ export default function Landing() {
                                       onFocus={focusHandler}
                             />
                         </div>
-                        <button className={"lading__contact__form__button"} onClick={sentMessage}>Let Us Know</button>
+                        <Button type='primary'
+                                className={"lading__contact__form__button"}
+                                loading={loading1}
+                                onClick={sentMessage}
+                        >Let Us Know</Button>
+                        {/*<button className={"lading__contact__form__button"} onClick={sentMessage}>Let Us Know</button>*/}
                     </div>
 
 
