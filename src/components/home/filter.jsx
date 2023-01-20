@@ -8,16 +8,16 @@ import {useNavigate} from "react-router-dom";
 import {apartments} from "../../config.js";
 
 export function Filter() {
-    const filterCSS = {
-        marginTop: "40px",
-        width: "250px",
-        height: "620px",
-        boxShadow: "0 0 5px 0 rgba(0,0,0,0.1)",
-        boxSizing: "border-box",
-        padding: "20px 10px",
-        marginLeft: "20px",
-        borderRadius: "10px",
-    }
+    // const filterCSS = {
+    //     marginTop: "40px",
+    //     width: "250px",
+    //     height: "620px",
+    //     boxShadow: "0 0 5px 0 rgba(0,0,0,0.1)",
+    //     boxSizing: "border-box",
+    //     padding: "20px 10px",
+    //     marginLeft: "20px",
+    //     borderRadius: "10px",
+    // }
 
     const componentCSS = {
         marginBottom: "10px",
@@ -117,7 +117,7 @@ export function Filter() {
     }*/
 
     return (
-        <div style={filterCSS}>
+        <div className={"filterCSS"}>
             <div className={"post-title"}>
                 <span>Type</span>
                 <RadioGroup options={options1} className={"radios"} onChange={typeChange} />

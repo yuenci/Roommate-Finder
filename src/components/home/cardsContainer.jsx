@@ -51,10 +51,10 @@ export function CardsContainer() {
                     return <UserCard key={entry[0]} room={entry[1]} roomID={entry[0]}/>
                 })}
             </div>
-            <div>
+            <div className={"filter-icon-con"}>
                 <Button shape='circle' type='primary' icon={<IconFilter />}  className={"filter-icon"} onClick={filter}  />
             </div>
-            <div>
+            <div className={"filter-con"}>
                 {filterVisible && <Filter/>}
             </div>
         </div>
