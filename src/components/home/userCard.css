@@ -83,15 +83,52 @@
     right: -50px;
     top: 40px;
     position: absolute;
+    width: 30px !important;
+    height: 30px !important;
 
 }
+.filterCSS{
+    margin-top: 40px;
+    width: 250px;
+    height: 620px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    padding: 20px 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+@media screen  and (max-width: 1200px)  {
+    .cards-filter-con{
+        width: 80%;
+    }
+}
 
-@media screen  and (max-width: 600px)  {
+
+@media screen  and (max-width: 800px)  {
     .cards-filter-con{
         width: 95%;
+        flex-wrap: wrap-reverse;
+    }
+    .filter-icon-con{
+        width:100%;
+        text-align: right;
     }
 
     .filter-icon{
-        display: none;
+        /*width: 30px;*/
+        width: 32px !important;
+        position: static;
+        margin-top: 15px;
     }
+    .filter-con{
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .filterCSS{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
 }
