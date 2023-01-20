@@ -6,7 +6,7 @@ import {useState} from "react";
 import axios from "axios";
 import { ReactComponent as Check } from "./check.svg";
 import QuestionCard from "./questionCard.jsx";
-import {Button, Message} from "@arco-design/web-react";
+import {Message} from "@arco-design/web-react";
 import {logEmailSendTimes, validateEmail} from "../tools/dataTools.js";
 
 
@@ -19,17 +19,7 @@ export default function Landing() {
         navigate("/home");
     }
 
-    // function onClickBtn1() {
-    //     setLoading1(true);
-    //     setTimeout(() => {
-    //         setLoading1(false);
-    //     }, 4000);
-    // }
-
-    const [loading1, setLoading1] = useState(false);
-
     function sentMessage() {
-
 
         let data ={
             email: email,
@@ -58,11 +48,7 @@ export default function Landing() {
 
         axios.post("https://emailproxy.azurewebsites.net/api/httptrigger1", data).then(
             (res) => {
-                if(res.data.status === "200") {
-                    setLoading1(false);
-                    Message.success("Message sent successfully, \nwe will get back to you soon!");
-                }
-
+                if(res.data.status === "200") Message.success("Message sent successfully, \nwe will get back to you soon!");
             }
         )
         //Message.success("Message sent successfully, \nwe will get back to you soon!");
@@ -157,12 +143,7 @@ export default function Landing() {
                                       onFocus={focusHandler}
                             />
                         </div>
-                        <Button type='primary'
-                                className={"lading__contact__form__button"}
-                                    loading={loading1}
-                                    onClick={sentMessage}
-                        >Let Us Know</Button>
-                        {/*<button className={"lading__contact__form__button"} onClick={sentMessage}>Let Us Know</button>*/}
+                        <button className={"lading__contact__form__button"} onClick={sentMessage}>Let Us Know</button>
                     </div>
 
 

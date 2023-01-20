@@ -31,18 +31,3 @@
     }
 }
 
-@media screen  and (max-width: 600px)  {
-    .about-con{
-        width: 90%;
-        margin: 0 auto;
-        height: 100%;
-    }
-
-    .avatar{
-        width: 100% !important;
-    }
-
-    .avatar-desc{
-        height:  80px !important;
-    }
-}

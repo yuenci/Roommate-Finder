@@ -146,10 +146,10 @@
 }
 
 .lading__contact__form__button{
-    background-color: #f83877 !important;
+    background-color: #f83877;
     color: white;
-    /*padding: 10px 20px;*/
-    border-radius: 5px !important;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 .lading__contact__form div{
@@ -217,13 +217,6 @@
         object-fit: cover;
     }
 }
-@media only screen and (max-width:704px ) and (min-width: 600px) {
-    .lading__hero__left__button{
-        position: relative;
-        bottom: 40px;
-    }
-}
-
 
 @media only screen and (max-width: 600px) {
     .lading__hero,.lading__about{
@@ -253,12 +246,9 @@
     }
     .lading__hero__left__title{
         font-size: 2.5rem;
-        margin-top: 20px;
     }
     .lading__hero__left__button{
         margin-bottom: 10px;
-        position: relative;
-        bottom: 20px;
     }
     .lading__about__left__title{
         font-size: 2.5rem;
