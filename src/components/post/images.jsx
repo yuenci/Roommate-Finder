@@ -2,10 +2,10 @@ import "./post.css";
 import {Message, Upload} from "@arco-design/web-react";
 import {uploadImageWithRandomName} from "../../firebase/storageHandle.js";
 import {imageMaxSize} from "../../config.js";
-import {useState} from "react";
 import {StatusContainer} from "../../StatusContainer.js";
 
 export default function Images(props) {
+    /*
     let defaultFileList= [
         {
             uid: '1',
@@ -23,7 +23,7 @@ export default function Images(props) {
             url: 'https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/7d037102738da977583b616ea751f8198718e3f0.gif',
         }
     ];
-
+*/
     let defaultFileList2 = [];
 
     if(Object.keys(StatusContainer.currentRoomData).length !== 0){
@@ -70,7 +70,7 @@ export default function Images(props) {
 
                     if(file.size > imageMaxSize){
                         onError("size");
-                        Message.error("Image size should be less than 1MB");
+                        Message.error("Image size should be less than 10MB");
                         return;
                     }
                     uploadImageWithRandomName(file.name, options.file).then((url) => {
