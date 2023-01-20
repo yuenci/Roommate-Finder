@@ -123,8 +123,22 @@
         align-items: center;
         padding-bottom: 20px;
     }
+    .rooms-con{
+        width: 80%;
+    }
 
     .profile-username{
         margin: 10px 0;
+    }
+
+    .room-card-con-img{
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+    }
+    .room-card-con-text{
+        width: 100px;
+        height: 100px;
+        margin: 20px;
     }
 }
