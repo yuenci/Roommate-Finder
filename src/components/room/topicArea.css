@@ -97,6 +97,7 @@
         font-size: 20px;
         width: 90%;
         flex-wrap: wrap;
+        flex-direction: column;
     }
     .moveInRange{
         text-align: left;
@@ -104,8 +105,13 @@
     .tags{
         width: 90%;
     }
+
     .desc-text{
         text-indent: 0 !important;
+    }
+    .priceRange,.moveInRange{
+        width: 90%;
+        text-align: center;
     }
 }
 

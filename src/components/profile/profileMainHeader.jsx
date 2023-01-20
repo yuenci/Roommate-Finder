@@ -81,7 +81,7 @@ export default function ProfileMainHeader(props) {
                     src={avatarUrl}
                 />
             </Avatar>
-            <span className={"text-4xl"}>{currentUserName}</span>
+            <span className={"text-4xl profile-username"}>{currentUserName}</span>
             <IconSettings className={"text-4xl hover:cursor-pointer"} onClick={showModal}/>
             <input type="file" style={{display:"none"}} ref={fileInputRef} onChange={onFileChange}/>
         </div>

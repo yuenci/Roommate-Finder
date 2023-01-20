@@ -234,6 +234,7 @@
     }
     .nav-links-landing{
         margin: 0;
+        width: 250px;
     }
     .lading__hero__right,.lading__about__left{
         width: 100%;
