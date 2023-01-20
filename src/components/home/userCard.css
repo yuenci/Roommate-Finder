@@ -116,9 +116,16 @@
 
     .filter-icon{
         /*width: 30px;*/
-        width: 32px !important;
-        position: static;
-        margin-top: 15px;
+        width: 50px !important;
+        height: 50px !important;
+        top:calc(100vh - 70px) !important;
+        position: fixed;
+        right: 10px;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    }
+    .filter-icon svg{
+        width: 20px;
+        height: 20px;
     }
     .filter-con{
         width: 100%;
@@ -129,6 +136,10 @@
         width: 100%;
         margin-left: 0;
         margin-top: 0;
+    }
+
+    .cards-con> :first-child{
+        margin-top: 0 !important;
     }
 
 }
