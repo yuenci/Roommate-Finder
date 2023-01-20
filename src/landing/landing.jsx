@@ -2,7 +2,12 @@ import {Header} from "../components/common/Header/header.jsx";
 import "./landing1.css";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+
+import axios from "axios";
+import { ReactComponent as Check } from "./check.svg";
+import QuestionCard from "./questionCard.jsx";
 import {Message} from "@arco-design/web-react";
+import {logEmailSendTimes, validateEmail} from "../tools/dataTools.js";
 
 
 export default function Landing() {
@@ -15,9 +20,59 @@ export default function Landing() {
     }
 
     function sentMessage() {
+
+        let data ={
+            email: email,
+            message: message
+        }
+
+
+
+        if(!logEmailSendTimes()){
+            Message.error("Email sent failed");
+            return;
+        }
+
+
+        if(!validateEmail(email)){
+            Message.error("Invalid email");
+            return;
+        }
+
+        if(message === ""){
+            Message.error("Message cannot be empty");
+            return;
+        }
         console.log(email, message);
-        Message.success("Message sent successfully, \nwe will get back to you soon!");
+
+        axios.post("https://emailproxy.azurewebsites.net/api/httptrigger1", data).then(
+            (res) => {
+                if(res.data.status === "200") Message.success("Message sent successfully, \nwe will get back to you soon!");
+            }
+        )
+        //Message.success("Message sent successfully, \nwe will get back to you soon!");
     }
+
+    function blurHandler(e) {
+        // console.log("blur");
+        if (e.target.value === "") {
+            e.target.classList.add("border-error");
+        } else {
+            e.target.classList.remove("border-error");
+        }
+    }
+
+    function focusHandler(e) {
+        e.target.classList.remove("border-error");
+    }
+
+    let questions = ["What is APUFindRoommate?","How Can I Create a Room Listing?",
+    "How Do I Find Rooms/ Roommates?", "I Can’t Contact the Poster of the Listing, What Should I Do?"];
+
+    let answers = ["APUFindRoommate is a platform for us APU students to find and connect with potential roommates or accommodations near campus.",
+        "You should register as user before creating any room listing.",
+        "You can look for available listings of rooms in the “Find Room” button in the home page or by clicking the “APU Roommate Finder” in the navigation bar on top of the page.",
+        "You should register as user before contacting the poster of the listing."];
 
 
     return (
@@ -26,30 +81,35 @@ export default function Landing() {
             <div className={"landing__container"}>
                 <div className={"lading__hero"}>
                     <div className={"lading__hero__left"}>
-                        <div className={"lading__hero__left__title"}>Easily Find APU Student Housing with Us.</div>
+                        <div className={"lading__hero__left__title"}>Easily
+                            <span className={"lading__hero__left__title--purple"}>Find APU Student Housing</span>
+                            with Us.
+                        </div>
                         <div className={"lading__hero__left__subtitle"}>Say goodbye to endless search for rooms and
                             roommates
                         </div>
                         <button className={"lading__hero__left__button"} onClick={goToHome}>Find Rooms</button>
                     </div>
                     <div className={"lading__hero__right"}>
-                        <img src="https://picsum.photos/500/600" alt="product image" className="product__img"/>
+                        <img src="/landingPic1.png" alt="product image" className="product__img"/>
                     </div>
                 </div>
                 <div className={"lading__about"}>
                     <div className={"lading__about__left"}>
-                        <img src="https://picsum.photos/500/600" alt="product image" className="product__img"/>
+                        <img src="/landingPic2.png" alt="product image" className="product__img"/>
                     </div>
                     <div className={"lading__about__right"}>
                         <div>
                             <div className={"lading__about__left__title"}>Now You Can</div>
-                            <div className={"lading__about__right__text"}>Easily find people who wants to rent an apartment
+                            <div className={"lading__about__right__text"}><Check />Easily find people who wants to rent an
+                                apartment
                                 with
                                 you.
                             </div>
-                            <div className={"lading__about__right__text"}>Conveniently find available units for you to rent.
+                            <div className={"lading__about__right__text"}><Check />Conveniently find available units for you to
+                                rent.
                             </div>
-                            <div className={"lading__about__right__text"}>Conveniently find available units for you to rent.
+                            <div className={"lading__about__right__text"}><Check />Discover people who wants to rent the extra room in your unit.
                             </div>
                         </div>
                     </div>
@@ -57,42 +117,10 @@ export default function Landing() {
                 <div className={"lading__question"}>
                     <h1 className={"lading__question__title"}>Frequently Asked Questions</h1>
                     <div className={"lading__question__container"}>
-                        <div className={"lading__question__container__item"}>
-                            <div className={"lading__question__container__item__title"}>How to find a room?</div>
-                            <div className={"lading__question__container__item__text"}>Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nisl nisl aliquet
-                                nisl, nec aliquam nisl nisl sit amet lorem. Sed euismod, nunc vel tincidunt lacinia,
-                                nisl
-                                nisl aliquet nisl, nec aliquam nisl nisl sit amet lorem.
-                            </div>
-                        </div>
-                        <div className={"lading__question__container__item"}>
-                            <div className={"lading__question__container__item__title"}>How to find a roommate?</div>
-                            <div className={"lading__question__container__item__text"}>Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nisl nisl aliquet
-                                nisl, nec aliquam nisl nisl sit amet lorem. Sed euismod, nunc vel tincidunt lacinia,
-                                nisl
-                                nisl aliquet nisl, nec aliquam nisl nisl sit amet lorem.
-                            </div>
-                        </div>
-                        <div className={"lading__question__container__item"}>
-                            <div className={"lading__question__container__item__title"}>How to post a room?</div>
-                            <div className={"lading__question__container__item__text"}>Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nisl nisl aliquet
-                                nisl, nec aliquam nisl nisl sit amet lorem. Sed euismod, nunc vel tincidunt lacinia,
-                                nisl
-                                nisl aliquet nisl, nec aliquam nisl nisl sit amet lorem.
-                            </div>
-                        </div>
-                        <div className={"lading__question__container__item"}>
-                            <div className={"lading__question__container__item__title"}>How to post a roommate?</div>
-                            <div className={"lading__question__container__item__text"}>Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nisl nisl aliquet
-                                nisl, nec aliquam nisl nisl sit amet lorem. Sed euismod, nunc vel tincidunt lacinia,
-                                nisl
-                                nisl aliquet nisl, nec aliquam nisl nisl sit amet lorem.
-                            </div>
-                        </div>
+                        <QuestionCard question={questions[0]} answer={answers[0]}/>
+                        <QuestionCard question={questions[1]} answer={answers[1]}/>
+                        <QuestionCard question={questions[2]} answer={answers[2]}/>
+                        <QuestionCard question={questions[3]} answer={answers[3]}/>
                     </div>
                 </div>
                 <div className="lading__contact">
@@ -102,11 +130,17 @@ export default function Landing() {
                     <div className={"lading__contact__form"}>
                         <div>
                             <div>Email</div>
-                            <input type={"email"} style={{border: " 1px solid black"}} onInput={(e) => setEmail(e.target.value)}/>
+                            <input type={"email"} onInput={(e) => setEmail(e.target.value)}
+                                   onBlur={blurHandler}
+                                   onFocus={focusHandler}
+                            />
                         </div>
                         <div>
                             <div>Message</div>
-                            <textarea style={{border: " 1px solid black"}} onInput={e=>setMessage(e.target.value)}/>
+                            <textarea onInput={e => setMessage(e.target.value)}
+                                      onBlur={blurHandler}
+                                      onFocus={focusHandler}
+                            />
                         </div>
                         <button className={"lading__contact__form__button"} onClick={sentMessage}>Let Us Know</button>
                     </div>
