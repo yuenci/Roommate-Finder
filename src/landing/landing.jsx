@@ -95,12 +95,12 @@ export default function Landing() {
                         <button className={"lading__hero__left__button"} onClick={goToHome}>Find Rooms</button>
                     </div>
                     <div className={"lading__hero__right"}>
-                        <img src="/landingPic1.png" alt="product image" className="product__img"/>
+                        <img src="/landingPic1.jpg" alt="product image" className="product__img"/>
                     </div>
                 </div>
                 <div className={"lading__about"}>
                     <div className={"lading__about__left"}>
-                        <img src="/landingPic2.png" alt="product image" className="product__img"/>
+                        <img src="/landingPic2.jpg" alt="product image" className="product__img"/>
                     </div>
                     <div className={"lading__about__right"}>
                         <div>
