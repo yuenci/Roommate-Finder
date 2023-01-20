@@ -1,5 +1,5 @@
 import {Header} from "../common/Header/header.jsx";
-import {Button, Notification} from '@arco-design/web-react';
+import {Button, Message, Modal} from '@arco-design/web-react';
 import "./post.css";
 import {Topic} from "./topic.jsx";
 import {Type} from "./type.jsx";
@@ -76,9 +76,30 @@ export function Post() {
 
     let navigate = useNavigate();
 
+    function confirm() {
+        Modal.confirm({
+            title: 'Confirm Login',
+            content:
+                'You need to login to post a listing, do you want to login now?',
+            okButtonProps: {
+                status: 'danger',
+            },
+            onOk: () => {
+                navigate("/login");
+            },
+        });
+    }
+
     function post() {
+        console.log("post");
         let moveInRange= changeTimeStrListTOStamp(moveInDate);
         const  user = new FBAuth().auth.currentUser;
+
+        if (!user) {
+            confirm();
+            return;
+        }
+
         let data = {
             topic: topic,
             type: type,
@@ -100,17 +121,14 @@ export function Post() {
         let res = validatePost(data);
         if (res === true) {
             writeNewPost(data,roomID).then(() => {
-                Notification.success({
-                    title: 'Success',
-                    content: 'Your post has been successfully posted!',
-                });
+                Message.success("Your post has been successfully posted!");
                 initAllRoomsData();
                 setTimeout(() => {
                     navigate("/home");
                 }, 2000);
         });}
         else{
-            Notification.warning({
+            Message.warning({
                 content: res,
             })
         }

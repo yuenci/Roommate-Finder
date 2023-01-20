@@ -1,6 +1,6 @@
 import "../login/login.css";
 import "./signUp.css";
-import {Button, Notification} from "@arco-design/web-react";
+import {Button, Message} from "@arco-design/web-react";
 import {Link} from "react-router-dom";
 import {SignUpForm} from "./signUpForm";
 import {SignUpPinCode} from "./SignUpPinCode.jsx";
@@ -31,9 +31,7 @@ export function SignUpRight() {
         if (!validRes)  return;
 
         if (page === 'signUpForm') {
-            Notification.success({
-                content: 'Information validate successfully!',
-            });
+            Message.success('Information validate successfully!');
 
 
             setTimeout(() => {
@@ -45,9 +43,7 @@ export function SignUpRight() {
                 //731459
                 await registerUser();
 
-                Notification.success({
-                    content: 'Sign up successfully',
-                });
+                Message.success("Sign up successfully");
 
                 // navigate to home page after 2 seconds
                 setTimeout(() => {
@@ -55,10 +51,7 @@ export function SignUpRight() {
                 }, 1500);
 
             }else {
-                Notification.error({
-                    title: 'Error',
-                    content: 'Pin code is not correct',
-                });
+                Message.error("Pin code is not correct");
                 //console.log("pin code is not correct", `[${pinCode}]`);
             }
             new Analysis().logEvent("sign_up_submit");
@@ -69,10 +62,7 @@ export function SignUpRight() {
         try {
             await fbAuth.register(email.toLowerCase(), password);
         }catch (e) {
-            Notification.error({
-                title: 'Error',
-                content: e.message,
-            })
+            Message.error("e.message")
         }
 
         let data ={

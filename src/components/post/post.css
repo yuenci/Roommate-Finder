@@ -114,3 +114,10 @@
     }
 
 }
+
+@media screen  and (max-width: 600px)  {
+    .arco-modal-simple{
+        width: 90% !important;
+    }
+
+}
