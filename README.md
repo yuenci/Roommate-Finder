@@ -93,3 +93,27 @@ $ npm install @emailjs/browser --save
 ```bash
 $ npm install axios
 ```
+
+
+# Test
+```jsx
+        // 新加坡服务器
+        // axios.post("http://43.134.228.150:5000/sendEmail", data).then(
+        //     (res) => {
+        //         console.log(res.data);
+        //     }
+        // )
+
+        // axios.post("http://localhost:7071/api/HttpTrigger1", data).then(
+        //     (res) => {
+        //         console.log(res.data);
+        //     }
+        // )
+
+        // azure function
+        axios.post("https://emailproxy.azurewebsites.net/api/httptrigger1", data).then(
+            (res) => {
+                console.log(res.data);
+            }
+        )
+```

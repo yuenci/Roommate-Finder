@@ -6,6 +6,8 @@ import {useState} from "react";
 import axios from "axios";
 import { ReactComponent as Check } from "./check.svg";
 import QuestionCard from "./questionCard.jsx";
+import {Message} from "@arco-design/web-react";
+import {logEmailSendTimes, validateEmail} from "../tools/dataTools.js";
 
 
 export default function Landing() {
@@ -18,41 +20,37 @@ export default function Landing() {
     }
 
     function sentMessage() {
-        let data = {
-            service_id: 'service_p72cxcj',
-            template_id: 'template_wx9iob5',
-            user_id: '7cqpkNmGhXag_lIzl',
-            template_params: {
-                'username': 'James',
-                'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...'
-            }
-        };
-        axios.post("https://api.emailjs.com/api/v1.0/email/send", data).then(
+
+        let data ={
+            email: email,
+            message: message
+        }
+
+
+
+        if(!logEmailSendTimes()){
+            Message.error("Email sent failed");
+            return;
+        }
+
+
+        if(!validateEmail(email)){
+            Message.error("Invalid email");
+            return;
+        }
+
+        if(message === ""){
+            Message.error("Message cannot be empty");
+            return;
+        }
+        console.log(email, message);
+
+        axios.post("https://emailproxy.azurewebsites.net/api/httptrigger1", data).then(
             (res) => {
-                console.log(res.data);
+                if(res.data.status === "200") Message.success("Message sent successfully, \nwe will get back to you soon!");
             }
         )
-
-
-
-        // if(logE mailSendTimes()){
-        //     Message.success("Email sent");
-        // }else{
-        //     Message.error("Email sent failed");
-        // }
-
-
-        // if(!validateEmail(email)){
-        //     Message.error("Invalid email");
-        //     return;
-        // }
-        //
-        // if(message === ""){
-        //     Message.error("Message cannot be empty");
-        //     return;
-        // }
-        // console.log(email, message);
-        // Message.success("Message sent successfully, \nwe will get back to you soon!");
+        //Message.success("Message sent successfully, \nwe will get back to you soon!");
     }
 
     function blurHandler(e) {

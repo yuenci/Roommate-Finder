@@ -337,12 +337,12 @@ export function logEmailSendTimes(){
     if(record !== null) {
         let recordTimeStamps = Number(record.substring(0,13));
         if(isToday(recordTimeStamps)){
-            console.log("is today");
+            //console.log("is today");
             // if today
             writeTimes(getTodayTimes() + 1);
             return true;
         }else {
-            console.log("not today");
+            //console.log("not today");
             // if not today
             writeTimes(1);
             return true;
@@ -359,11 +359,10 @@ function  getTodayTimes(){
 
     if(record.length !== 14) return false;
 
-    let num = Number(record[record.length - 1]);
-    console.log(num);
+    //console.log(num);
 
     // get record last number
-    return num;
+    return Number(record[record.length - 1]);
 }
 
 function writeTimes(times){
