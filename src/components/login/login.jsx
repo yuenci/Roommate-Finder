@@ -9,11 +9,9 @@ export function Login() {
     // initAllUsersData();
     new Analysis().logEvent("login_enter");
     return (
-            <div>
-                <div className="login-container">
-                    <LoginLeft/>
-                    <LoginRight/>
-                </div>
-            </div>
+        <div className="login-container">
+            <LoginLeft/>
+            <LoginRight/>
+        </div>
     );
 }

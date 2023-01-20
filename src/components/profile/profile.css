@@ -116,3 +116,15 @@
 .room-card-text{
     position: absolute;
 }
+
+@media screen and (max-width: 600px) {
+    .profile-main-header{
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+
+    .profile-username{
+        margin: 10px 0;
+    }
+}

@@ -67,6 +67,7 @@ export function Header(props) {
             </div>
             {type !== "landing"
                 ?<nav className="nav-links">
+                    <div className={linkClassName} onClick={goToHome}>Listing</div>
                     <div className={linkClassName} onClick={goToPost}>Post</div>
                     {/*<div className={linkClassName} onClick={goToAbout}>About</div>*/}
                     {login
@@ -75,7 +76,7 @@ export function Header(props) {
                     }
                 </nav>
                 :<nav className="nav-links-landing">
-                    <div className={linkClassName} onClick={goToHome}>Home</div>
+                    <div className={linkClassName} onClick={goToHome}>Listing</div>
                     <div className={linkClassName} onClick={goToAbout}>About</div>
                     {login
                         ? <div className={linkClassName} onClick={goToProfile}>Profile</div>
