@@ -21,9 +21,7 @@ export function SignUpForm(props) {
         <div>
             <h2 className="join">Join Us Now</h2>
             <Input className="input-signup" allowClear placeholder='Name' onChange={props.setName}/>
-            {/*<Input className="input-sign" allowClear placeholder='Age' onChange={props.setAge}/>*/}
             <div className="phone-container">
-                {/*<Input className="input-signup" allowClear placeholder='Phone' onChange={props.setPhone}/>*/}
                 <Input.Group className="input-signup-group" >
                     <Input   value='60' className="phone-zone" onChange={props.setPhoneAreaCode}/>
                     <Input   placeholder='Phone number'  className="phone-num" onChange={props.setPhone}/>
@@ -31,7 +29,6 @@ export function SignUpForm(props) {
                 <IconExclamationCircle className="info-icon" onClick={warning}/>
             </div>
             <InputEmail className="input-signup" email={props.email} setEmail={props.setEmail}/>
-            {/*<SelectUniversity setUniversity={props.setUniversity}/>*/}
             <Input.Password defaultValue='' className="input" onChange={props.setPassword} placeholder={"Password"}/>
         </div>
     )

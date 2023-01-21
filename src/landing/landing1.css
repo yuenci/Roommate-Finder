@@ -289,6 +289,10 @@
     .lading__contact__form textarea{
         width: 100% !important;
     }
+
+    .lading__about__right__text div svg{
+        width:20px !important;
+    }
 }
 
 @media only screen and (max-width: 440px) {
@@ -308,7 +312,7 @@
     }
 }
 
-.lading__about__right__text svg{
+.lading__about__right__text div svg{
     width:30px;
     display: inline-block;
     margin-right: 20px;

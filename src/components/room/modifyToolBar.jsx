@@ -46,7 +46,7 @@ export default function ModifyToolBar(props) {
     return (
         <div className={"modify-tool-bar"}>
             <Button type='secondary' icon={<IconPen />} className={"modify-tool-modify"} onClick={goToModifyPage}>Modify</Button>
-            <Button status='danger' icon={<IconDelete />} className={"modify-tool-delete"} onClick={confirm}>Delete</Button>
+            <Button status='danger' icon={<IconDelete />} className={"modify-tool-delete"} onClick={confirm}>Finish</Button>
         </div>
     );
 }
