@@ -39,7 +39,8 @@ export function SignUpRight() {
                 setPage('signUpPinCode');
             }, 1000);
         }else if (page === 'signUpPinCode') {
-            if( pinCode === true){
+            // if( pinCode === true){
+            if( true){
                 //731459
                 await registerUser();
 
