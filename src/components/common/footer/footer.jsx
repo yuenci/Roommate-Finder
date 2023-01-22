@@ -6,7 +6,7 @@ export default function Footer() {
 
     return (
         <div className={"footer"}>
-            <div className={"footer-col1"}>
+            <div className={"footer-col0"}>
                 <div className={"footer-logo-container"}>
                     <img src="/logo.png" alt="logo" className={"footer-logo"}/>
                     <div>APU Roommate Finder</div>
@@ -17,9 +17,14 @@ export default function Footer() {
             </div>
             <div className={"footer-col2"}>
                 <div className={"footer-headers"}>Product</div>
+                <Link to={"/"}>Update</Link>
+                <Link to={"/about"}>About</Link>
+            </div>
+            <div className={"footer-col2"}>
+                <div className={"footer-headers"}>Support</div>
                 <Link to={"/"}>Tutorial</Link>
                 <Link to={"/"}>FAQs</Link>
-                <Link to={"/about"}>About</Link>
+
                 <a href={"https://github.com/yuenci/APU-Roommate-finder/issues"} target="_blank">Contact</a>
             </div>
             <div className={"footer-col3"}>

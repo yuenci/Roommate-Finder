@@ -18,6 +18,7 @@ export function About() {
     return (
         <div>
             { ifLogin() ? <Header type="about"/> : <Header type="landing"/>}
+
             <div className={"about-con"}>
                 <div>
                     <div className={"text-4xl about-title"}>🤠 Team</div>
@@ -44,9 +45,9 @@ export function About() {
                     </div>
                 </div>
                 {/*<div className={"text-center"}>{`© MIZ ${new Date().getFullYear()}`}</div>*/}
-                <Footer/>
-            </div>
 
+            </div>
+            <Footer/>
         </div>
     )
 }

@@ -1,9 +1,11 @@
 .footer{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap-reverse;
     justify-content: space-around;
     border-top: 1px solid #e2eef0;
     padding: 20px 0;
+
 }
 
 .footer-logo{
@@ -32,7 +34,7 @@
     color: black;
 }
 
-.footer-col1{
+.footer-col0{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -47,8 +49,19 @@
     margin: 10px 0;
 }
 
-.footer-col1 a{
+.footer-col0 a{
     margin-top: 0;
     color: black;
 }
 
+@media screen and (max-width: 500px){
+    .footer-logo-container{
+        margin-top: 10px;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .footer-col0{
+        width:100%;
+        text-align: center;
+    }
+}

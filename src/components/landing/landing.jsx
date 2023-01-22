@@ -166,8 +166,9 @@ export default function Landing() {
                     </div>
                     <button className={"lading__final__button"} onClick={goToHome}>Let’s Start</button>
                 </div>
-                <Footer/>
+
             </div>
+            <Footer/>
         </div>
     )
 }
