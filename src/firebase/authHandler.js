@@ -195,6 +195,7 @@ export class FBAuth {
         }
     }
 
+
     getCurrentUser() {
         return new Promise((resolve, reject) => {
             onAuthStateChanged(this.auth, (user) => {

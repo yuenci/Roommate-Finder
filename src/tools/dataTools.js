@@ -379,7 +379,7 @@ function isToday(timestamp) {
 
 
 export async function isHaveModifyRight(roomID){
-    let user = new FBAuth().getCurrentUser();
+    let user = new FBAuth().auth.currentUser;
     let room = StatusContainer.fireBaseStore.readDocument("rooms", roomID);
 
     let [userData , roomData] = await Promise.all([user, room]);

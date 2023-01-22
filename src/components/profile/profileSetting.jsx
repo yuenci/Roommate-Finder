@@ -18,7 +18,7 @@ export default function ProfileSetting(props) {
     //StatusContainer.currentUser = new User("TP061418@mail.apu.edu.my");
     let navigate = useNavigate();
 
-    let user = new FBAuth().getCurrentUser();
+    let user = new FBAuth().auth.currentUser;
 
 
     const registerDateTime = getRegDateFromUser(user)
