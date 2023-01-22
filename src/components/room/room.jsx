@@ -75,7 +75,7 @@ export function Room() {
     // login in && is not post  -- contact
     // not login --contact
     let showModify =false;
-    let user = new  FBAuth().auth.currentUser;
+    let user = new  FBAuth().getCurrentUser()
     if(user !==null && data !== null){
         if (data.posterEmail === user.email){
             showModify = true;

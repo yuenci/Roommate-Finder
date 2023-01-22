@@ -16,7 +16,7 @@ export default function ProfileMain(props) {
     }
 
     //console.log(StatusContainer.currentUser);
-    let user = new FBAuth().auth.currentUser;
+    let user = new FBAuth().getCurrentUser();
 
     const [currentUser, setCurrentUser] = useState(user);
     const [rooms, setRooms] = useState([]);

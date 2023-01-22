@@ -12,7 +12,7 @@ export function About() {
     new Analysis().logEvent("about_enter");
 
     function  ifLogin() {
-        return new FBAuth().auth.currentUser;
+        return new FBAuth().getCurrentUser();
     }
 
     return (

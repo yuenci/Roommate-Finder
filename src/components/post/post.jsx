@@ -98,7 +98,7 @@ export function Post() {
     function post() {
         console.log("post");
         let moveInRange= changeTimeStrListTOStamp(moveInDate);
-        const  user = new FBAuth().auth.currentUser;
+        const  user = new FBAuth().getCurrentUser();
 
         if (!user) {
             confirm();
