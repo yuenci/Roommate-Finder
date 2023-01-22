@@ -37,8 +37,8 @@
 .footer-col0{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height:120px ;
+    /*justify-content: space-between;*/
+    /*height:120px ;*/
     width: 250px;
 }
 .foot-slogan{
