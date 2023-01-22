@@ -42,7 +42,7 @@ export default function Images(props) {
                 imagePreview
                 listType='picture-card'
                 className={"images-upload"}
-                limit={4}
+                limit={5}
                 defaultFileList={defaultFileList2}
                 customRequest={(options) => {
                     const {  onError, onSuccess, file } = options;
@@ -64,12 +64,12 @@ export default function Images(props) {
                 // onChange={getAllImageURLs}
                 // onRemove={onRemove}
             />
-            <button onClick={()=>{
-                console.log(defaultFileList2)
-            }
-            }>
-                test
-            </button>
+            {/*<button onClick={()=>{*/}
+            {/*    console.log(defaultFileList2)*/}
+            {/*}*/}
+            {/*}>*/}
+            {/*    test*/}
+            {/*</button>*/}
         </div>
 
     );
