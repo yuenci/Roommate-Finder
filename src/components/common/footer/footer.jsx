@@ -19,6 +19,7 @@ export default function Footer() {
                 <div className={"footer-headers"}>Product</div>
                 <Link to={"/"}>Update</Link>
                 <Link to={"/about"}>About</Link>
+                <a href={"https://apufindroommate.statuspage.io/"} target="_blank">Servers Status</a>
             </div>
             <div className={"footer-col2"}>
                 <div className={"footer-headers"}>Support</div>
