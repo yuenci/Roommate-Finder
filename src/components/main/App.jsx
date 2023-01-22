@@ -22,6 +22,18 @@ function App() {
 
     new Analysis().logEvent("app_start");
 
+    let status = "maintenance"
+
+    if (status === "maintenance") {
+        return(
+            <Router>
+                <Routes>
+                    <Route path="*" element={<Error404 />} />
+                </Routes>
+            </Router>
+        )
+    }
+
     return (
         <Router>
             <Routes>
