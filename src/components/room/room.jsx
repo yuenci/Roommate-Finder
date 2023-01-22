@@ -48,21 +48,7 @@ export function Room() {
         })
     }, []);
 
-    // function btnOnClick() {
-    //     let user = new FBAuth().auth.currentUser;
-    //     if(user === null) {
-    //         setVisible(true);
-    //     }else{
-    //         goToWhatsapp();
-    //     }
-    // }
 
-    // function goToWhatsapp(){
-    //     const phone = data.phone;
-    //     const text = "Hi, I am interested in your room. Could you please contact me? Thanks!";
-    //     // open on whatsapp
-    //     window.open("https://wa.me/" + phone + "?text=" + text);
-    // }
 
     function goToLoginPage(){
         setVisible(false)

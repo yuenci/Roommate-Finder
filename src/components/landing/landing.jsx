@@ -30,7 +30,7 @@ export default function Landing() {
 
 
         if(!logEmailSendTimes()){
-            Message.error("Email sent failed");
+            Message.error("You have sent too many emails, please try again tomorrow");
             return;
         }
 
