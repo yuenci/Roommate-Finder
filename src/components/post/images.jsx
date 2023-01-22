@@ -5,25 +5,7 @@ import {imageMaxSize} from "../../config.js";
 import {StatusContainer} from "../../StatusContainer.js";
 
 export default function Images(props) {
-    /*
-    let defaultFileList= [
-        {
-            uid: '1',
-            name: 'image.png',
-            url: 'https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/1621259076791.png',
-        },
-        {
-            uid: '2',
-            name: 'image.png',
-            url: 'https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/comment_dBzkNiLIvxjJnG5ABx2CYJlnzhpFYDJV.gif',
-        },
-        {
-            uid: '3',
-            name: 'image.png',
-            url: 'https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/7d037102738da977583b616ea751f8198718e3f0.gif',
-        }
-    ];
-*/
+
     let defaultFileList2 = [];
 
     if(Object.keys(StatusContainer.currentRoomData).length !== 0){
@@ -66,7 +48,7 @@ export default function Images(props) {
                 limit={4}
                 defaultFileList={defaultFileList2}
                 customRequest={(options) => {
-                    const { onProgress, onError, onSuccess, file } = options;
+                    const {  onError, onSuccess, file } = options;
 
                     if(file.size > imageMaxSize){
                         onError("size");

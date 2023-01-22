@@ -11,7 +11,9 @@ import {initFirebase} from "../../tools/dataTools.js";
 import {Post} from "../post/post";
 import {Profile} from "../profile/profile";
 import {About} from "../about/about";
-import Landing from "../../landing/landing.jsx";
+import Landing from "../landing/landing.jsx";
+import Privacy from "../TermsAndPrivacy/privacy.jsx";
+import Error404 from "../404/404.jsx";
 
 
 function App() {
@@ -33,7 +35,11 @@ function App() {
                 <Route path="/profile" element={<Profile/>} />
                 <Route path="/about" element={<About/>} />
                 <Route path="/modify/:roomID" element={<Post/>} />
+                <Route path="/modify" element={<Post/>} />
+                <Route path="/Terms-and-Privacy" element={<Privacy />} />
+                <Route path="/error-404" element={<Error404 />} />
                 <Route path="/" element={<Landing />} />
+                <Route path="*" element={<Error404 />} />
             </Routes>
             {/*<VersionInfoFooter/>*/}
         </Router>

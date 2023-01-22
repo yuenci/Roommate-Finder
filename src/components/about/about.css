@@ -1,7 +1,7 @@
 .about-con{
     width: 60%;
     margin: 0 auto;
-    height: 300px;
+    /*height: 300px;*/
 }
 .avatar-con{
     display: flex;

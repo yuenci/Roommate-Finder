@@ -1,4 +1,4 @@
-import {Header} from "../components/common/Header/header.jsx";
+import {Header} from "../common/Header/header.jsx";
 import "./landing1.css";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
@@ -7,7 +7,8 @@ import axios from "axios";
 import { ReactComponent as Check } from "./check.svg";
 import QuestionCard from "./questionCard.jsx";
 import {Button, Message} from "@arco-design/web-react";
-import {logEmailSendTimes, validateEmail} from "../tools/dataTools.js";
+import {logEmailSendTimes, validateEmail} from "../../tools/dataTools.js";
+import Footer from "../common/footer/footer.jsx";
 
 
 export default function Landing() {
@@ -111,7 +112,7 @@ export default function Landing() {
                             </div>
                             <div className={"lading__about__right__text"}>
                                 <div><Check /></div>
-                                <div>Conveniently find available units for you to rent. dwdasdasdsadasasdasd</div>
+                                <div>Conveniently find available units for you to rent.</div>
                             </div>
                             <div className={"lading__about__right__text"}>
                                 <div><Check /></div>
@@ -165,8 +166,9 @@ export default function Landing() {
                     </div>
                     <button className={"lading__final__button"} onClick={goToHome}>Let’s Start</button>
                 </div>
-                <div className={"text-center"}>{`© MIZ ${new Date().getFullYear()} Made with ❤️`}</div>
+
             </div>
+            <Footer/>
         </div>
     )
 }

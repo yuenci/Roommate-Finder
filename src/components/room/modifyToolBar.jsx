@@ -1,8 +1,7 @@
 import "./room.css";
 import {IconDelete, IconPen} from "@arco-design/web-react/icon";
-import {Button, Message, Modal} from '@arco-design/web-react';
+import {Button, Modal} from '@arco-design/web-react';
 import {StatusContainer} from "../../StatusContainer.js";
-import {initAllRoomsData} from "../../tools/dataTools.js";
 import {  useNavigate } from 'react-router-dom';
 import {Analysis} from "../../firebase/analysis.js";
 
@@ -13,14 +12,20 @@ export default function ModifyToolBar(props) {
 
     function deleteRoom(){
         new Analysis().logEvent("room_delete", {roomID: roomID});
-        StatusContainer.fireBaseStore.delete("rooms",roomID).then(
+
+        StatusContainer.fireBaseStore.update("rooms",{status: "deleted"},roomID).then(
             ()=>{
-                Message.success('Delete successfully')
-                initAllRoomsData().then(() => {
-                    setTimeout(()=>navigate("/home"),1000)
-                })
+                console.log("delete successfully")
             }
         )
+        // StatusContainer.fireBaseStore.delete("rooms",roomID).then(
+        //     ()=>{
+        //         Message.success('Delete successfully')
+        //         initAllRoomsData().then(() => {
+        //             setTimeout(()=>navigate("/home"),1000)
+        //         })
+        //     }
+        // )
     }
 
     function goToModifyPage(){

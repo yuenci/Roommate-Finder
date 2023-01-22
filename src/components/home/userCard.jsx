@@ -18,6 +18,12 @@ export function UserCard(props) {
         navigate("/room/" + roomID);
     }
 
+    //console.log(room.status)
+
+    if (room.status === "deleted") {
+        return null;
+    }
+
 
     return (
         <div className="user-card" onClick={goToPost}>
