@@ -1,16 +1,16 @@
 import {Header} from "../common/Header/header.jsx";
 import {useParams, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {TopicArea} from "./topicArea.jsx";
 import "./room.css";
 import {Message, Modal,ConfigProvider} from "@arco-design/web-react";
-import {stampToDateStr} from "../../tools/dataTools.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import enUS from '@arco-design/web-react/es/locale/en-US';
 import {FBAuth} from "../../firebase/authHandler.js";
 import {Analysis} from "../../firebase/analysis.js";
 import ContactButton from "./contactButton.jsx";
 import CarouselMulti from "./carouselMulti.jsx";
+import TopicAreaPro from "./topicAreaPro.jsx";
+import ParameterArea from "./parameterArea.jsx";
 
 
 export function Room() {
@@ -74,23 +74,26 @@ export function Room() {
             <div style={
                 {marginTop: "30px"}
             }></div>
+
             {data &&
                 <CarouselMulti roomID={roomID} />
             }
-            {/*{data &&*/}
-            {/*    <CarouselPost roomID={roomID} roomData={data} />*/}
-            {/*}*/}
 
-
-            {data  &&
-                <div>
-                    <TopicArea data={data}/>
-                    <div className="description">
-                        <div className="desc-text">{data.description}</div>
-                        <div className="desc-time">{stampToDateStr(data.postTimeStamp)}</div>
-                    </div>
-                </div>
+            {
+                data &&
+                <TopicAreaPro topicText={data.topic}/>
             }
+
+            {
+                data &&
+                <ParameterArea data={data}/>
+            }
+
+            {
+                data &&
+                <div className="description-container">{data.description}</div>
+            }
+
             <ContactButton data={data} showModify={showModify} roomID={roomID} setVisible={setVisible}/>
 
             <ConfigProvider locale={enUS}>

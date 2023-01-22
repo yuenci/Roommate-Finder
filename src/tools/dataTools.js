@@ -378,6 +378,7 @@ function isToday(timestamp) {
 }
 
 
+
 export async function isHaveModifyRight(roomID){
     let user = new FBAuth().auth.currentUser;
     let room = StatusContainer.fireBaseStore.readDocument("rooms", roomID);
@@ -388,5 +389,21 @@ export async function isHaveModifyRight(roomID){
     // console.log(roomData.posterEmail);
 
     return userData.email === roomData.posterEmail;
+}
+
+export function joinMoveInRangeDate(data) {
+    let st = data.moveInStart.seconds;
+    let ed = data.moveInEnd.seconds;
+
+    let duration = (ed - st + 1) / (86400 * 30);
+
+    // Carry up
+    duration = Math.ceil(duration);
+    duration = duration === 1 ? "1 month" : duration + " months";
+
+    let stStr = new Date(st * 1000).toLocaleDateString();
+    //let edStr = new Date(ed * 1000).toLocaleDateString();
+
+    return stStr + " || " + duration;
 }
 
