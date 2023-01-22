@@ -8,9 +8,9 @@ import {Message, Modal,ConfigProvider} from "@arco-design/web-react";
 import {stampToDateStr} from "../../tools/dataTools.js";
 import {StatusContainer} from "../../StatusContainer.js";
 import enUS from '@arco-design/web-react/es/locale/en-US';
-import ModifyToolBar from "./modifyToolBar";
 import {FBAuth} from "../../firebase/authHandler.js";
 import {Analysis} from "../../firebase/analysis.js";
+import ContactButton from "./contactButton.jsx";
 
 
 export function Room() {
@@ -48,21 +48,21 @@ export function Room() {
         })
     }, []);
 
-    function btnOnClick() {
-        let user = new FBAuth().auth.currentUser;
-        if(user === null) {
-            setVisible(true);
-        }else{
-            goToWhatsapp();
-        }
-    }
+    // function btnOnClick() {
+    //     let user = new FBAuth().auth.currentUser;
+    //     if(user === null) {
+    //         setVisible(true);
+    //     }else{
+    //         goToWhatsapp();
+    //     }
+    // }
 
-    function goToWhatsapp(){
-        const phone = data.phone;
-        const text = "Hi, I am interested in your room. Could you please contact me? Thanks!";
-        // open on whatsapp
-        window.open("https://wa.me/" + phone + "?text=" + text);
-    }
+    // function goToWhatsapp(){
+    //     const phone = data.phone;
+    //     const text = "Hi, I am interested in your room. Could you please contact me? Thanks!";
+    //     // open on whatsapp
+    //     window.open("https://wa.me/" + phone + "?text=" + text);
+    // }
 
     function goToLoginPage(){
         setVisible(false)
@@ -98,12 +98,14 @@ export function Room() {
                     </div>
                 </div>
             }
-            {  data  && !showModify &&
-                 <button className="contact-button" onClick={btnOnClick}>Contact on Whatsapp</button>
-            }
-            {data && showModify &&
-                <ModifyToolBar roomID={roomID}/>
-            }
+            {/*{  data  && !showModify &&*/}
+            {/*     <button className="contact-button" onClick={btnOnClick}>Contact on Whatsapp</button>*/}
+            {/*}*/}
+            {/*{data && showModify &&*/}
+            {/*    <ModifyToolBar roomID={roomID}/>*/}
+            {/*}*/}
+
+            <ContactButton data={data} showModify={showModify} roomID={roomID} setVisible={setVisible}/>
 
             <ConfigProvider locale={enUS}>
                 <Modal

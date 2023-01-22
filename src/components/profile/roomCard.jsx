@@ -10,6 +10,10 @@ export default function RoomCard(props) {
         navigate(`/room/${room.roomID}`);
     }
 
+    if (room.status === "deleted") {
+        return null;
+    }
+
     return(
         <div onClick={goToRoom}>
 
