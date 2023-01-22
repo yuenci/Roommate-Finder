@@ -47,7 +47,7 @@ export default function Landing() {
         //console.log(email, message);
         setLoading1(true);
 
-        axios.post("https://emailproxy.azurewebsites.net/api/httptrigger1", data).then(
+        axios.post("https://emailproxy.azurewebsites.net/api/httptrigger2", data).then(
             (res) => {
                 if(res.data.status === "200") {
                     setLoading1(false);
