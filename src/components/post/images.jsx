@@ -21,6 +21,13 @@ export default function Images(props) {
 
     let imagesList = [];
 
+    function  onRemove(file) {
+        //console.log(file);
+        defaultFileList2 = defaultFileList2.filter((item) => item.url !== file.url);
+        // console.log(defaultFileList2);
+        //props.setImages(imagesList);
+    }
+
 
     function addFileList(fileList){
         imagesList = [];
@@ -34,6 +41,9 @@ export default function Images(props) {
         for (let file of fileList){
             if (file.response !== undefined) imagesList.push(file.response);
         }
+
+        //console.log(imagesList)
+
         props.setImages(imagesList);
     }
 
@@ -65,7 +75,15 @@ export default function Images(props) {
                 } }
                 onChange={addFileList}
                 // onChange={getAllImageURLs}
+                onRemove={onRemove}
             />
+            <button onClick={()=>{
+                console.log(defaultFileList2)
+            }
+            }>
+                test
+            </button>
         </div>
+
     );
 }

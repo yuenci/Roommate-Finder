@@ -17,7 +17,7 @@ import {StatusContainer} from "../../StatusContainer.js";
 import {
     changeTimeStrListTOStamp,
     getPhone,
-    initAllRoomsData,
+    initAllRoomsData, isHaveModifyRight,
     stampToDateObj,
     writeNewPost
 } from "../../tools/dataTools.js";
@@ -41,7 +41,7 @@ export function Post() {
     // let currentRoom = StatusContainer.currentRoomData;
     // //console.log(currentRoom);
 
-    new Analysis().logEvent("post_enter");
+
 
 
     const {pathname} = useLocation();
@@ -50,8 +50,13 @@ export function Post() {
     let roomID = "";
     if (isModify) {
         roomID = pathname.split("/")[2]
+        new Analysis().logEvent("modify_enter");
+        isHaveModifyRight(roomID).then((res) => {
+            if (!res) navigate("/error-404")
+        });
     }else{
         StatusContainer.currentRoomData = {};
+        new Analysis().logEvent("post_enter");
     }
 
     useEffect(() => {
@@ -149,7 +154,7 @@ export function Post() {
                 <Size setSize={setSize} isModify={isModify} />
                 <Price setPrice={setPrice} price={price} isModify={isModify} />
                 <Description setDescription={setDescription} isModify={isModify} />
-                {type ? <Images  setImages={setImages} isModify={isModify} /> : null}
+                {type ? <Images  setImages={setImages} isModify={isModify} images={images}/> : null}
                 <Button type='primary' className={"post-btn"} onClick={post} isModify={isModify} >Post</Button>
             </div>
         </div>
