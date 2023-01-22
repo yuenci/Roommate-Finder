@@ -17,32 +17,19 @@ export default function Images(props) {
             })
         }
     }
-    //console.log(defaultFileList2);
-
-    let imagesList = [];
-
-    function  onRemove(file) {
-        //console.log(file);
-        defaultFileList2 = defaultFileList2.filter((item) => item.url !== file.url);
-        // console.log(defaultFileList2);
-        //props.setImages(imagesList);
-    }
-
 
     function addFileList(fileList){
-        imagesList = [];
+        //console.log("fileList",fileList);
 
-        if (defaultFileList2.length !== 0) {
-            for (let i = 0; i < defaultFileList2.length; i++) {
-                imagesList.push(defaultFileList2[i].url);
-            }
-        }
+        let imagesList = [];
 
         for (let file of fileList){
-            if (file.response !== undefined) imagesList.push(file.response);
+            if(file.hasOwnProperty("response") && file.response !== undefined){
+                imagesList.push(file.response);
+                continue;
+            }
+            imagesList.push(file.url);
         }
-
-        //console.log(imagesList)
 
         props.setImages(imagesList);
     }
@@ -66,7 +53,7 @@ export default function Images(props) {
                         return;
                     }
                     uploadImageWithRandomName(file.name, options.file).then((url) => {
-                        imagesList.push(url);
+                        //imagesList.push(url);
                         //console.log(url);
                         onSuccess(url);
                     }).catch((error) => {
@@ -75,7 +62,7 @@ export default function Images(props) {
                 } }
                 onChange={addFileList}
                 // onChange={getAllImageURLs}
-                onRemove={onRemove}
+                // onRemove={onRemove}
             />
             <button onClick={()=>{
                 console.log(defaultFileList2)
