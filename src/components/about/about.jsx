@@ -4,6 +4,7 @@ import AvatarCard from "./avatarCard.jsx";
 import {teamInfo,productInfo} from "./teamInfo.js";
 import {Analysis} from "../../firebase/analysis.js";
 import {FBAuth} from "../../firebase/authHandler.js";
+import Footer from "../common/footer/footer.jsx";
 
 // import "../../index.css";
 
@@ -42,8 +43,10 @@ export function About() {
                         <a href="https://github.com/yuenci/APU-Roommate-finder/issues" target="_blank"> https://github.com/yuenci/APU-Roommate-finder/issues</a>
                     </div>
                 </div>
-                <div className={"text-center"}>{`© MIZ ${new Date().getFullYear()}`}</div>
+                {/*<div className={"text-center"}>{`© MIZ ${new Date().getFullYear()}`}</div>*/}
+                <Footer/>
             </div>
+
         </div>
     )
 }
