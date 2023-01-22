@@ -376,3 +376,17 @@ function isToday(timestamp) {
     const date = new Date(timestamp);
     return today.toDateString() === date.toDateString();
 }
+
+
+export async function isHaveModifyRight(roomID){
+    let user = new FBAuth().getCurrentUser();
+    let room = StatusContainer.fireBaseStore.readDocument("rooms", roomID);
+
+    let [userData , roomData] = await Promise.all([user, room]);
+
+    // console.log(userData.email);
+    // console.log(roomData.posterEmail);
+
+    return userData.email === roomData.posterEmail;
+}
+

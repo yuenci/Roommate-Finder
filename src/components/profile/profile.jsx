@@ -12,7 +12,7 @@ export function Profile(){
     const [visible2, setVisible2] = useState(false);
 
     let navigate = useNavigate();
-    let user = new FBAuth().auth.currentUser;
+    let user = new FBAuth().getCurrentUser();
 
     useEffect(() => {
         if (user === null){
