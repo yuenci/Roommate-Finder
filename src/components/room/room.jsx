@@ -1,5 +1,4 @@
 import {Header} from "../common/Header/header.jsx";
-import {CarouselPost} from "./carousel.jsx";
 import {useParams, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {TopicArea} from "./topicArea.jsx";
@@ -11,6 +10,7 @@ import enUS from '@arco-design/web-react/es/locale/en-US';
 import {FBAuth} from "../../firebase/authHandler.js";
 import {Analysis} from "../../firebase/analysis.js";
 import ContactButton from "./contactButton.jsx";
+import CarouselMulti from "./carouselMulti.jsx";
 
 
 export function Room() {
@@ -71,9 +71,16 @@ export function Room() {
     return (
         <div>
             <Header/>
+            <div style={
+                {marginTop: "30px"}
+            }></div>
             {data &&
-                <CarouselPost roomID={roomID} roomData={data} />
+                <CarouselMulti roomID={roomID} />
             }
+            {/*{data &&*/}
+            {/*    <CarouselPost roomID={roomID} roomData={data} />*/}
+            {/*}*/}
+
 
             {data  &&
                 <div>
@@ -84,13 +91,6 @@ export function Room() {
                     </div>
                 </div>
             }
-            {/*{  data  && !showModify &&*/}
-            {/*     <button className="contact-button" onClick={btnOnClick}>Contact on Whatsapp</button>*/}
-            {/*}*/}
-            {/*{data && showModify &&*/}
-            {/*    <ModifyToolBar roomID={roomID}/>*/}
-            {/*}*/}
-
             <ContactButton data={data} showModify={showModify} roomID={roomID} setVisible={setVisible}/>
 
             <ConfigProvider locale={enUS}>

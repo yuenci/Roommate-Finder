@@ -1,7 +1,5 @@
 
-import { Carousel, Image } from '@arco-design/web-react';
-import {createRef, useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import { Carousel } from '@arco-design/web-react';
 import { StatusContainer } from "../../StatusContainer.js";
 
 export function CarouselPost(props) {
@@ -11,12 +9,6 @@ export function CarouselPost(props) {
         objectFit: 'cover',
     };
 
-    let imageSrc = [
-        'https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/1621259076791.png',
-        'https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/comment_dBzkNiLIvxjJnG5ABx2CYJlnzhpFYDJV.gif',
-        'https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/7d037102738da977583b616ea751f8198718e3f0.gif',
-        'https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/1620799055630.png',
-    ];
 
     const { roomID, roomData } = props;
 
@@ -34,21 +26,6 @@ export function CarouselPost(props) {
         //console.log(e);
     }
 
-    // const [currentImageSrc, setCurrentImageSrc] = useState("");
-    // const [currentImageShow, setCurrentImageShow] = useState("");
-    //
-    // function onChangeHandler(index) {
-    //     //console.log(index);
-    //     //console.log(imageSrcList[index]);
-    //     setCurrentImageSrc(imageSrcList[index]);
-    // }
-    //
-    // const [visible, setVisible] = useState(false);
-    // function onClickHandler() {
-    //     setCurrentImageShow(currentImageSrc);
-    //     setVisible(true);
-    //
-    // }
 
 
     return (
