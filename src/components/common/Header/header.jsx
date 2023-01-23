@@ -1,12 +1,10 @@
 
 import "./header.css";
 import {useNavigate } from "react-router-dom";
-
-// import {detectLoginExpire} from "../../../tools/dataTools.js";
 import {FBAuth} from "../../../firebase/authHandler.js";
 import {useEffect, useState} from "react";
 import {getCurrentUserAvatar} from "../../../tools/dataTools.js";
-import ThemeButton from "./themeButton.jsx";
+import ToggleDarkButton from "./toggleDarkButton.jsx";
 
 export function Header(props) {
     const linkClassName = "link";
@@ -70,9 +68,9 @@ export function Header(props) {
                 ?<nav className="nav-links">
                     <div className={linkClassName} onClick={goToHome}>Listing</div>
                     <div className={linkClassName} onClick={goToPost}>Post</div>
-                    <ThemeButton />
+                    <ToggleDarkButton />
                     {login
-                        ? <div  onClick={goToProfile}>
+                        ? <div  onClick={goToProfile} className={"header-avatar-con"}>
                             <img src={getCurrentUserAvatar()} alt="avatar" className="header-avatar-img"/>
                         </div>
                         : <div className={linkClassName} onClick={goToLogin}>Login</div>
@@ -81,9 +79,9 @@ export function Header(props) {
                 :<nav className="nav-links-landing">
                     <div className={linkClassName} onClick={goToHome}>Listing</div>
                     <div className={linkClassName} onClick={goToAbout}>About</div>
-                    <ThemeButton />
+                    <ToggleDarkButton />
                     {login
-                        ? <div onClick={goToProfile}>
+                        ? <div onClick={goToProfile} className={"header-avatar-con"}>
                             <img src={getCurrentUserAvatar()} alt="avatar" className="header-avatar-img"/>
                         </div>
                         : <div className={linkClassName} onClick={goToLogin}>Login</div>
