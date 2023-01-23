@@ -5,6 +5,7 @@ import {FBAuth} from "../../../firebase/authHandler.js";
 import {useEffect, useState} from "react";
 import {getCurrentUserAvatar} from "../../../tools/dataTools.js";
 import ToggleDarkButton from "./toggleDarkButton.jsx";
+import { ReactComponent as UserIcon } from "./user.svg";
 
 export function Header(props) {
     const linkClassName = "link";
@@ -73,7 +74,9 @@ export function Header(props) {
                         ? <div  onClick={goToProfile} className={"header-avatar-con"}>
                             <img src={getCurrentUserAvatar()} alt="avatar" className="header-avatar-img"/>
                         </div>
-                        : <div className={linkClassName} onClick={goToLogin}>Login</div>
+                        : <div className={"header-user-icon-con"} onClick={goToLogin}>
+                            <UserIcon className={"header-user-icon"}/>
+                        </div>
                     }
                 </nav>
                 :<nav className="nav-links-landing">
@@ -84,7 +87,9 @@ export function Header(props) {
                         ? <div onClick={goToProfile} className={"header-avatar-con"}>
                             <img src={getCurrentUserAvatar()} alt="avatar" className="header-avatar-img"/>
                         </div>
-                        : <div className={linkClassName} onClick={goToLogin}>Login</div>
+                        : <div className={"header-user-icon-con"} onClick={goToLogin}>
+                            <UserIcon className={"header-user-icon"}/>
+                        </div>
                     }
                 </nav>
             }
