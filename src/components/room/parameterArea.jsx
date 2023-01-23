@@ -52,7 +52,7 @@ export default function ParameterArea(props) {
         setMoveInRange(moveInRangeCN)
 
         let sizeCN;
-        console.log(sizeOrigin)
+        // console.log(sizeOrigin);
         if(sizeOrigin === "Small"){
             sizeCN = "小房间"
         }else if (sizeOrigin === "Medium"){

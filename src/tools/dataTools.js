@@ -410,5 +410,9 @@ export function joinMoveInRangeDate(data, lang = "en") {
     return stStr + " || " + duration;
 }
 
+export function getCurrentUserAvatar() {
+    let user = new FBAuth().auth.currentUser;
+    return user.photoURL === null ? `https://api.multiavatar.com/${user.posterEmail}.png` : user.photoURL;
+}
 
 
