@@ -97,19 +97,19 @@ export default function TopicAreaPro(props) {
             content: (
                 <div className={"share-container"}>
                     <div onClick={goToFacebook}>
-                        <img src="../../../public/facebook.png" alt="facebook"/>
+                        <img src="/facebook.png" alt="facebook"/>
                     </div>
                     <div onClick={goToInstagram}>
-                        <img src="../../../public/instagram.png" alt="instagram"/>
+                        <img src="/instagram.png" alt="instagram"/>
                     </div>
                     <div onClick={goToTwitter}>
-                        <img src="../../../public/twitter.png" alt="twitter"/>
+                        <img src="/twitter.png" alt="twitter"/>
                     </div>
                     <div onClick={goToWhatsapp}>
-                        <img src="../../../public/whatsapp.png" alt="whatsapp"/>
+                        <img src="/whatsapp.png" alt="whatsapp"/>
                     </div>
                     <div onClick={copyLink}>
-                        <img src="../../../public/copy.png" alt="copy"/>
+                        <img src="/copy.png" alt="copy"/>
                     </div>
                 </div>
             ),
