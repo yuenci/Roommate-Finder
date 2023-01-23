@@ -49,7 +49,7 @@ export default function TopicAreaPro(props) {
             return;
         }
 
-        axios.post("http://167.172.74.237:5001/translate", {
+        axios.post("https://emailproxy.azurewebsites.net/api/httptrigger3", {
             topic: topic,
             description: description
         }).then(r => {
