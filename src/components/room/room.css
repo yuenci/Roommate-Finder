@@ -342,6 +342,18 @@ padding: 15px;
     border-bottom: 1px solid #cccccc;
     font-size: 18px;
 }
+.share-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.share-container div img{
+    width: 40px;
+    height: 40px;
+    margin: 20px;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 768px) {
     .carousel-1{
