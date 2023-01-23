@@ -18,6 +18,9 @@ export function Room() {
 
     const [data, setData] = useState(null);
     const [visible, setVisible] = useState(false);
+    const [description, setDescription] = useState(null);
+
+
     const navigate = useNavigate();
 
     // redirect to home page 1 if roomID is missing
@@ -42,6 +45,7 @@ export function Room() {
                 }   , 1500);
             } else {
                 setData(res);
+                setDescription(res.description)
                 StatusContainer.currentRoomData = res;
                 //console.log(res);
             }
@@ -61,7 +65,7 @@ export function Room() {
     // login in && is not post  -- contact
     // not login --contact
     let showModify =false;
-    let user = new  FBAuth().getCurrentUser()
+    let user = new  FBAuth().auth.currentUser;
     if(user !==null && data !== null){
         if (data.posterEmail === user.email){
             showModify = true;
@@ -81,7 +85,7 @@ export function Room() {
 
             {
                 data &&
-                <TopicAreaPro topicText={data.topic}/>
+                <TopicAreaPro data={data} setDescription={setDescription} description={description}/>
             }
 
             {
@@ -91,7 +95,7 @@ export function Room() {
 
             {
                 data &&
-                <div className="description-container">{data.description}</div>
+                <div className="description-container">{description}</div>
             }
 
             <ContactButton data={data} showModify={showModify} roomID={roomID} setVisible={setVisible}/>

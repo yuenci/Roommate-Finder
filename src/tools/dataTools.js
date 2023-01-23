@@ -9,7 +9,7 @@ export function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-export function validateTPEmail(email){
+export function validateTPEmail(email) {
     const re = /^tp\d{6}@mail\.apu\.edu\.my/gm;
     return re.test(String(email).toLowerCase());
 }
@@ -17,7 +17,7 @@ export function validateTPEmail(email){
 // const fbStore = new FBStorage(firebaseConfig)
 export function stampToDateStr(stamp) {
     //console.log(stamp);
-    if(!stamp){
+    if (!stamp) {
         return "null";
     }
 
@@ -26,7 +26,7 @@ export function stampToDateStr(stamp) {
 
 export function stampToDateObj(stamp) {
     //console.log(stamp);
-    if(!stamp){
+    if (!stamp) {
         return "null";
     }
 
@@ -35,12 +35,12 @@ export function stampToDateObj(stamp) {
 
 export function timeStampToDateStr(stamp) {
     //console.log(stamp);
-    if(!stamp){
+    if (!stamp) {
         return "null";
     }
 
     let date = new Date(stamp.seconds * 1000);
-    let  month = monthToMonthStr(date.getMonth() + 1);
+    let month = monthToMonthStr(date.getMonth() + 1);
     let day = dayToDayStr(date.getDate());
     let year = date.getFullYear();
     // return `${day} ${month} ${year}`;
@@ -53,8 +53,8 @@ export function timeStampToDateStr(stamp) {
 
 }
 
-function monthToMonthStr(month){
-    switch (month){
+function monthToMonthStr(month) {
+    switch (month) {
         case 1:
             return "January";
         case 2:
@@ -82,8 +82,8 @@ function monthToMonthStr(month){
     }
 }
 
-function dayToDayStr(day){
-    switch (day){
+function dayToDayStr(day) {
+    switch (day) {
         case 1:
             return "1st";
         case 2:
@@ -154,7 +154,7 @@ export function initFirebase() {
     return true;
 }
 
-export async function initAllRoomsData(){
+export async function initAllRoomsData() {
     console.log("initAllUsersData called");
 
 
@@ -164,7 +164,7 @@ export async function initAllRoomsData(){
 
     //console.log(StatusContainer.currentAllRoomsData);
 
-    return  StatusContainer.currentAllRoomsData ;
+    return StatusContainer.currentAllRoomsData;
 }
 
 
@@ -174,16 +174,14 @@ export async function loginValidation(email, password) {
     if (data === null) {
         StatusContainer.loginError = "User does not exist";
         return false;
-    }
-    else if (data.password === password) {
+    } else if (data.password === password) {
         StatusContainer.loginStatus = true;
         new User(email).initUser().then((user) => {
             StatusContainer.currentUser = user;
             //console.log(user);
         });
         return true;
-    }
-    else {
+    } else {
         StatusContainer.loginError = "Wrong password";
         return false;
     }
@@ -196,7 +194,7 @@ export async function ifUserExist(email) {
 }
 
 
-export  function isNumber(str) {
+export function isNumber(str) {
     return !isNaN(Number(str));
 }
 
@@ -210,14 +208,15 @@ export async function writeNewUser(user) {
         regTimeStamp: new Date()
     }, user.email);
 }
-export function setLoginExpireTime(email,keepLogin) {
-    localStorage.setItem("loginExpireTime",  Date.now().toString());
+
+export function setLoginExpireTime(email, keepLogin) {
+    localStorage.setItem("loginExpireTime", Date.now().toString());
     localStorage.setItem("loginEmail", email);
     localStorage.setItem("keepLogin", keepLogin);
     //console.log("setLoginExpireTime");
 }
 
-export function getStoredLoginEmail(){
+export function getStoredLoginEmail() {
     return localStorage.getItem("loginEmail");
 }
 
@@ -232,12 +231,12 @@ export function detectLoginExpire() {
     let now = Date.now();
     let res
     if (localStorage.getItem("keepLogin") === "true") {
-        res =  now - expireTime > 1000 * 60 * 60 * 24 * 7;
-    }else{
-        res =  now - expireTime > 1000 * 60 * 60 * 24;
+        res = now - expireTime > 1000 * 60 * 60 * 24 * 7;
+    } else {
+        res = now - expireTime > 1000 * 60 * 60 * 24;
     }
     // console.log( now - expireTime )
-    if(res === true){
+    if (res === true) {
         new FBAuth().logout().then(
             () => {
                 localStorage.removeItem("loginExpireTime");
@@ -254,14 +253,14 @@ export function detectLoginExpire() {
     // false if not expired
 }
 
-export async function getNewRoomID(){
+export async function getNewRoomID() {
     let fbStore = StatusContainer.fireBaseStore;
-    let roomsNum =await fbStore.readDocument("status", "rooms");
+    let roomsNum = await fbStore.readDocument("status", "rooms");
     //console.log(roomsNum);
     return roomsNum.number + 1;
 }
 
-export async function addOneToRoomsNum(){
+export async function addOneToRoomsNum() {
     let fbStore = StatusContainer.fireBaseStore;
     return fbStore.addOne("status", "rooms", "number");
 }
@@ -271,7 +270,7 @@ export async function writeNewPost(data, roomID) {
     //console.log("roomID", roomID);
 
 
-    if(roomID === ""){
+    if (roomID === "") {
         roomID = await getNewRoomID();
         await addOneToRoomsNum();
     }
@@ -282,37 +281,36 @@ export async function writeNewPost(data, roomID) {
 
     await fbStore.readCollection("rooms")
 
-    StatusContainer.currentRoomData  = {};
+    StatusContainer.currentRoomData = {};
 
     return true;
 
 }
 
 
-export  function changeTimeStrTOStamp(timeStr){
+export function changeTimeStrTOStamp(timeStr) {
     return new Date(timeStr);
 }
 
 
+export function changeTimeStrListTOStamp(timeStrList) {
 
-export  function changeTimeStrListTOStamp(timeStrList){
-
-    return [new Date(timeStrList[0]),new Date(timeStrList[1])];
+    return [new Date(timeStrList[0]), new Date(timeStrList[1])];
 }
 
 
-export function captionFirstCharToUpper(str){
+export function captionFirstCharToUpper(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export function getRegDateFromUser(user){
-    const  date = Number(user.metadata.createdAt);
+export function getRegDateFromUser(user) {
+    const date = Number(user.metadata.createdAt);
     // stamp to date
     //console.log(new Date(date).toLocaleString());
     return new Date(date).toLocaleString();
 }
 
-export function isOnlyContainLetterAndSpace(content){
+export function isOnlyContainLetterAndSpace(content) {
     const re = /^[a-zA-Z ]*$/;
     return re.test(content);
 }
@@ -325,39 +323,39 @@ export function getPhone(user) {
     return user.displayName.split("-")[1];
 }
 
-export function logEmailSendTimes(){
+export function logEmailSendTimes() {
     let record = localStorage.getItem("emailSendTimes");
 
     //if record length is 14 and last number larger than 5, then return false
-    if(record !== null && record.length === 14 && Number(record[13]) > 5) return false;
-
+    if (record !== null && record.length === 14 && Number(record[13]) > 5) return false;
 
 
     // if exist
-    if(record !== null) {
-        let recordTimeStamps = Number(record.substring(0,13));
-        if(isToday(recordTimeStamps)){
+    if (record !== null) {
+        let recordTimeStamps = Number(record.substring(0, 13));
+        if (isToday(recordTimeStamps)) {
             //console.log("is today");
             // if today
             writeTimes(getTodayTimes() + 1);
             return true;
-        }else {
+        } else {
             //console.log("not today");
             // if not today
             writeTimes(1);
             return true;
         }
-    }else {
-    // if not exist
+    } else {
+        // if not exist
         writeTimes(1);
         return true;
     }
 }
-function  getTodayTimes(){
-    let record = localStorage.getItem("emailSendTimes");
-    if(record === null) return false;
 
-    if(record.length !== 14) return false;
+function getTodayTimes() {
+    let record = localStorage.getItem("emailSendTimes");
+    if (record === null) return false;
+
+    if (record.length !== 14) return false;
 
     //console.log(num);
 
@@ -365,9 +363,9 @@ function  getTodayTimes(){
     return Number(record[record.length - 1]);
 }
 
-function writeTimes(times){
+function writeTimes(times) {
     let dateTimeStamp = new Date().getTime();
-    let content = dateTimeStamp + "" + times ;
+    let content = dateTimeStamp + "" + times;
     localStorage.setItem("emailSendTimes", content);
 }
 
@@ -378,12 +376,11 @@ function isToday(timestamp) {
 }
 
 
-
-export async function isHaveModifyRight(roomID){
+export async function isHaveModifyRight(roomID) {
     let user = new FBAuth().auth.currentUser;
     let room = StatusContainer.fireBaseStore.readDocument("rooms", roomID);
 
-    let [userData , roomData] = await Promise.all([user, room]);
+    let [userData, roomData] = await Promise.all([user, room]);
 
     // console.log(userData.email);
     // console.log(roomData.posterEmail);
@@ -391,7 +388,7 @@ export async function isHaveModifyRight(roomID){
     return userData.email === roomData.posterEmail;
 }
 
-export function joinMoveInRangeDate(data) {
+export function joinMoveInRangeDate(data, lang = "en") {
     let st = data.moveInStart.seconds;
     let ed = data.moveInEnd.seconds;
 
@@ -399,11 +396,19 @@ export function joinMoveInRangeDate(data) {
 
     // Carry up
     duration = Math.ceil(duration);
-    duration = duration === 1 ? "1 month" : duration + " months";
+
+    if (lang === "zh-CN") {
+        duration = duration === 1 ? "1 个月" : duration + " 个月";
+    } else if (lang === "en") {
+        duration = duration === 1 ? "1 month" : duration + " months";
+    }
+
 
     let stStr = new Date(st * 1000).toLocaleDateString();
     //let edStr = new Date(ed * 1000).toLocaleDateString();
 
     return stStr + " || " + duration;
 }
+
+
 

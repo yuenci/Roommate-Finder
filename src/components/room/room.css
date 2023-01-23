@@ -224,6 +224,30 @@
     fill: #adb5bd;
 }
 
+.topic-area-pro-love path{
+    fill: #adb5bd;
+}
+.topic-area-pro-love-active{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.topic-area-pro-love-active path{
+    fill: #ff6b6b;
+}
+
+.topic-area-pro-translate-active{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.topic-area-pro-translate-active path{
+    fill: #4dabf7;
+}
+
+
 .topic-area-pro-share{
     margin-right: 10px;
 }
@@ -335,7 +359,7 @@ padding: 15px;
     }
 
     .topic-area-pro-translate svg{
-        width: 20px;
+        width: 30px;
     }
 
     .topic-area-pro-right svg{
