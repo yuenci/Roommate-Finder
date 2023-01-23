@@ -17,12 +17,18 @@ import Error404 from "../404/404.jsx";
 
 
 function App() {
+
+    let status = "running"
+
+    //let status = "maintenance"
+
+
     initFirebase();
     // get the data from firebase
 
     new Analysis().logEvent("app_start");
 
-    let status = "maintenance"
+
 
     if (status === "maintenance") {
         return(

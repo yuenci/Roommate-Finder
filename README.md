@@ -117,3 +117,9 @@ $ npm install axios
             }
         )
 ```
+
+# Toggle dark mode
+https://github.com/JoseRFelix/react-toggle-dark-mode
+```bash
+npm i react-toggle-dark-mode
+```

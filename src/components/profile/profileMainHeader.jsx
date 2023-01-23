@@ -61,7 +61,10 @@ export default function ProfileMainHeader(props) {
     }
 
     const fbAuth = new FBAuth();
-    const currentUser = fbAuth.getCurrentUser();
+    const currentUser = fbAuth.auth.currentUser;
+
+    console.log(currentUser)
+
     StatusContainer.currentUser = currentUser;
     const currentUserName = captionFirstCharToUpper(currentUser.displayName.split("-")[0]);
 

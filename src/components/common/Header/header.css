@@ -21,11 +21,11 @@
     cursor: pointer;
 }
 
-.logo-img{
+.logo-img {
     height: 50px;
 }
 
-.logo-text{
+.logo-text {
     position: relative;
     bottom: 40px;
     left: 50px;
@@ -39,7 +39,8 @@
     width: 300px;
     justify-content: space-between;
 }
-.nav-links-landing{
+
+.nav-links-landing {
     display: flex;
     list-style: none;
     margin: 0 20px 0 0;
@@ -48,20 +49,20 @@
     justify-content: space-between;
 }
 
-.nav-links div{
+.nav-links div {
     color: black;
     font-weight: bold;
     font-size: 17px;
 }
 
-.nav-links-landing div{
+.nav-links-landing div {
     color: black;
     font-weight: bold;
     font-size: 17px;
 }
 
 
-.link{
+.link {
     width: 80px;
     height: 40px;
     background-color: white;
@@ -70,26 +71,110 @@
     border-radius: 5px;
 }
 
-.link a{
+.link a {
     color: black;
     font-weight: bold;
     font-size: 17px;
 }
 
-.link:hover{
+.link:hover {
     cursor: pointer;
     background-color: #74c0fc;
     transition: 0.5s;
 }
 
-@media screen  and (max-width: 600px)  {
-    .logo-text{
+.header-avatar-con{
+    width: 60px;
+    height: 40px;
+}
+
+.header-avatar-img {
+    float: right;
+    width: 40px;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+
+
+.header-avatar-img:hover {
+    cursor: pointer;
+}
+
+
+.themeButton__moon, .themeButton__sun {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 20px 0 0;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.themeButton__sun__icon {
+    width: 40px;
+    height: 40px;
+}
+
+.themeButton__moon__icon {
+    width: 32px;
+    height: 32px;
+}
+
+.toggle-dark-btn-con{
+    width: 60px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.body-dark {
+    background-color:#17171A;
+    color: white;
+    transition: background 0.5s ease 0s;
+}
+
+.body-light{
+    transition: background 0.5s ease 0s;
+}
+
+.header-user-icon-con,.header-user-icon{
+    width: 40px;
+    height: 40px;
+}
+
+.header-user-icon{
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+}
+
+.header-user-icon path{
+    fill: var(--text-black);
+}
+
+
+@media screen  and (max-width: 600px) {
+    .logo-text {
         display: none;
     }
 
-    .nav-links{
-        width: 250px;
+    .nav-links {
+        width: 270px;
         margin: 0;
+    }
+    .link{
+        width: 60px;
+    }
+
+    .header-avatar-con,.toggle-dark-btn-con{
+        width: 50px;
     }
 }
 

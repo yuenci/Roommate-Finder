@@ -36,7 +36,7 @@ export default function AvatarCard(props) {
             <div className={"text-base avatar-desc"}>{desc}</div>
             <div className={"media-icon"}>
                 <IconGithub className={"hover:cursor-pointer"} onClick={goToGithub} />
-                <TeamsIcon className={"hover:cursor-pointer"} onClick={goToTeams}/>
+                <TeamsIcon className={"hover:cursor-pointer teams-icon"} onClick={goToTeams}/>
                 <IconEmail className={"hover:cursor-pointer"} onClick={copyEmail}/>
             </div>
         </div>

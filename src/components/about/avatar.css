@@ -37,6 +37,17 @@
     justify-content: space-between;
 }
 
+.teams-icon {
+    color: white;
+}
+
+.teams-icon circle {
+    fill: var(--text-black);
+}
+.teams-icon path {
+    fill: var(--text-black);
+}
+
 @media screen  and (max-width: 600px)  {
     .avatar-img{
         width: 100%;

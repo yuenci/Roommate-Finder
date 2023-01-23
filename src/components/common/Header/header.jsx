@@ -1,10 +1,11 @@
 
 import "./header.css";
 import {useNavigate } from "react-router-dom";
-
-// import {detectLoginExpire} from "../../../tools/dataTools.js";
 import {FBAuth} from "../../../firebase/authHandler.js";
 import {useEffect, useState} from "react";
+import {getCurrentUserAvatar} from "../../../tools/dataTools.js";
+import ToggleDarkButton from "./toggleDarkButton.jsx";
+import { ReactComponent as UserIcon } from "./user.svg";
 
 export function Header(props) {
     const linkClassName = "link";
@@ -53,7 +54,6 @@ export function Header(props) {
     }
 
 
-
     // function ifLogin() {
     //     //new  FBAuth().auth.currentUser;
     //     return !detectLoginExpire()
@@ -69,18 +69,27 @@ export function Header(props) {
                 ?<nav className="nav-links">
                     <div className={linkClassName} onClick={goToHome}>Listing</div>
                     <div className={linkClassName} onClick={goToPost}>Post</div>
-                    {/*<div className={linkClassName} onClick={goToAbout}>About</div>*/}
+                    <ToggleDarkButton />
                     {login
-                        ? <div className={linkClassName} onClick={goToProfile}>Profile</div>
-                        : <div className={linkClassName} onClick={goToLogin}>Login</div>
+                        ? <div  onClick={goToProfile} className={"header-avatar-con"}>
+                            <img src={getCurrentUserAvatar()} alt="avatar" className="header-avatar-img"/>
+                        </div>
+                        : <div className={"header-user-icon-con"} onClick={goToLogin}>
+                            <UserIcon className={"header-user-icon"}/>
+                        </div>
                     }
                 </nav>
                 :<nav className="nav-links-landing">
                     <div className={linkClassName} onClick={goToHome}>Listing</div>
                     <div className={linkClassName} onClick={goToAbout}>About</div>
+                    <ToggleDarkButton />
                     {login
-                        ? <div className={linkClassName} onClick={goToProfile}>Profile</div>
-                        : <div className={linkClassName} onClick={goToLogin}>Login</div>
+                        ? <div onClick={goToProfile} className={"header-avatar-con"}>
+                            <img src={getCurrentUserAvatar()} alt="avatar" className="header-avatar-img"/>
+                        </div>
+                        : <div className={"header-user-icon-con"} onClick={goToLogin}>
+                            <UserIcon className={"header-user-icon"}/>
+                        </div>
                     }
                 </nav>
             }

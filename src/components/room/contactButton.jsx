@@ -9,7 +9,7 @@ export default function ContactButton(props) {
     const navigate = useNavigate();
 
     function btnOnClick() {
-        let user = new FBAuth().getCurrentUser();
+        let user = new FBAuth().auth.currentUser;
         if(user === null) {
             setVisible(true);
         }else{

@@ -31,7 +31,7 @@
 
 .footer a {
     margin: 10px 0;
-    color: black;
+    color: var(--text-black);
 }
 
 .footer-col0{
@@ -51,7 +51,7 @@
 
 .footer-col0 a{
     margin-top: 0;
-    color: black;
+    color: var(--text-black);
 }
 
 @media screen and (max-width: 500px){
