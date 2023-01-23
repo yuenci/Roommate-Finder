@@ -7,11 +7,19 @@
   --text-black: #1D1D1D;
   --text-gray: #555;
   --color-bg-2: #fff;
+  --color-bg-3: #fff;
+  --color-bg-4: #fff;
+  --form-bg-1: #f9fcfc;
+  --form-bd-1: #e2eef0;
 }
 
 html[darkreader-scheme='one'] {
   --primary-purple: #84579D;
   --text-black: rgba(255, 255, 255, 0.9);
   --text-gray: #9f9f9f;
-    --color-bg-2: #232324;
+  --color-bg-2: #232324;
+  --color-bg-3:#2a2a2b;
+    --color-bg-4: #313132;
+  --form-bg-1: #232324;
+  --form-bd-1: #313132;
 }

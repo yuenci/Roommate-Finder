@@ -116,31 +116,32 @@
     width: 440px;
     margin: 0 auto;
     position: relative;
-    border: 2px solid  #e2eef0;
+    border: 2px solid  var(--form-bd-1);
     /*box-sizing: border-box;*/
     padding: 20px ;
-    background-color: #f9fcfc;
+    background-color: var(--form-bg-1);
     border-radius: 5px;
 }
 .lading__contact__form input{
     width: 400px;
     margin-bottom: 20px;
-    border-color: #e2eef0 ;
+    border-color: var(--form-bd-1);
     border-width: 2px !important;
     height: 40px;
     color:var(--text-gray);
     font-weight: normal;
     padding: 5px;
+    background-color: var(--color-bg-3);
 }
 .lading__contact__form textarea{
     width: 400px;
     margin-bottom: 20px;
-    border-color: #e2eef0 ;
+    border-color: var(--form-bd-1);
     border-width: 2px !important;
     resize: none;
     height: 100px;
     color:var(--text-gray);
-
+    background-color: var(--color-bg-3);
     font-weight: normal;
     padding: 5px;
 }
