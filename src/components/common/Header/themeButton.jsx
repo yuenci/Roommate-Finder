@@ -16,7 +16,6 @@ export default function ThemeButton() {
             setThemeState("dark");
             localStorage.setItem("theme", "dark");
             document.body.setAttribute('arco-theme', 'dark');
-
         } else {
             setThemeState("light");
             localStorage.setItem("theme", "light");

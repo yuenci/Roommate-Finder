@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary-purple: #84579D;
+  --text-black: #1D1D1D;
+  --text-gray: #555;
+  --color-bg-2: #fff;
+}
+
+html[darkreader-scheme='one'] {
+  --primary-purple: #84579D;
+  --text-black: rgba(255, 255, 255, 0.9);
+  --text-gray: #9f9f9f;
+    --color-bg-2: #232324;
+}

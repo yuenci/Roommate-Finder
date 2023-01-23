@@ -10,6 +10,7 @@
     box-sizing: border-box;
     padding: 10px;
     width: 100%;
+    background-color: var(--color-bg-2);
 }
 
 .user-card:hover{

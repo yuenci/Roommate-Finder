@@ -20,7 +20,6 @@ export default function ToggleDarkButton() {
     if (theme){
         switchToDark();
     }else{
-
         switchToLight();
     }
 
@@ -37,15 +36,16 @@ export default function ToggleDarkButton() {
     }
 
     function switchToDark() {
-
         document.body.classList.add("body-dark");
         document.body.setAttribute('arco-theme', 'dark');
+        document.querySelectorAll('html')[0].setAttribute('darkreader-scheme', 'one')
     }
 
     function switchToLight() {
         document.body.classList.remove("body-dark");
         document.body.classList.add("body-light");
         document.body.removeAttribute('arco-theme');
+        document.querySelectorAll('html')[0].setAttribute('darkreader-scheme', 'none')
     }
 
 
