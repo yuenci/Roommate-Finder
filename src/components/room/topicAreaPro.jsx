@@ -8,6 +8,7 @@ import axios from "axios";
 import PubSub from 'pubsub-js';
 import {Modal, Message} from '@arco-design/web-react';
 import {IconShareAlt} from '@arco-design/web-react/icon';
+import {Analysis} from "../../firebase/analysis.js";
 
 export default function TopicAreaPro(props) {
 
@@ -21,12 +22,16 @@ export default function TopicAreaPro(props) {
     const {setDescription, description} = props;
 
     let fbStore = new FBStore()
-    let email = new FBAuth().auth.currentUser.email;
+    let email = new FBAuth().auth.currentUser ? new FBAuth().auth.currentUser.email : null;
     let roomID = props.data.roomID;
     let currentUrl = window.location.href;
 
 
     function loveClick() {
+        if (!email) {
+            Message.warning('Please login first!')
+            return;
+        }
         setLoved(!loved)
         fbStore.addArrayElement("users", email, "lovedRooms", roomID).then((res) => {
             console.log(res);
@@ -40,6 +45,7 @@ export default function TopicAreaPro(props) {
     }
 
     function translateClick() {
+        new Analysis().logEvent("translate");
         setTranslated(!translated)
 
         if (translated) {
@@ -49,7 +55,7 @@ export default function TopicAreaPro(props) {
             return;
         }
 
-        axios.post("https://emailproxy.azurewebsites.net/api/httptrigger3", {
+        axios.post("http://167.172.74.237:5001/translate", {
             topic: topic,
             description: description
         }).then(r => {
@@ -62,6 +68,9 @@ export default function TopicAreaPro(props) {
     }
 
     useEffect(() => {
+        if (!email) {
+            return;
+        }
         fbStore.readDocument("users", email).then((res) => {
             if (res.lovedRooms.includes(roomID)) {
                 setLoved(true);
@@ -76,14 +85,20 @@ export default function TopicAreaPro(props) {
         modalIns.close()
     }
 
-    const goToFacebook = () => { goToWebsite(`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`) }
-    const goToInstagram = () => { goToWebsite("https://www.instagram.com") }
-    const goToTwitter = () => { goToWebsite(`https://twitter.com/intent/tweet?url=${currentUrl}`) }
-    const goToWhatsapp = () => { goToWebsite(`https://api.whatsapp.com/send?text==${currentUrl}`) }
+    const goToFacebook = () => { goToWebsite(`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`)
+        new Analysis().logEvent("share-facebook");}
+    const goToInstagram = () => { goToWebsite("https://www.instagram.com")
+        new Analysis().logEvent("share-instagram");}
+    const goToTwitter = () => { goToWebsite(`https://twitter.com/intent/tweet?url=${currentUrl}`)
+        new Analysis().logEvent("share-twitter");}
+    const goToWhatsapp = () => { goToWebsite(`https://api.whatsapp.com/send?text=${currentUrl}`)
+        new Analysis().logEvent("share-whatsapp");
+    }
     const copyLink = () => {
         navigator.clipboard.writeText(currentUrl).then(
             () => {
                 Message.success('Copied to clipboard!')
+                new Analysis().logEvent("share-copy");
                 modalIns.close()
             }
         )
