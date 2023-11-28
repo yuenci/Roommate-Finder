@@ -118,6 +118,11 @@ $ npm install axios
         )
 ```
 
+# Avatar
+```
+https://api.multiavatar.com
+```
+
 # Toggle dark mode
 https://github.com/JoseRFelix/react-toggle-dark-mode
 ```bash
